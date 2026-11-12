@@ -1,0 +1,16 @@
+# Варианты версий прошивок.
+# Колонки (через табуляцию):
+#   suffix   — хвост имени ZIP после "-" (v1.18-bl-ps-ts, v1.16_cad)
+#   label    — подпись в селекторе версий
+#   kind     — repeater или observer
+#   features — что внутри; идёт в "notes" перед "Собрано из MeshCore …"
+#   source   — версия MeshCore для хвоста "Собрано из MeshCore <source>."
+# Порядок строк = порядок версий в селекторе.
+v1.18-bl-ps-ts	v1.18 · BL+PS+TS	repeater	Blacklist каналов и префиксы (#2343), энергосбережение, синхронизация времени	1.18
+v1.18-bl-ps	v1.18 · BL+PS	repeater	Blacklist каналов и префиксы (#2343), энергосбережение	1.18
+v1.18-pr2343	v1.18 · PR2343	repeater	Blacklist каналов и префиксы (#2343)	1.18
+v1.17.1-pr2343	v1.17.1 · PR2343	repeater	Blacklist каналов и префиксы (#2343)	1.17.1
+v1.16-pr2343	v1.16 · PR2343	repeater	Blacklist каналов и префиксы (#2343)	1.16
+v1.18	v1.18	observer	Репитер-наблюдатель с веб-панелью и сбором статистики в CoreScope СПб	1.18 (форк MeshCoreTel)
+v1.16	v1.16	observer	Репитер-наблюдатель с веб-панелью и сбором статистики в CoreScope СПб	1.16 (форк MeshCoreTel)
+v1.16_cad	v1.16 · CAD	observer	Репитер-наблюдатель с CAD	1.16

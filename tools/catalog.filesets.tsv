@@ -1,0 +1,11 @@
+# Наборы файлов внутри ZIP: какие записи архива и как прошивать.
+# Колонки (через табуляцию):
+#   fileset — esp32 или nrf52
+#   type    — flash-wipe, flash-update, flash, download
+#   match   — regex по имени файла внутри архива
+#   title   — подпись в интерфейсе
+# Порядок строк внутри одного fileset сохраняется в config.json.
+esp32	flash-wipe	-merged\.bin$	merged — с очисткой данных
+esp32	flash-update	^(?!.*-merged\.bin$).*\.bin$	upgrade — обновление
+nrf52	flash	\.zip$	OTA-пакет для DFU
+nrf52	download	\.uf2$	UF2 для ручного DFU

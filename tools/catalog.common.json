@@ -1,0 +1,128 @@
+  "role": {
+    "repeater": {
+      "icon": "cell_tower",
+      "title": "Репитер",
+      "tooltip": "Ретранслятор: передаёт весь трафик в сети. Настройка через конфигуратор или консоль."
+    },
+    "observer": {
+      "icon": "sensors",
+      "title": "Наблюдатель",
+      "tooltip": "Репитер-наблюдатель для сбора статистики в CoreScope Санкт-Петербурга."
+    },
+    "companionBle": {
+      "icon": "smartphone",
+      "title": "Компаньон",
+      "subTitle": "Bluetooth",
+      "tooltip": "Чат через мобильное приложение или веб-клиент по Bluetooth."
+    },
+    "companionUsb": {
+      "icon": "usb",
+      "title": "Компаньон",
+      "subTitle": "USB",
+      "tooltip": "Чат через веб-клиент или командную строку по USB."
+    },
+    "bridgeRepeater": {
+      "icon": "cell_tower",
+      "title": "Репитер",
+      "subTitle": "ESPNow",
+      "tooltip": "Репитер с ESPNow-мостом. Настройка через конфигуратор или консоль."
+    },
+    "bridgeObserver": {
+      "icon": "sensors",
+      "title": "Наблюдатель",
+      "subTitle": "ESPNow",
+      "tooltip": "Репитер-наблюдатель с ESPNow-мостом."
+    },
+    "mtl1_868_repeater": {
+      "icon": "cell_tower",
+      "title": "Репитер",
+      "tooltip": "Ретранслятор: передаёт весь трафик в сети. Настройка через конфигуратор или консоль."
+    },
+    "mtl1_868_observer": {
+      "icon": "sensors",
+      "title": "Наблюдатель",
+      "tooltip": "Репитер-наблюдатель для сбора статистики в CoreScope Санкт-Петербурга."
+    },
+    "mtl1_868_bridge_repeater": {
+      "icon": "cell_tower",
+      "title": "Репитер",
+      "tooltip": "Репитер с ESPNow-мостом. Настройка через конфигуратор или консоль.",
+      "subTitle": "ESPNow"
+    },
+    "mtl1_868_bridge_observer": {
+      "icon": "sensors",
+      "title": "Наблюдатель",
+      "tooltip": "Репитер-наблюдатель с ESPNow-мостом.",
+      "subTitle": "ESPNow"
+    },
+    "mtl2_868_repeater": {
+      "icon": "cell_tower",
+      "title": "Репитер",
+      "tooltip": "Ретранслятор: передаёт весь трафик в сети. Настройка через конфигуратор или консоль."
+    },
+    "mtl1_433_repeater": {
+      "icon": "cell_tower",
+      "title": "Репитер",
+      "tooltip": "Ретранслятор: передаёт весь трафик в сети. Настройка через конфигуратор или консоль."
+    },
+    "mtl1_433_observer": {
+      "icon": "sensors",
+      "title": "Наблюдатель",
+      "tooltip": "Репитер-наблюдатель для сбора статистики в CoreScope Санкт-Петербурга."
+    },
+    "mtl1_433_bridge_repeater": {
+      "icon": "cell_tower",
+      "title": "Репитер",
+      "tooltip": "Репитер с ESPNow-мостом. Настройка через конфигуратор или консоль.",
+      "subTitle": "ESPNow"
+    },
+    "mtl1_433_bridge_observer": {
+      "icon": "sensors",
+      "title": "Наблюдатель",
+      "tooltip": "Репитер-наблюдатель с ESPNow-мостом.",
+      "subTitle": "ESPNow"
+    },
+    "mtl2_433_repeater": {
+      "icon": "cell_tower",
+      "title": "Репитер",
+      "tooltip": "Ретранслятор: передаёт весь трафик в сети. Настройка через конфигуратор или консоль."
+    }
+  },
+  "firmwareClass": {
+    "spb": {
+      "title": "Рекомендуемые прошивки",
+      "tooltip": "Собраны участниками сообщества MeshCore Санкт-Петербург на базе MeshCore 1.18."
+    },
+    "bridge": {
+      "title": "Мосты ESPNow",
+      "tooltip": "Прошивки с ESPNow-мостом для этой платы."
+    },
+    "mtl1-868": {
+      "title": "MTL-1 · 868 МГц",
+      "tooltip": "Рекомендуемые прошивки для MTL-1 на 868 МГц."
+    },
+    "mtl1-433": {
+      "title": "MTL-1 · 433 МГц",
+      "tooltip": "Рекомендуемые прошивки для MTL-1 на 433 МГц."
+    },
+    "mtl1-868-bridge": {
+      "title": "MTL-1 · 868 МГц · Мосты ESPNow",
+      "tooltip": "ESPNow-мост для MTL-1 на 868 МГц."
+    },
+    "mtl1-433-bridge": {
+      "title": "MTL-1 · 433 МГц · Мосты ESPNow",
+      "tooltip": "ESPNow-мост для MTL-1 на 433 МГц."
+    },
+    "mtl2-868": {
+      "title": "MTL-2 · 868 МГц",
+      "tooltip": "Рекомендуемые прошивки для MTL-2 на 868 МГц."
+    },
+    "mtl2-433": {
+      "title": "MTL-2 · 433 МГц",
+      "tooltip": "Рекомендуемые прошивки для MTL-2 на 433 МГц."
+    }
+  },
+  "notice": {
+    "observer": "<article class='observer-notice'><b>Только для Санкт-Петербурга.</b> Прошивка наблюдателя собирает статистику в <a target='_blank' href='https://mc.meshcore.spb.ru/'>CoreScope СПб</a>. В другом регионе она не подойдёт.</article>",
+    "switchType": "<article class='switch-notice'><b>Смена типа прошивки.</b> Если вы прошиваетесь с прошивки другого типа (не с официальной), <a target='_blank' href='https://meshcore.spb.ru/wiki/backup'>сохраните настройки и приватные ключи</a>, прошейте merged-версию с очисткой данных, затем восстановите настройки. При обновлении с обычного репитера используйте upgrade.</article>"
+  },

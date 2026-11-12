@@ -1,0 +1,84 @@
+:root {
+  --spb-navy: #001a4d;
+  --spb-blue: #0042aa;
+  --spb-blue-light: #e3edff;
+  --spb-orange: #f26a21;
+  --spb-orange-light: #fff0e7;
+  --spb-bg: #f5f5f5;   /* фон как на вики */
+  --spb-surface: #ffffff;
+  --spb-text: #10233f;
+  --spb-muted: #5d6f88;
+  --spb-outline: #c3d0e3;
+  --spb-success: #1b7f3a;
+  --font: Arial, sans-serif;   /* как на вики */
+}
+
+body.light {
+  --primary: var(--spb-blue);
+  --on-primary: #ffffff;
+  --primary-container: var(--spb-blue-light);
+  --on-primary-container: var(--spb-navy);
+  --secondary: var(--spb-orange);
+  --on-secondary: #ffffff;
+  --secondary-container: var(--spb-orange-light);
+  --on-secondary-container: #5a2100;
+  --tertiary: #0d6b6b;
+  --on-tertiary: #ffffff;
+  --tertiary-container: #d9f4f4;
+  --on-tertiary-container: #003737;
+  --error: #ba1a1a;
+  --on-error: #ffffff;
+  --error-container: #ffdad6;
+  --on-error-container: #410002;
+  --background: var(--spb-bg);
+  --on-background: var(--spb-text);
+  --surface: var(--spb-surface);
+  --on-surface: var(--spb-text);
+  --surface-variant: #e8eef8;
+  --on-surface-variant: var(--spb-muted);
+  --outline: var(--spb-outline);
+  --outline-variant: #d9e2f0;
+  --spb-radius: 3px;   /* скругления как на вики: почти прямые углы */
+  --inverse-surface: var(--spb-text);
+  --inverse-on-surface: #f4f8ff;
+  --surface-container-lowest: #ffffff;
+  --surface-container-low: #fbfdff;
+  --surface-container: #eef4fc;
+  --surface-container-high: #e6eef9;
+  --surface-container-highest: #dfe8f5;
+}
+
+html {
+  min-height: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--background);
+  color: var(--on-surface);
+  font-family: var(--font);
+}
+
+#app {
+  min-height: 100vh;
+}
+
+a {
+  color: var(--primary);
+}
+
+.break-word {
+  overflow-wrap: anywhere;
+}
+
+.hide-mobile {
+  display: inline-flex;
+}
+
+@media screen and (width <= 720px) {
+  .hide-mobile {
+    display: none !important;
+  }
+}

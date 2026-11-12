@@ -1,0 +1,28 @@
+# Платы для прошивальщика MeshCore СПб.
+# Колонки (через табуляцию):
+#   token         — часть имени ZIP до "-vX.Y…" (heltec_v4, mtl_1_sx1268)
+#   name          — название платы; строки с одинаковым name склеиваются в одно устройство
+#   maker         — производитель
+#   type          — esp32 или nrf52 (определяет способ прошивки)
+#   dfu           — auto или manual (manual = вход в DFU двойным RST)
+#   class_prefix  — префикс класса прошивок: mtl1, mtl2; иначе "-"
+#   band          — диапазон: 868, 433; иначе "-"
+#   icon          — иконка устройства
+#   tooltip       — HTML подсказки при наведении
+# Порядок строк = порядок устройств в config.json.
+heltec_v3	Heltec v3	heltec	esp32	auto	-	-	img/heltec_v3.svg	<img class='device' src='img/heltec_v3.svg'>
+heltec_v3_repeater	Heltec v3	heltec	esp32	auto	-	-	img/heltec_v3.svg	<img class='device' src='img/heltec_v3.svg'>
+heltec_v4	Heltec v4	heltec	esp32	auto	-	-	img/heltec_v4.svg	<img class='device' src='img/heltec_v4.svg'>
+heltec_v4_repeater	Heltec v4	heltec	esp32	auto	-	-	img/heltec_v4.svg	<img class='device' src='img/heltec_v4.svg'>
+tbeam_sx1262	LilyGo T-Beam SX1262	lilygo	esp32	auto	-	-	img/lilygo_tbeam.svg	<img class='device' src='img/lilygo_tbeam.svg'>
+tbeam_sx1276	LilyGo T-Beam SX1276	lilygo	esp32	auto	-	-	img/lilygo_tbeam.svg	<img class='device' src='img/lilygo_tbeam.svg'>
+heltec_t096	Heltec Mesh Node T096	heltec	nrf52	manual	-	-	img/heltec_t096.svg	<img class='device' src='img/heltec_t096.svg'>
+heltec_t114	Heltec Mesh Node T114	heltec	nrf52	manual	-	-	img/heltec_t114.svg	<img class='device' src='img/heltec_t114.svg'>
+gat562_30s_mesh_kit	GAT562 30s Kit	gat-iot	nrf52	auto	-	-	img/gatiot_gat562_30s.svg	<img class='device' src='img/gatiot_gat562_30s.svg'>
+promicro	ProMicro nRF52 (fakeTec)	promicro	nrf52	auto	-	-	img/faketec.svg	<img class='device' src='img/faketec.svg'>
+mtl_1	MTL-1	mtl	esp32	auto	mtl1	868	img/mtl_1.webp	<img class='device' src='img/mtl_1.webp'>
+mtl_1_repeater	MTL-1	mtl	esp32	auto	mtl1	868	img/mtl_1.webp	<img class='device' src='img/mtl_1.webp'>
+mtl_1_sx1268	MTL-1	mtl	esp32	auto	mtl1	433	img/mtl_1.webp	<img class='device' src='img/mtl_1.webp'>
+mtl_1_sx1268_repeater	MTL-1	mtl	esp32	auto	mtl1	433	img/mtl_1.webp	<img class='device' src='img/mtl_1.webp'>
+mtl_2_e22_sx1262	MTL-2	mtl	nrf52	auto	mtl2	868	img/mtl_2_868.webp	<div class='device-pair'><img class='device' src='img/mtl_2_868.webp'><img class='device' src='img/mtl_2_433.webp'></div>
+mtl_2_e22_sx1268	MTL-2	mtl	nrf52	auto	mtl2	433	img/mtl_2_868.webp	<div class='device-pair'><img class='device' src='img/mtl_2_868.webp'><img class='device' src='img/mtl_2_433.webp'></div>
