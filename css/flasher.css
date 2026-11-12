@@ -160,7 +160,10 @@ button {
   flex: none;
   min-inline-size: 0;
   font-size: 1.15rem;
-  line-height: 1.25;
+  /* высота строки = 0.82rem × 1.5 (см. .page-intro .intro-note) */
+  block-size: 1.23rem;
+  min-block-size: 1.23rem;
+  line-height: 1.23rem;
   color: var(--spb-blue);
 }
 
@@ -324,7 +327,12 @@ button {
 /* ---------- device / role screens ---------- */
 
 .screen-header {
-  /* BeerCSS красит любой header в --surface-container */
+  /* BeerCSS задаёт header display:flex, justify-content:center и
+     min-block-size:4rem — из-за этого строка с крошками центрировалась
+     и прыгала на 8 px между экраном ролей и экраном версии */
+  display: block;
+  min-block-size: 0;
+  padding-block: 0;
   background: transparent;
   margin: 20px 0 16px;
 }
@@ -338,6 +346,17 @@ button {
 
 .screen-header nav > button {
   margin: 0;
+}
+
+.node-name {
+  font-size: 1.375rem;   /* имя ноды — главный заголовок экрана */
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--spb-navy);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .header-type-icon {
@@ -552,6 +571,73 @@ button {
 .settings-chip.primary:focus {
   background: #00317f;
   border-color: #00317f;
+}
+
+/* кнопка стирания flash: красная и прижата вправо вместе с «Скачать».
+   Селектор с .actions нужен, чтобы перебить «.actions button { margin: 0 }»
+   и стиль .border из BeerCSS. */
+/* правая группа: «Скачать» прижимается вправо всегда, а если есть
+   кнопка стирания — они уезжают вправо вместе */
+.actions > button[data-ui="#downloads"] {
+  margin-inline-start: auto;
+}
+
+.actions:has(.erase-button) > button[data-ui="#downloads"] {
+  margin-inline-start: 0;
+}
+
+.actions .erase-button {
+  margin-inline-start: auto;   /* «Прошить!» остаётся слева */
+  color: #b3261e;
+  border-color: #b3261e;
+  background: #fdeceb;
+}
+
+.actions .erase-button i {
+  color: #b3261e;
+}
+
+.actions .erase-button:hover,
+.actions .erase-button:focus {
+  background: #f9d4d0;
+  border-color: #8c1d18;
+  color: #8c1d18;
+}
+
+.actions .erase-button:hover i,
+.actions .erase-button:focus i {
+  color: #8c1d18;
+}
+
+.settings-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 8px 0 0;
+  color: var(--spb-muted);
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.settings-note i {
+  flex: none;
+  min-inline-size: 0;
+  font-size: 1.05rem;
+  /* высота строки = высота строки текста (0.82rem × 1.5), поэтому
+     иконка центрируется по первой строке, а не липнет к верху блока */
+  block-size: 1.23rem;
+  min-block-size: 1.23rem;
+  line-height: 1.23rem;
+  color: var(--spb-blue);
+}
+
+.settings-note code {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--spb-navy);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.95em;
 }
 
 .version-row {
@@ -917,7 +1003,9 @@ button {
 
   .brand-text strong {
     font-size: 0.9rem;
-    white-space: normal;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .brand-logo {
@@ -928,6 +1016,13 @@ button {
   .top-nav {
     flex-wrap: wrap;
     gap: 4px;
+    row-gap: 2px;
+  }
+
+  /* бренд занимает первую строку, кнопки — вторую:
+     иначе шапка прыгает по высоте, когда появляется «Кастомная» */
+  .top-nav > .brand {
+    flex: 1 0 100%;
   }
 
   .top-nav > button {

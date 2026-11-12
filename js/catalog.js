@@ -5,7 +5,8 @@ import { fetchJson, escapeHtml } from './util.js';
 export const hasVersions = (firmware) => Object.values(firmware.version ?? {}).some((v) => v.files.length > 0);
 
 export async function loadCatalog() {
-  const config = await fetchJson(new URL('../config.json', import.meta.url));
+  // no-store: после обновления каталога браузер не должен показывать старые версии
+  const config = await fetchJson(new URL('../config.json', import.meta.url), { cache: 'no-store' });
 
   config.device = config.device.filter((device) => device.firmware.some(hasVersions));
 

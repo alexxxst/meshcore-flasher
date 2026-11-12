@@ -26,8 +26,12 @@ https://meshcore.spb.ru/flasher/
 - ссылки на актуальные настройки сети (`/wiki/settings`) в футере и на
   экране репитера/наблюдателя; на главной не дублируются радио-параметры
   текстом — только ссылка;
+- у наблюдателя дополнительно ссылка на `/wiki/observer` и напоминание
+  про Wi-Fi (`set wifi.ssid`, `set wifi.pwd`);
 - ESP32: merged-прошивка с очисткой или upgrade-прошивка обновлением;
-- nRF52: OTA-пакет через DFU, `.uf2` для ручного DFU;
+- nRF52: OTA-пакет через DFU, `.uf2` для ручного DFU, кнопка «Стереть
+  flash» (официальный FLASH_ERASE через DFU) и ссылка на
+  `/wiki/nrf52` с рекомендацией OTAFIX bootloader;
   для плат с USB-serial мостом (например, Heltec T096/T114) вход в DFU
   ручной — двойной RST; после этого работает и serial DFU через кнопку
   «Прошить!», и drag & drop `.uf2`. Такие платы помечены в конфиге
@@ -95,6 +99,7 @@ js/
   zip-loader.js          # fetch + zip.js + кэш
 lib/                     # Vue, BeerCSS, esptool, DFU, zip.js, консоль
 img/                     # логотип, иконки, mtl_1.webp, mtl_2_*.webp
+firmware/                # FLASH_ERASE для nRF52 (zip для DFU и uf2 для диска)
 tools/
   build-config.sh        # папка с ZIP → config.json (основной путь, bash)
   catalog.devices.tsv    # таблица плат: токен, название, тип, dfu, иконка

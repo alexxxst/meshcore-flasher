@@ -143,7 +143,7 @@
           "version": {
             "v1.18 · BL+PS+TS": {
               "archive": "heltec_v3_repeater-v1.18-bl-ps-ts.zip",
-              "notes": "Blacklist каналов и префиксы (#2343), энергосбережение, синхронизация времени. Собрано из MeshCore 1.18.",
+              "notes": "Blacklist каналов и префиксов (#2343), энергосбережение, синхронизация времени. Собрано из MeshCore 1.18.",
               "files": [
                 {
                   "type": "flash-wipe",
@@ -159,7 +159,7 @@
             },
             "v1.18 · BL+PS": {
               "archive": "heltec_v3_repeater-v1.18-bl-ps.zip",
-              "notes": "Blacklist каналов и префиксы (#2343), энергосбережение. Собрано из MeshCore 1.18.",
+              "notes": "Blacklist каналов и префиксов (#2343), энергосбережение. Собрано из MeshCore 1.18.",
               "files": [
                 {
                   "type": "flash-wipe",
@@ -175,7 +175,7 @@
             },
             "v1.18 · PR2343": {
               "archive": "heltec_v3_repeater-v1.18-pr2343.zip",
-              "notes": "Blacklist каналов и префиксы (#2343). Собрано из MeshCore 1.18.",
+              "notes": "Blacklist каналов и префиксов (#2343). Собрано из MeshCore 1.18.",
               "files": [
                 {
                   "type": "flash-wipe",
@@ -191,7 +191,7 @@
             },
             "v1.17.1 · PR2343": {
               "archive": "heltec_v3_repeater-v1.17.1-pr2343.zip",
-              "notes": "Blacklist каналов и префиксы (#2343). Собрано из MeshCore 1.17.1.",
+              "notes": "Blacklist каналов и префиксов (#2343). Собрано из MeshCore 1.17.1.",
               "files": [
                 {
                   "type": "flash-wipe",
@@ -207,7 +207,7 @@
             },
             "v1.16 · PR2343": {
               "archive": "heltec_v3_repeater-v1.16-pr2343.zip",
-              "notes": "Blacklist каналов и префиксы (#2343). Собрано из MeshCore 1.16.",
+              "notes": "Blacklist каналов и префиксов (#2343). Собрано из MeshCore 1.16.",
               "files": [
                 {
                   "type": "flash-wipe",
@@ -293,7 +293,7 @@
           "version": {
             "v1.18 · BL+PS+TS": {
               "archive": "heltec_v4_repeater-v1.18-bl-ps-ts.zip",
-              "notes": "Blacklist каналов и префиксы (#2343), энергосбережение, синхронизация времени. Собрано из MeshCore 1.18.",
+              "notes": "Blacklist каналов и префиксов (#2343), энергосбережение, синхронизация времени. Собрано из MeshCore 1.18.",
               "files": [
                 {
                   "type": "flash-wipe",
@@ -309,7 +309,7 @@
             },
             "v1.18 · BL+PS": {
               "archive": "heltec_v4_repeater-v1.18-bl-ps.zip",
-              "notes": "Blacklist каналов и префиксы (#2343), энергосбережение. Собрано из MeshCore 1.18.",
+              "notes": "Blacklist каналов и префиксов (#2343), энергосбережение. Собрано из MeshCore 1.18.",
               "files": [
                 {
                   "type": "flash-wipe",
@@ -325,7 +325,7 @@
             },
             "v1.18 · PR2343": {
               "archive": "heltec_v4_repeater-v1.18-pr2343.zip",
-              "notes": "Blacklist каналов и префиксы (#2343). Собрано из MeshCore 1.18.",
+              "notes": "Blacklist каналов и префиксов (#2343). Собрано из MeshCore 1.18.",
               "files": [
                 {
                   "type": "flash-wipe",
@@ -341,7 +341,7 @@
             },
             "v1.17.1 · PR2343": {
               "archive": "heltec_v4_repeater-v1.17.1-pr2343.zip",
-              "notes": "Blacklist каналов и префиксы (#2343). Собрано из MeshCore 1.17.1.",
+              "notes": "Blacklist каналов и префиксов (#2343). Собрано из MeshCore 1.17.1.",
               "files": [
                 {
                   "type": "flash-wipe",
@@ -357,7 +357,7 @@
             },
             "v1.16 · PR2343": {
               "archive": "heltec_v4_repeater-v1.16-pr2343.zip",
-              "notes": "Blacklist каналов и префиксы (#2343). Собрано из MeshCore 1.16.",
+              "notes": "Blacklist каналов и префиксов (#2343). Собрано из MeshCore 1.16.",
               "files": [
                 {
                   "type": "flash-wipe",
@@ -433,7 +433,7 @@
           "version": {
             "v1.18 · BL+PS+TS": {
               "archive": "heltec_v4_repeater_bridge_espnow-v1.18-bl-ps-ts.zip",
-              "notes": "Мост ESPNow. Blacklist каналов и префиксы (#2343), энергосбережение, синхронизация времени. Собрано из MeshCore 1.18.",
+              "notes": "Мост ESPNow. Blacklist каналов и префиксов (#2343), энергосбережение, синхронизация времени. Собрано из MeshCore 1.18.",
               "files": [
                 {
                   "type": "flash-wipe",
@@ -449,7 +449,7 @@
             },
             "v1.18 · BL+PS": {
               "archive": "heltec_v4_repeater_bridge_espnow-v1.18-bl-ps.zip",
-              "notes": "Мост ESPNow. Blacklist каналов и префиксы (#2343), энергосбережение. Собрано из MeshCore 1.18.",
+              "notes": "Мост ESPNow. Blacklist каналов и префиксов (#2343), энергосбережение. Собрано из MeshCore 1.18.",
               "files": [
                 {
                   "type": "flash-wipe",
@@ -465,7 +465,7 @@
             },
             "v1.18 · PR2343": {
               "archive": "heltec_v4_repeater_bridge_espnow-v1.18-pr2343.zip",
-              "notes": "Мост ESPNow. Blacklist каналов и префиксы (#2343). Собрано из MeshCore 1.18.",
+              "notes": "Мост ESPNow. Blacklist каналов и префиксов (#2343). Собрано из MeshCore 1.18.",
               "files": [
                 {
                   "type": "flash-wipe",
@@ -481,7 +481,7 @@
             },
             "v1.17.1 · PR2343": {
               "archive": "heltec_v4_repeater_bridge_espnow-v1.17.1-pr2343.zip",
-              "notes": "Мост ESPNow. Blacklist каналов и префиксы (#2343). Собрано из MeshCore 1.17.1.",
+              "notes": "Мост ESPNow. Blacklist каналов и префиксов (#2343). Собрано из MeshCore 1.17.1.",
               "files": [
                 {
                   "type": "flash-wipe",
@@ -567,7 +567,7 @@
           "version": {
             "v1.18 · BL+PS+TS": {
               "archive": "tbeam_sx1262_repeater-v1.18-bl-ps-ts.zip",
-              "notes": "Blacklist каналов и префиксы (#2343), энергосбережение, синхронизация времени. Собрано из MeshCore 1.18.",
+              "notes": "Blacklist каналов и префиксов (#2343), энергосбережение, синхронизация времени. Собрано из MeshCore 1.18.",
               "files": [
                 {
                   "type": "flash-wipe",
@@ -583,7 +583,7 @@
             },
             "v1.18 · BL+PS": {
               "archive": "tbeam_sx1262_repeater-v1.18-bl-ps.zip",
-              "notes": "Blacklist каналов и префиксы (#2343), энергосбережение. Собрано из MeshCore 1.18.",
+              "notes": "Blacklist каналов и префиксов (#2343), энергосбережение. Собрано из MeshCore 1.18.",
               "files": [
                 {
                   "type": "flash-wipe",
@@ -599,7 +599,7 @@
             },
             "v1.18 · PR2343": {
               "archive": "tbeam_sx1262_repeater-v1.18-pr2343.zip",
-              "notes": "Blacklist каналов и префиксы (#2343). Собрано из MeshCore 1.18.",
+              "notes": "Blacklist каналов и префиксов (#2343). Собрано из MeshCore 1.18.",
               "files": [
                 {
                   "type": "flash-wipe",
@@ -615,7 +615,7 @@
             },
             "v1.17.1 · PR2343": {
               "archive": "tbeam_sx1262_repeater-v1.17.1-pr2343.zip",
-              "notes": "Blacklist каналов и префиксы (#2343). Собрано из MeshCore 1.17.1.",
+              "notes": "Blacklist каналов и префиксов (#2343). Собрано из MeshCore 1.17.1.",
               "files": [
                 {
                   "type": "flash-wipe",
@@ -647,7 +647,7 @@
           "version": {
             "v1.18 · BL+PS+TS": {
               "archive": "tbeam_sx1276_repeater-v1.18-bl-ps-ts.zip",
-              "notes": "Blacklist каналов и префиксы (#2343), энергосбережение, синхронизация времени. Собрано из MeshCore 1.18.",
+              "notes": "Blacklist каналов и префиксов (#2343), энергосбережение, синхронизация времени. Собрано из MeshCore 1.18.",
               "files": [
                 {
                   "type": "flash-wipe",
@@ -663,7 +663,7 @@
             },
             "v1.18 · BL+PS": {
               "archive": "tbeam_sx1276_repeater-v1.18-bl-ps.zip",
-              "notes": "Blacklist каналов и префиксы (#2343), энергосбережение. Собрано из MeshCore 1.18.",
+              "notes": "Blacklist каналов и префиксов (#2343), энергосбережение. Собрано из MeshCore 1.18.",
               "files": [
                 {
                   "type": "flash-wipe",
@@ -679,7 +679,7 @@
             },
             "v1.18 · PR2343": {
               "archive": "tbeam_sx1276_repeater-v1.18-pr2343.zip",
-              "notes": "Blacklist каналов и префиксы (#2343). Собрано из MeshCore 1.18.",
+              "notes": "Blacklist каналов и префиксов (#2343). Собрано из MeshCore 1.18.",
               "files": [
                 {
                   "type": "flash-wipe",
@@ -695,7 +695,7 @@
             },
             "v1.17.1 · PR2343": {
               "archive": "tbeam_sx1276_repeater-v1.17.1-pr2343.zip",
-              "notes": "Blacklist каналов и префиксы (#2343). Собрано из MeshCore 1.17.1.",
+              "notes": "Blacklist каналов и префиксов (#2343). Собрано из MeshCore 1.17.1.",
               "files": [
                 {
                   "type": "flash-wipe",
@@ -727,7 +727,7 @@
           "version": {
             "v1.18 · BL+PS+TS": {
               "archive": "heltec_t096_repeater-v1.18-bl-ps-ts.zip",
-              "notes": "Blacklist каналов и префиксы (#2343), энергосбережение, синхронизация времени. Собрано из MeshCore 1.18.",
+              "notes": "Blacklist каналов и префиксов (#2343), энергосбережение, синхронизация времени. Собрано из MeshCore 1.18.",
               "files": [
                 {
                   "type": "flash",
@@ -743,7 +743,7 @@
             },
             "v1.18 · BL+PS": {
               "archive": "heltec_t096_repeater-v1.18-bl-ps.zip",
-              "notes": "Blacklist каналов и префиксы (#2343), энергосбережение. Собрано из MeshCore 1.18.",
+              "notes": "Blacklist каналов и префиксов (#2343), энергосбережение. Собрано из MeshCore 1.18.",
               "files": [
                 {
                   "type": "flash",
@@ -759,7 +759,7 @@
             },
             "v1.18 · PR2343": {
               "archive": "heltec_t096_repeater-v1.18-pr2343.zip",
-              "notes": "Blacklist каналов и префиксы (#2343). Собрано из MeshCore 1.18.",
+              "notes": "Blacklist каналов и префиксов (#2343). Собрано из MeshCore 1.18.",
               "files": [
                 {
                   "type": "flash",
@@ -775,7 +775,7 @@
             },
             "v1.17.1 · PR2343": {
               "archive": "heltec_t096_repeater-v1.17.1-pr2343.zip",
-              "notes": "Blacklist каналов и префиксы (#2343). Собрано из MeshCore 1.17.1.",
+              "notes": "Blacklist каналов и префиксов (#2343). Собрано из MeshCore 1.17.1.",
               "files": [
                 {
                   "type": "flash",
@@ -791,7 +791,7 @@
             },
             "v1.16 · PR2343": {
               "archive": "heltec_t096_repeater-v1.16-pr2343.zip",
-              "notes": "Blacklist каналов и префиксы (#2343). Собрано из MeshCore 1.16.",
+              "notes": "Blacklist каналов и префиксов (#2343). Собрано из MeshCore 1.16.",
               "files": [
                 {
                   "type": "flash",
@@ -823,7 +823,7 @@
           "version": {
             "v1.18 · BL+PS+TS": {
               "archive": "heltec_t114_repeater-v1.18-bl-ps-ts.zip",
-              "notes": "Blacklist каналов и префиксы (#2343), энергосбережение, синхронизация времени. Собрано из MeshCore 1.18.",
+              "notes": "Blacklist каналов и префиксов (#2343), энергосбережение, синхронизация времени. Собрано из MeshCore 1.18.",
               "files": [
                 {
                   "type": "flash",
@@ -839,7 +839,7 @@
             },
             "v1.18 · BL+PS": {
               "archive": "heltec_t114_repeater-v1.18-bl-ps.zip",
-              "notes": "Blacklist каналов и префиксы (#2343), энергосбережение. Собрано из MeshCore 1.18.",
+              "notes": "Blacklist каналов и префиксов (#2343), энергосбережение. Собрано из MeshCore 1.18.",
               "files": [
                 {
                   "type": "flash",
@@ -855,7 +855,7 @@
             },
             "v1.18 · PR2343": {
               "archive": "heltec_t114_repeater-v1.18-pr2343.zip",
-              "notes": "Blacklist каналов и префиксы (#2343). Собрано из MeshCore 1.18.",
+              "notes": "Blacklist каналов и префиксов (#2343). Собрано из MeshCore 1.18.",
               "files": [
                 {
                   "type": "flash",
@@ -871,7 +871,7 @@
             },
             "v1.17.1 · PR2343": {
               "archive": "heltec_t114_repeater-v1.17.1-pr2343.zip",
-              "notes": "Blacklist каналов и префиксы (#2343). Собрано из MeshCore 1.17.1.",
+              "notes": "Blacklist каналов и префиксов (#2343). Собрано из MeshCore 1.17.1.",
               "files": [
                 {
                   "type": "flash",
@@ -903,7 +903,7 @@
           "version": {
             "v1.18 · BL+PS+TS": {
               "archive": "gat562_30s_mesh_kit_repeater-v1.18-bl-ps-ts.zip",
-              "notes": "Blacklist каналов и префиксы (#2343), энергосбережение, синхронизация времени. Собрано из MeshCore 1.18.",
+              "notes": "Blacklist каналов и префиксов (#2343), энергосбережение, синхронизация времени. Собрано из MeshCore 1.18.",
               "files": [
                 {
                   "type": "flash",
@@ -919,7 +919,7 @@
             },
             "v1.18 · BL+PS": {
               "archive": "gat562_30s_mesh_kit_repeater-v1.18-bl-ps.zip",
-              "notes": "Blacklist каналов и префиксы (#2343), энергосбережение. Собрано из MeshCore 1.18.",
+              "notes": "Blacklist каналов и префиксов (#2343), энергосбережение. Собрано из MeshCore 1.18.",
               "files": [
                 {
                   "type": "flash",
@@ -935,7 +935,7 @@
             },
             "v1.18 · PR2343": {
               "archive": "gat562_30s_mesh_kit_repeater-v1.18-pr2343.zip",
-              "notes": "Blacklist каналов и префиксы (#2343). Собрано из MeshCore 1.18.",
+              "notes": "Blacklist каналов и префиксов (#2343). Собрано из MeshCore 1.18.",
               "files": [
                 {
                   "type": "flash",
@@ -951,7 +951,7 @@
             },
             "v1.17.1 · PR2343": {
               "archive": "gat562_30s_mesh_kit_repeater-v1.17.1-pr2343.zip",
-              "notes": "Blacklist каналов и префиксы (#2343). Собрано из MeshCore 1.17.1.",
+              "notes": "Blacklist каналов и префиксов (#2343). Собрано из MeshCore 1.17.1.",
               "files": [
                 {
                   "type": "flash",
@@ -967,7 +967,7 @@
             },
             "v1.16 · PR2343": {
               "archive": "gat562_30s_mesh_kit_repeater-v1.16-pr2343.zip",
-              "notes": "Blacklist каналов и префиксы (#2343). Собрано из MeshCore 1.16.",
+              "notes": "Blacklist каналов и префиксов (#2343). Собрано из MeshCore 1.16.",
               "files": [
                 {
                   "type": "flash",
@@ -999,7 +999,7 @@
           "version": {
             "v1.18 · BL+PS+TS": {
               "archive": "promicro_repeater-v1.18-bl-ps-ts.zip",
-              "notes": "Blacklist каналов и префиксы (#2343), энергосбережение, синхронизация времени. Собрано из MeshCore 1.18.",
+              "notes": "Blacklist каналов и префиксов (#2343), энергосбережение, синхронизация времени. Собрано из MeshCore 1.18.",
               "files": [
                 {
                   "type": "flash",
@@ -1031,7 +1031,7 @@
           "version": {
             "v1.18 · BL+PS+TS": {
               "archive": "mtl_1_repeater-v1.18-bl-ps-ts.zip",
-              "notes": "Blacklist каналов и префиксы (#2343), энергосбережение, синхронизация времени. Собрано из MeshCore 1.18.",
+              "notes": "Blacklist каналов и префиксов (#2343), энергосбережение, синхронизация времени. Собрано из MeshCore 1.18.",
               "files": [
                 {
                   "type": "flash-wipe",
@@ -1047,7 +1047,7 @@
             },
             "v1.18 · BL+PS": {
               "archive": "mtl_1_repeater-v1.18-bl-ps.zip",
-              "notes": "Blacklist каналов и префиксы (#2343), энергосбережение. Собрано из MeshCore 1.18.",
+              "notes": "Blacklist каналов и префиксов (#2343), энергосбережение. Собрано из MeshCore 1.18.",
               "files": [
                 {
                   "type": "flash-wipe",
@@ -1063,7 +1063,7 @@
             },
             "v1.18 · PR2343": {
               "archive": "mtl_1_repeater-v1.18-pr2343.zip",
-              "notes": "Blacklist каналов и префиксы (#2343). Собрано из MeshCore 1.18.",
+              "notes": "Blacklist каналов и префиксов (#2343). Собрано из MeshCore 1.18.",
               "files": [
                 {
                   "type": "flash-wipe",
@@ -1079,7 +1079,7 @@
             },
             "v1.17.1 · PR2343": {
               "archive": "mtl_1_repeater-v1.17.1-pr2343.zip",
-              "notes": "Blacklist каналов и префиксы (#2343). Собрано из MeshCore 1.17.1.",
+              "notes": "Blacklist каналов и префиксов (#2343). Собрано из MeshCore 1.17.1.",
               "files": [
                 {
                   "type": "flash-wipe",
@@ -1095,7 +1095,7 @@
             },
             "v1.16 · PR2343": {
               "archive": "mtl_1_repeater-v1.16-pr2343.zip",
-              "notes": "Blacklist каналов и префиксы (#2343). Собрано из MeshCore 1.16.",
+              "notes": "Blacklist каналов и префиксов (#2343). Собрано из MeshCore 1.16.",
               "files": [
                 {
                   "type": "flash-wipe",
@@ -1171,7 +1171,7 @@
           "version": {
             "v1.18 · BL+PS+TS": {
               "archive": "mtl_1_sx1268_repeater-v1.18-bl-ps-ts.zip",
-              "notes": "Blacklist каналов и префиксы (#2343), энергосбережение, синхронизация времени. Собрано из MeshCore 1.18.",
+              "notes": "Blacklist каналов и префиксов (#2343), энергосбережение, синхронизация времени. Собрано из MeshCore 1.18.",
               "files": [
                 {
                   "type": "flash-wipe",
@@ -1187,7 +1187,7 @@
             },
             "v1.18 · BL+PS": {
               "archive": "mtl_1_sx1268_repeater-v1.18-bl-ps.zip",
-              "notes": "Blacklist каналов и префиксы (#2343), энергосбережение. Собрано из MeshCore 1.18.",
+              "notes": "Blacklist каналов и префиксов (#2343), энергосбережение. Собрано из MeshCore 1.18.",
               "files": [
                 {
                   "type": "flash-wipe",
@@ -1203,7 +1203,7 @@
             },
             "v1.18 · PR2343": {
               "archive": "mtl_1_sx1268_repeater-v1.18-pr2343.zip",
-              "notes": "Blacklist каналов и префиксы (#2343). Собрано из MeshCore 1.18.",
+              "notes": "Blacklist каналов и префиксов (#2343). Собрано из MeshCore 1.18.",
               "files": [
                 {
                   "type": "flash-wipe",
@@ -1219,7 +1219,7 @@
             },
             "v1.17.1 · PR2343": {
               "archive": "mtl_1_sx1268_repeater-v1.17.1-pr2343.zip",
-              "notes": "Blacklist каналов и префиксы (#2343). Собрано из MeshCore 1.17.1.",
+              "notes": "Blacklist каналов и префиксов (#2343). Собрано из MeshCore 1.17.1.",
               "files": [
                 {
                   "type": "flash-wipe",
@@ -1235,7 +1235,7 @@
             },
             "v1.16 · PR2343": {
               "archive": "mtl_1_sx1268_repeater-v1.16-pr2343.zip",
-              "notes": "Blacklist каналов и префиксы (#2343). Собрано из MeshCore 1.16.",
+              "notes": "Blacklist каналов и префиксов (#2343). Собрано из MeshCore 1.16.",
               "files": [
                 {
                   "type": "flash-wipe",
@@ -1311,7 +1311,7 @@
           "version": {
             "v1.18 · BL+PS+TS": {
               "archive": "mtl_1_repeater_bridge_espnow-v1.18-bl-ps-ts.zip",
-              "notes": "Мост ESPNow. Blacklist каналов и префиксы (#2343), энергосбережение, синхронизация времени. Собрано из MeshCore 1.18.",
+              "notes": "Мост ESPNow. Blacklist каналов и префиксов (#2343), энергосбережение, синхронизация времени. Собрано из MeshCore 1.18.",
               "files": [
                 {
                   "type": "flash-wipe",
@@ -1327,7 +1327,7 @@
             },
             "v1.18 · BL+PS": {
               "archive": "mtl_1_repeater_bridge_espnow-v1.18-bl-ps.zip",
-              "notes": "Мост ESPNow. Blacklist каналов и префиксы (#2343), энергосбережение. Собрано из MeshCore 1.18.",
+              "notes": "Мост ESPNow. Blacklist каналов и префиксов (#2343), энергосбережение. Собрано из MeshCore 1.18.",
               "files": [
                 {
                   "type": "flash-wipe",
@@ -1343,7 +1343,7 @@
             },
             "v1.18 · PR2343": {
               "archive": "mtl_1_repeater_bridge_espnow-v1.18-pr2343.zip",
-              "notes": "Мост ESPNow. Blacklist каналов и префиксы (#2343). Собрано из MeshCore 1.18.",
+              "notes": "Мост ESPNow. Blacklist каналов и префиксов (#2343). Собрано из MeshCore 1.18.",
               "files": [
                 {
                   "type": "flash-wipe",
@@ -1359,7 +1359,7 @@
             },
             "v1.17.1 · PR2343": {
               "archive": "mtl_1_repeater_bridge_espnow-v1.17.1-pr2343.zip",
-              "notes": "Мост ESPNow. Blacklist каналов и префиксы (#2343). Собрано из MeshCore 1.17.1.",
+              "notes": "Мост ESPNow. Blacklist каналов и префиксов (#2343). Собрано из MeshCore 1.17.1.",
               "files": [
                 {
                   "type": "flash-wipe",
@@ -1419,7 +1419,7 @@
           "version": {
             "v1.18 · BL+PS+TS": {
               "archive": "mtl_1_sx1268_repeater_bridge_espnow-v1.18-bl-ps-ts.zip",
-              "notes": "Мост ESPNow. Blacklist каналов и префиксы (#2343), энергосбережение, синхронизация времени. Собрано из MeshCore 1.18.",
+              "notes": "Мост ESPNow. Blacklist каналов и префиксов (#2343), энергосбережение, синхронизация времени. Собрано из MeshCore 1.18.",
               "files": [
                 {
                   "type": "flash-wipe",
@@ -1435,7 +1435,7 @@
             },
             "v1.18 · BL+PS": {
               "archive": "mtl_1_sx1268_repeater_bridge_espnow-v1.18-bl-ps.zip",
-              "notes": "Мост ESPNow. Blacklist каналов и префиксы (#2343), энергосбережение. Собрано из MeshCore 1.18.",
+              "notes": "Мост ESPNow. Blacklist каналов и префиксов (#2343), энергосбережение. Собрано из MeshCore 1.18.",
               "files": [
                 {
                   "type": "flash-wipe",
@@ -1451,7 +1451,7 @@
             },
             "v1.18 · PR2343": {
               "archive": "mtl_1_sx1268_repeater_bridge_espnow-v1.18-pr2343.zip",
-              "notes": "Мост ESPNow. Blacklist каналов и префиксы (#2343). Собрано из MeshCore 1.18.",
+              "notes": "Мост ESPNow. Blacklist каналов и префиксов (#2343). Собрано из MeshCore 1.18.",
               "files": [
                 {
                   "type": "flash-wipe",
@@ -1467,7 +1467,7 @@
             },
             "v1.17.1 · PR2343": {
               "archive": "mtl_1_sx1268_repeater_bridge_espnow-v1.17.1-pr2343.zip",
-              "notes": "Мост ESPNow. Blacklist каналов и префиксы (#2343). Собрано из MeshCore 1.17.1.",
+              "notes": "Мост ESPNow. Blacklist каналов и префиксов (#2343). Собрано из MeshCore 1.17.1.",
               "files": [
                 {
                   "type": "flash-wipe",
@@ -1553,7 +1553,7 @@
           "version": {
             "v1.18 · BL+PS+TS": {
               "archive": "mtl_2_e22_sx1262_repeater-v1.18-bl-ps-ts.zip",
-              "notes": "Blacklist каналов и префиксы (#2343), энергосбережение, синхронизация времени. Собрано из MeshCore 1.18.",
+              "notes": "Blacklist каналов и префиксов (#2343), энергосбережение, синхронизация времени. Собрано из MeshCore 1.18.",
               "files": [
                 {
                   "type": "flash",
@@ -1575,7 +1575,7 @@
           "version": {
             "v1.18 · BL+PS+TS": {
               "archive": "mtl_2_e22_sx1268_repeater-v1.18-bl-ps-ts.zip",
-              "notes": "Blacklist каналов и префиксы (#2343), энергосбережение, синхронизация времени. Собрано из MeshCore 1.18.",
+              "notes": "Blacklist каналов и префиксов (#2343), энергосбережение, синхронизация времени. Собрано из MeshCore 1.18.",
               "files": [
                 {
                   "type": "flash",

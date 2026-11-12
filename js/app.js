@@ -6,7 +6,7 @@ import { pickFirmwareFile, requiresObserverConfirmation, isMergedFilename, resol
 import { Dfu, flashEsp32, flashNrf52, releaseFlasher } from './flash.js';
 import { CONSOLE_PATH, buildPath, parsePath, isSamePage, pathFromHash, hashForPath } from './router.js';
 import { serialAPI, serialSupported } from './serial.js';
-import { logoFile, siteTitle, siteSubtitle, wikiExperimentUrl, wikiFlashUrl, wikiRepeaterSettingsUrl, wikiSettingsUrl, officialFlasherUrl } from './site.js';
+import { logoFile, siteTitle, siteSubtitle, wikiExperimentUrl, wikiFlashUrl, wikiRepeaterSettingsUrl, wikiSettingsUrl, wikiObserverUrl, officialFlasherUrl, wikiNrf52Url, nrfEraseArchive, nrfEraseUf2 } from './site.js';
 import { loadArchiveEntry } from './zip-loader.js';
 
 const WEB_SERIAL_UNSUPPORTED = 'Браузер не поддерживает Web Serial. Откройте сайт в Chrome или Edge на компьютере.';
@@ -40,6 +40,7 @@ export function createSetup(config) {
       log: '',
       error: '',
       dfuComplete: false,
+      eraseDone: false,
     });
 
     const serialCon = reactive({
@@ -119,6 +120,9 @@ export function createSetup(config) {
         if (file.file) continue;
         items.push({ title: `Скачать ${file.title}`, action: 'extract', file });
       }
+      if (selected.device?.type === 'nrf52') {
+        items.push({ title: 'Скачать файл стирания flash (UF2)', href: asset(nrfEraseUf2) });
+      }
       return items;
     });
 
@@ -162,7 +166,7 @@ export function createSetup(config) {
 
     const resetFlashing = async () => {
       await releaseFlasher(flashing.instance);
-      Object.assign(flashing, { instance: null, active: false, percent: 0, log: '', error: '', dfuComplete: false });
+      Object.assign(flashing, { instance: null, active: false, percent: 0, log: '', error: '', dfuComplete: false, eraseDone: false });
     };
 
     const retry = resetFlashing;
@@ -329,6 +333,61 @@ export function createSetup(config) {
       }
     };
 
+    const isNrf52 = computed(() => selected.device?.type === 'nrf52');
+
+    // Стирание flash у nRF52: официальный пакет FLASH_ERASE_* кладём через DFU.
+    // Удаляет настройки, ключи и саму прошивку — после этого ноду надо прошить заново.
+    const eraseFlash = async () => {
+      if (!serialAPI) {
+        showMessage(WEB_SERIAL_UNSUPPORTED, 'warning');
+        return;
+      }
+      if (!isNrf52.value) return;
+
+      const name = selected.device.name;
+      if (!confirm(`Стереть flash у «${name}»?\n\nБудут удалены настройки, ключи и прошивка. После стирания ноду нужно прошить заново.`)) {
+        return;
+      }
+
+      let data;
+      try {
+        const response = await fetch(asset(nrfEraseArchive));
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        data = await response.blob();
+      }
+      catch (e) {
+        console.error(e);
+        showMessage('Не удалось загрузить файл стирания', 'error');
+        return;
+      }
+
+      let port;
+      try {
+        port = await serialAPI.requestPort({});
+      }
+      catch (e) {
+        console.error(e);
+        showMessage('Порт не выбран', 'usb_off');
+        return;
+      }
+
+      log.clean();
+      flashing.error = '';
+      flashing.dfuComplete = false;
+      flashing.eraseDone = true;
+      flashing.active = true;
+      flashing.percent = 0;
+
+      try {
+        const dfu = flashing.instance = new Dfu(port);
+        await flashNrf52(dfu, data, (percent) => { flashing.percent = percent; });
+      }
+      catch (e) {
+        flashing.eraseDone = false;
+        flashing.error = e.message;
+      }
+    };
+
     const customFirmwareLoad = (ev) => {
       const file = ev.target.files[0];
       if (!file) return;
@@ -453,6 +512,7 @@ export function createSetup(config) {
       const onProgress = (percent) => { flashing.percent = percent; };
       log.clean();
       flashing.error = '';
+      flashing.eraseDone = false;
       flashing.active = true;
       flashing.percent = 0;
 
@@ -477,16 +537,16 @@ export function createSetup(config) {
     };
 
     return {
-      config, asset, logoFile, siteTitle, siteSubtitle, wikiExperimentUrl, wikiFlashUrl, wikiRepeaterSettingsUrl, wikiSettingsUrl, officialFlasherUrl,
+      config, asset, logoFile, siteTitle, siteSubtitle, wikiExperimentUrl, wikiFlashUrl, wikiRepeaterSettingsUrl, wikiSettingsUrl, wikiObserverUrl, officialFlasherUrl,
       commandReference, firmwareClasses, WEB_SERIAL_UNSUPPORTED,
       snackbar, archiveBusy, archiveProgress,
       selected, flashing, serialCon,
       deviceFilterText, hoveredDevice, devices, deviceFirmwareByClass,
-      currentVersion, currentArchiveUrl, roleNotice, switchNotice, needsConfirmation, canFlash, isRepeaterRole,
+      currentVersion, currentArchiveUrl, roleNotice, switchNotice, needsConfirmation, canFlash, isRepeaterRole, isObserver, isNrf52, wikiNrf52Url,
       versionOptions, downloads, fwValue, formatNotes,
       selectDevice, selectFirmware, stepBack, retry, close, downloadFile,
       consoleEditBox, consoleWindow, consoleMouseUp, openSerialCon, closeSerialCon, sendCommand, openSerialGUI,
-      dfuMode, flashDevice, customFirmwareLoad,
+      dfuMode, eraseFlash, flashDevice, customFirmwareLoad,
     };
   };
 }
