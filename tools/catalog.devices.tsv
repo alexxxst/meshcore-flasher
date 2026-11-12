@@ -11,9 +11,7 @@
 #   tooltip       — HTML подсказки при наведении
 # Порядок строк = порядок устройств в config.json.
 heltec_v3	Heltec v3	heltec	esp32	auto	-	-	img/heltec_v3.svg	<img class='device' src='img/heltec_v3.svg'>
-heltec_v3_repeater	Heltec v3	heltec	esp32	auto	-	-	img/heltec_v3.svg	<img class='device' src='img/heltec_v3.svg'>
 heltec_v4	Heltec v4	heltec	esp32	auto	-	-	img/heltec_v4.svg	<img class='device' src='img/heltec_v4.svg'>
-heltec_v4_repeater	Heltec v4	heltec	esp32	auto	-	-	img/heltec_v4.svg	<img class='device' src='img/heltec_v4.svg'>
 tbeam_sx1262	LilyGo T-Beam SX1262	lilygo	esp32	auto	-	-	img/lilygo_tbeam.svg	<img class='device' src='img/lilygo_tbeam.svg'>
 tbeam_sx1276	LilyGo T-Beam SX1276	lilygo	esp32	auto	-	-	img/lilygo_tbeam.svg	<img class='device' src='img/lilygo_tbeam.svg'>
 heltec_t096	Heltec Mesh Node T096	heltec	nrf52	manual	-	-	img/heltec_t096.svg	<img class='device' src='img/heltec_t096.svg'>
@@ -21,8 +19,19 @@ heltec_t114	Heltec Mesh Node T114	heltec	nrf52	manual	-	-	img/heltec_t114.svg	<i
 gat562_30s_mesh_kit	GAT562 30s Kit	gat-iot	nrf52	auto	-	-	img/gatiot_gat562_30s.svg	<img class='device' src='img/gatiot_gat562_30s.svg'>
 promicro	ProMicro nRF52 (fakeTec)	promicro	nrf52	auto	-	-	img/faketec.svg	<img class='device' src='img/faketec.svg'>
 mtl_1	MTL-1	mtl	esp32	auto	mtl1	868	img/mtl_1.webp	<img class='device' src='img/mtl_1.webp'>
-mtl_1_repeater	MTL-1	mtl	esp32	auto	mtl1	868	img/mtl_1.webp	<img class='device' src='img/mtl_1.webp'>
 mtl_1_sx1268	MTL-1	mtl	esp32	auto	mtl1	433	img/mtl_1.webp	<img class='device' src='img/mtl_1.webp'>
-mtl_1_sx1268_repeater	MTL-1	mtl	esp32	auto	mtl1	433	img/mtl_1.webp	<img class='device' src='img/mtl_1.webp'>
-mtl_2_e22_sx1262	MTL-2	mtl	nrf52	auto	mtl2	868	img/mtl_2_868.webp	<div class='device-pair'><img class='device' src='img/mtl_2_868.webp'><img class='device' src='img/mtl_2_433.webp'></div>
-mtl_2_e22_sx1268	MTL-2	mtl	nrf52	auto	mtl2	433	img/mtl_2_868.webp	<div class='device-pair'><img class='device' src='img/mtl_2_868.webp'><img class='device' src='img/mtl_2_433.webp'></div>
+mtl_2_e22_sx1262	MTL-2	mtl	nrf52	auto	mtl2	868	img/mtl_2_868.webp	<img class='device' src='img/mtl_2_868.webp'>
+mtl_2_e22_sx1268	MTL-2	mtl	nrf52	auto	mtl2	433	img/mtl_2_868.webp	<img class='device' src='img/mtl_2_868.webp'>
+thinknode_m1	Elecrow ThinkNode M1	elecrow	nrf52	auto	-	-	img/thinknode_m1.svg	<img class='device' src='img/thinknode_m1.svg'>
+thinknode_m5	Elecrow ThinkNode M5	elecrow	esp32	auto	-	-	img/thinknode_m5.svg	<img class='device' src='img/thinknode_m5.svg'>
+gat562_mesh_tracker_pro	GAT-IoT GAT562 Tracker	gat-iot	nrf52	auto	-	-	img/gatiot_gat562.svg	<img class='device' src='img/gatiot_gat562.svg'>
+mesh_pocket	Heltec MeshPocket	heltec	nrf52	auto	-	-	img/heltec_meshpocket.svg	<img class='device' src='img/heltec_meshpocket.svg'>
+heltec_wireless_paper	Heltec Wireless Paper	heltec	esp32	auto	-	-	img/heltec_paper.svg	<img class='device' src='img/heltec_paper.svg'>
+lilygo_tbeam_1w	LilyGo T-Beam 1W	lilygo	esp32	auto	-	-	img/lilygo_tbeam_1w.svg	<img class='device' src='img/lilygo_tbeam_1w.svg'>
+lilygo_t-echo	LilyGo T-Echo	lilygo	nrf52	auto	-	-	img/lilygo_techo.svg	<img class='device' src='img/lilygo_techo.svg'>
+lilygo_t-echo-lite	LilyGo T-Echo Lite	lilygo	nrf52	auto	-	-	img/lilygo_techo_lite.svg	<img class='device' src='img/lilygo_techo_lite.svg'>
+rak_4631	RAK WisBlock 4631	rak	nrf52	auto	-	-	img/rak_4631.svg	<img class='device' src='img/rak_4631.svg'>
+rak_wismesh_tag	RAK WisMesh Tag	rak	nrf52	auto	-	-	img/rak_wismesh_tag.svg	<img class='device' src='img/rak_wismesh_tag.svg'>
+t1000e	Seeed Studio SenseCAP T1000-E	seeed	nrf52	auto	-	-	img/sensecap_t1000e.svg	<img class='device' src='img/sensecap_t1000e.svg'>
+wiotrackerl1	Seeed Studio Wio Tracker L1 Pro	seeed	nrf52	auto	-	-	img/wio_tracker_l1.svg	<img class='device' src='img/wio_tracker_l1.svg'>
+xiao_nrf52	Seeed Studio Xiao nRF52 WIO	seeed	nrf52	auto	-	-	img/xiao_nrf52.svg	<img class='device' src='img/xiao_nrf52.svg'>

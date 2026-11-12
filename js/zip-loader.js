@@ -24,6 +24,10 @@ async function fetchArchive(url, onProgress) {
     throw new Error(`Не удалось скачать архив прошивки. Проверьте соединение и повторите попытку. (${e.message})`);
   }
 
+  if (response.status === 404) {
+    throw new Error('Архив прошивки не найден на сервере (HTTP 404). Похоже, файл ещё не загружен на wiki — сообщите об этом в чат сообщества.');
+  }
+
   if (!response.ok) {
     throw new Error(`Не удалось скачать архив прошивки: HTTP ${response.status}. Попробуйте ещё раз.`);
   }

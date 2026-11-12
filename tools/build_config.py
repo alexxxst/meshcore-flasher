@@ -96,10 +96,23 @@ def archive_token(archive):
     """heltec_v4_repeater_bridge_espnow_mqtt-v1.16_cad.zip -> heltec_v4."""
     stem = archive[: -len(".zip")]
     stem = re.sub(r"-v\d.*$", "", stem)
-    for suffix in ("_bridge_espnow_mqtt", "_bridge_espnow", "_mqtt", "_repeater"):
-        if stem.endswith(suffix):
-            stem = stem[: -len(suffix)]
-            break
+    suffixes = (
+        "_bridge_espnow_mqtt",
+        "_bridge_espnow",
+        "_companion_radio_ble",
+        "_companion_radio_usb",
+        "_mqtt",
+        "_repeater",
+    )
+    # суффиксов может быть несколько: heltec_v3_repeater_mqtt
+    changed = True
+    while changed:
+        changed = False
+        for suffix in suffixes:
+            if stem.endswith(suffix):
+                stem = stem[: -len(suffix)]
+                changed = True
+                break
     return stem
 
 
@@ -174,7 +187,13 @@ def catalog_versions(manifest):
     variants = {}
     for device in manifest["devices"]:
         for firmware in device["firmware"]:
-            kind = "observer" if "observer" in firmware["role"].lower() else "repeater"
+            role = firmware["role"].lower()
+            if "observer" in role:
+                kind = "observer"
+            elif "companion" in role:
+                kind = "companion"
+            else:
+                kind = "repeater"
             for label, version in firmware["versions"].items():
                 suffix = archive_suffix(version["archive"])
                 features, source = split_notes(version.get("notes", ""))

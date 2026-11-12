@@ -35,6 +35,11 @@
       "subTitle": "ESPNow",
       "tooltip": "Репитер-наблюдатель с ESPNow-мостом."
     },
+    "mtl1_868_companion": {
+      "icon": "smartphone",
+      "title": "Компаньон",
+      "tooltip": "Чат через мобильное приложение или веб-клиент по Bluetooth."
+    },
     "mtl1_868_repeater": {
       "icon": "cell_tower",
       "title": "Репитер",
@@ -57,10 +62,20 @@
       "tooltip": "Репитер-наблюдатель с ESPNow-мостом.",
       "subTitle": "ESPNow"
     },
+    "mtl2_868_companion": {
+      "icon": "smartphone",
+      "title": "Компаньон",
+      "tooltip": "Чат через мобильное приложение или веб-клиент по Bluetooth."
+    },
     "mtl2_868_repeater": {
       "icon": "cell_tower",
       "title": "Репитер",
       "tooltip": "Ретранслятор: передаёт весь трафик в сети. Настройка через конфигуратор или консоль."
+    },
+    "mtl1_433_companion": {
+      "icon": "smartphone",
+      "title": "Компаньон",
+      "tooltip": "Чат через мобильное приложение или веб-клиент по Bluetooth."
     },
     "mtl1_433_repeater": {
       "icon": "cell_tower",
@@ -83,6 +98,11 @@
       "title": "Наблюдатель",
       "tooltip": "Репитер-наблюдатель с ESPNow-мостом.",
       "subTitle": "ESPNow"
+    },
+    "mtl2_433_companion": {
+      "icon": "smartphone",
+      "title": "Компаньон",
+      "tooltip": "Чат через мобильное приложение или веб-клиент по Bluetooth."
     },
     "mtl2_433_repeater": {
       "icon": "cell_tower",
@@ -126,7 +146,10 @@
   },
   "notice": {
     "observer": "<article class='observer-notice'><b>Только для Санкт-Петербурга.</b> Прошивка наблюдателя собирает статистику в <a target='_blank' href='https://mc.meshcore.spb.ru/'>CoreScope СПб</a>. В другом регионе она не подойдёт.</article>",
-    "switchType": "<article class='switch-notice'><b>Смена типа прошивки.</b> Если вы прошиваетесь с прошивки другого типа (не с официальной), <a target='_blank' href='https://meshcore.spb.ru/wiki/backup'>сохраните настройки и приватные ключи</a>, прошейте merged-версию с очисткой данных, затем восстановите настройки. При обновлении с обычного репитера используйте upgrade.</article>"
+    "switchType": "<article class='switch-notice'><b>Смена типа прошивки.</b> Если вы прошиваетесь с прошивки другого типа (не с официальной), <a target='_blank' href='https://meshcore.spb.ru/wiki/backup'>сохраните настройки и приватные ключи</a>, прошейте merged-версию с очисткой данных, затем восстановите настройки. При обновлении с обычного репитера используйте upgrade.</article>",
+    "switchTypeNrf52": "<article class='switch-notice'><b>Смена типа прошивки.</b> Если вы прошиваетесь с прошивки другого типа (не с официальной), <a target='_blank' href='https://meshcore.spb.ru/wiki/backup'>сохраните настройки и приватные ключи</a>, нажмите «Стереть flash», затем прошейте ноду заново и восстановите настройки. При обычном обновлении прошивку можно ставить поверх — очистка не нужна.</article>",
+    "switchTypeCompanion": "<article class='switch-notice'><b>Смена типа прошивки.</b> Если вы прошиваетесь с прошивки другого типа (не с официальной), <a target='_blank' href='https://meshcore.spb.ru/wiki/backup'>сохраните настройки и приватные ключи</a>, отметьте «Очистить устройство (merged)» и прошейте заново, затем восстановите настройки.</article>",
+    "switchTypeCompanionNrf52": "<article class='switch-notice'><b>Смена типа прошивки.</b> Если вы прошиваетесь с прошивки другого типа (не с официальной), <a target='_blank' href='https://meshcore.spb.ru/wiki/backup'>сохраните настройки и приватные ключи</a>, нажмите «Стереть flash» и прошейте ноду заново, затем восстановите настройки.</article>"
   },
   "fileSet": {
     "esp32": {
@@ -166,6 +189,17 @@
       "icon": "img/heltec_v3.svg",
       "tooltip": "<img class='device' src='img/heltec_v3.svg'>",
       "firmware": [
+        {
+          "class": "spb",
+          "role": "companionBle",
+          "versions": {
+            "v1.18 · PS": {
+              "archive": "heltec_v3_companion_radio_ble-v1.18-ps.zip",
+              "fileSet": "esp32",
+              "notes": "Bluetooth-компаньон с энергосбережением (powersave). Собрано из MeshCore 1.18."
+            }
+          }
+        },
         {
           "role": "repeater",
           "versions": {
@@ -226,6 +260,17 @@
       "icon": "img/heltec_v4.svg",
       "tooltip": "<img class='device' src='img/heltec_v4.svg'>",
       "firmware": [
+        {
+          "class": "spb",
+          "role": "companionBle",
+          "versions": {
+            "v1.18 · PS": {
+              "archive": "heltec_v4_companion_radio_ble-v1.18-ps.zip",
+              "fileSet": "esp32",
+              "notes": "Bluetooth-компаньон с энергосбережением (powersave). Собрано из MeshCore 1.18."
+            }
+          }
+        },
         {
           "role": "repeater",
           "versions": {
@@ -334,6 +379,17 @@
       "tooltip": "<img class='device' src='img/lilygo_tbeam.svg'>",
       "firmware": [
         {
+          "class": "spb",
+          "role": "companionBle",
+          "versions": {
+            "v1.18 · PS": {
+              "archive": "tbeam_sx1262_companion_radio_ble-v1.18-ps.zip",
+              "fileSet": "esp32",
+              "notes": "Bluetooth-компаньон с энергосбережением (powersave). Собрано из MeshCore 1.18."
+            }
+          }
+        },
+        {
           "role": "repeater",
           "versions": {
             "v1.18 · BL+PS+TS": {
@@ -369,6 +425,17 @@
       "tooltip": "<img class='device' src='img/lilygo_tbeam.svg'>",
       "firmware": [
         {
+          "class": "spb",
+          "role": "companionBle",
+          "versions": {
+            "v1.18 · PS": {
+              "archive": "tbeam_sx1276_companion_radio_ble-v1.18-ps.zip",
+              "fileSet": "esp32",
+              "notes": "Bluetooth-компаньон с энергосбережением (powersave). Собрано из MeshCore 1.18."
+            }
+          }
+        },
+        {
           "role": "repeater",
           "versions": {
             "v1.18 · BL+PS+TS": {
@@ -403,6 +470,17 @@
       "icon": "img/heltec_t096.svg",
       "tooltip": "<img class='device' src='img/heltec_t096.svg'>",
       "firmware": [
+        {
+          "class": "spb",
+          "role": "companionBle",
+          "versions": {
+            "v1.18 · PS": {
+              "archive": "heltec_t096_companion_radio_ble-v1.18-ps.zip",
+              "fileSet": "nrf52",
+              "notes": "Bluetooth-компаньон с энергосбережением (powersave). Собрано из MeshCore 1.18."
+            }
+          }
+        },
         {
           "role": "repeater",
           "versions": {
@@ -444,6 +522,17 @@
       "tooltip": "<img class='device' src='img/heltec_t114.svg'>",
       "firmware": [
         {
+          "class": "spb",
+          "role": "companionBle",
+          "versions": {
+            "v1.18 · PS": {
+              "archive": "heltec_t114_companion_radio_ble-v1.18-ps.zip",
+              "fileSet": "nrf52",
+              "notes": "Bluetooth-компаньон с энергосбережением (powersave). Собрано из MeshCore 1.18."
+            }
+          }
+        },
+        {
           "role": "repeater",
           "versions": {
             "v1.18 · BL+PS+TS": {
@@ -478,6 +567,17 @@
       "icon": "img/gatiot_gat562_30s.svg",
       "tooltip": "<img class='device' src='img/gatiot_gat562_30s.svg'>",
       "firmware": [
+        {
+          "class": "spb",
+          "role": "companionBle",
+          "versions": {
+            "v1.18 · PS": {
+              "archive": "gat562_30s_mesh_kit_companion_radio_ble-v1.18-ps.zip",
+              "fileSet": "nrf52",
+              "notes": "Bluetooth-компаньон с энергосбережением (powersave). Собрано из MeshCore 1.18."
+            }
+          }
+        },
         {
           "role": "repeater",
           "versions": {
@@ -519,6 +619,17 @@
       "tooltip": "<img class='device' src='img/faketec.svg'>",
       "firmware": [
         {
+          "class": "spb",
+          "role": "companionBle",
+          "versions": {
+            "v1.18 · PS": {
+              "archive": "promicro_companion_radio_ble-v1.18-ps.zip",
+              "fileSet": "nrf52",
+              "notes": "Bluetooth-компаньон с энергосбережением (powersave). Собрано из MeshCore 1.18."
+            }
+          }
+        },
+        {
           "role": "repeater",
           "versions": {
             "v1.18 · BL+PS+TS": {
@@ -539,6 +650,17 @@
       "icon": "img/mtl_1.webp",
       "tooltip": "<img class='device' src='img/mtl_1.webp'>",
       "firmware": [
+        {
+          "class": "mtl1-868",
+          "role": "mtl1_868_companion",
+          "versions": {
+            "v1.18 · PS": {
+              "archive": "mtl_1_companion_radio_ble-v1.18-ps.zip",
+              "fileSet": "esp32",
+              "notes": "Bluetooth-компаньон с энергосбережением (powersave). Собрано из MeshCore 1.18."
+            }
+          }
+        },
         {
           "role": "mtl1_868_repeater",
           "versions": {
@@ -590,6 +712,17 @@
             }
           },
           "class": "mtl1-868"
+        },
+        {
+          "class": "mtl1-433",
+          "role": "mtl1_433_companion",
+          "versions": {
+            "v1.18 · PS": {
+              "archive": "mtl_1_sx1268_companion_radio_ble-v1.18-ps.zip",
+              "fileSet": "esp32",
+              "notes": "Bluetooth-компаньон с энергосбережением (powersave). Собрано из MeshCore 1.18."
+            }
+          }
         },
         {
           "role": "mtl1_433_repeater",
@@ -740,8 +873,19 @@
       "type": "nrf52",
       "dfu": "auto",
       "icon": "img/mtl_2_868.webp",
-      "tooltip": "<div class='device-pair'><img class='device' src='img/mtl_2_868.webp'><img class='device' src='img/mtl_2_433.webp'></div>",
+      "tooltip": "<img class='device' src='img/mtl_2_868.webp'>",
       "firmware": [
+        {
+          "class": "mtl2-868",
+          "role": "mtl2_868_companion",
+          "versions": {
+            "v1.18 · PS": {
+              "archive": "mtl_2_e22_sx1262_companion_radio_ble-v1.18-ps.zip",
+              "fileSet": "nrf52",
+              "notes": "Bluetooth-компаньон с энергосбережением (powersave). Собрано из MeshCore 1.18."
+            }
+          }
+        },
         {
           "role": "mtl2_868_repeater",
           "versions": {
@@ -754,6 +898,17 @@
           "class": "mtl2-868"
         },
         {
+          "class": "mtl2-433",
+          "role": "mtl2_433_companion",
+          "versions": {
+            "v1.18 · PS": {
+              "archive": "mtl_2_e22_sx1268_companion_radio_ble-v1.18-ps.zip",
+              "fileSet": "nrf52",
+              "notes": "Bluetooth-компаньон с энергосбережением (powersave). Собрано из MeshCore 1.18."
+            }
+          }
+        },
+        {
           "role": "mtl2_433_repeater",
           "versions": {
             "v1.18 · BL+PS+TS": {
@@ -763,6 +918,290 @@
             }
           },
           "class": "mtl2-433"
+        }
+      ]
+    },
+    {
+      "name": "Elecrow ThinkNode M1",
+      "maker": "elecrow",
+      "type": "nrf52",
+      "dfu": "auto",
+      "icon": "img/thinknode_m1.svg",
+      "tooltip": "<img class='device' src='img/thinknode_m1.svg'>",
+      "firmware": [
+        {
+          "class": "spb",
+          "role": "companionBle",
+          "versions": {
+            "v1.18 · PS": {
+              "archive": "thinknode_m1_companion_radio_ble-v1.18-ps.zip",
+              "fileSet": "nrf52",
+              "notes": "Bluetooth-компаньон с энергосбережением (powersave). Собрано из MeshCore 1.18."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Elecrow ThinkNode M5",
+      "maker": "elecrow",
+      "type": "esp32",
+      "dfu": "auto",
+      "icon": "img/thinknode_m5.svg",
+      "tooltip": "<img class='device' src='img/thinknode_m5.svg'>",
+      "firmware": [
+        {
+          "class": "spb",
+          "role": "companionBle",
+          "versions": {
+            "v1.18 · PS": {
+              "archive": "thinknode_m5_companion_radio_ble-v1.18-ps.zip",
+              "fileSet": "esp32",
+              "notes": "Bluetooth-компаньон с энергосбережением (powersave). Собрано из MeshCore 1.18."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "GAT-IoT GAT562 Tracker",
+      "maker": "gat-iot",
+      "type": "nrf52",
+      "dfu": "auto",
+      "icon": "img/gatiot_gat562.svg",
+      "tooltip": "<img class='device' src='img/gatiot_gat562.svg'>",
+      "firmware": [
+        {
+          "class": "spb",
+          "role": "companionBle",
+          "versions": {
+            "v1.18 · PS": {
+              "archive": "gat562_mesh_tracker_pro_companion_radio_ble-v1.18-ps.zip",
+              "fileSet": "nrf52",
+              "notes": "Bluetooth-компаньон с энергосбережением (powersave). Собрано из MeshCore 1.18."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Heltec MeshPocket",
+      "maker": "heltec",
+      "type": "nrf52",
+      "dfu": "auto",
+      "icon": "img/heltec_meshpocket.svg",
+      "tooltip": "<img class='device' src='img/heltec_meshpocket.svg'>",
+      "firmware": [
+        {
+          "class": "spb",
+          "role": "companionBle",
+          "versions": {
+            "v1.18 · PS": {
+              "archive": "mesh_pocket_companion_radio_ble-v1.18-ps.zip",
+              "fileSet": "nrf52",
+              "notes": "Bluetooth-компаньон с энергосбережением (powersave). Собрано из MeshCore 1.18."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Heltec Wireless Paper",
+      "maker": "heltec",
+      "type": "esp32",
+      "dfu": "auto",
+      "icon": "img/heltec_paper.svg",
+      "tooltip": "<img class='device' src='img/heltec_paper.svg'>",
+      "firmware": [
+        {
+          "class": "spb",
+          "role": "companionBle",
+          "versions": {
+            "v1.18 · PS": {
+              "archive": "heltec_wireless_paper_companion_radio_ble-v1.18-ps.zip",
+              "fileSet": "esp32",
+              "notes": "Bluetooth-компаньон с энергосбережением (powersave). Собрано из MeshCore 1.18."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "LilyGo T-Beam 1W",
+      "maker": "lilygo",
+      "type": "esp32",
+      "dfu": "auto",
+      "icon": "img/lilygo_tbeam_1w.svg",
+      "tooltip": "<img class='device' src='img/lilygo_tbeam_1w.svg'>",
+      "firmware": [
+        {
+          "class": "spb",
+          "role": "companionBle",
+          "versions": {
+            "v1.18 · PS": {
+              "archive": "lilygo_tbeam_1w_companion_radio_ble-v1.18-ps.zip",
+              "fileSet": "esp32",
+              "notes": "Bluetooth-компаньон с энергосбережением (powersave). Собрано из MeshCore 1.18."
+            }
+          }
+        },
+        {
+          "class": "spb",
+          "role": "repeater",
+          "versions": {
+            "v1.18 · BL+PS+TS": {
+              "archive": "lilygo_tbeam_1w_repeater-v1.18-bl-ps-ts.zip",
+              "fileSet": "esp32",
+              "notes": "Blacklist каналов и префиксов (#2343), энергосбережение, синхронизация времени. Собрано из MeshCore 1.18."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "LilyGo T-Echo",
+      "maker": "lilygo",
+      "type": "nrf52",
+      "dfu": "auto",
+      "icon": "img/lilygo_techo.svg",
+      "tooltip": "<img class='device' src='img/lilygo_techo.svg'>",
+      "firmware": [
+        {
+          "class": "spb",
+          "role": "companionBle",
+          "versions": {
+            "v1.18 · PS": {
+              "archive": "lilygo_t-echo_companion_radio_ble-v1.18-ps.zip",
+              "fileSet": "nrf52",
+              "notes": "Bluetooth-компаньон с энергосбережением (powersave). Собрано из MeshCore 1.18."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "LilyGo T-Echo Lite",
+      "maker": "lilygo",
+      "type": "nrf52",
+      "dfu": "auto",
+      "icon": "img/lilygo_techo_lite.svg",
+      "tooltip": "<img class='device' src='img/lilygo_techo_lite.svg'>",
+      "firmware": [
+        {
+          "class": "spb",
+          "role": "companionBle",
+          "versions": {
+            "v1.18 · PS": {
+              "archive": "lilygo_t-echo-lite_companion_radio_ble-v1.18-ps.zip",
+              "fileSet": "nrf52",
+              "notes": "Bluetooth-компаньон с энергосбережением (powersave). Собрано из MeshCore 1.18."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "RAK WisBlock 4631",
+      "maker": "rak",
+      "type": "nrf52",
+      "dfu": "auto",
+      "icon": "img/rak_4631.svg",
+      "tooltip": "<img class='device' src='img/rak_4631.svg'>",
+      "firmware": [
+        {
+          "class": "spb",
+          "role": "companionBle",
+          "versions": {
+            "v1.18 · PS": {
+              "archive": "rak_4631_companion_radio_ble-v1.18-ps.zip",
+              "fileSet": "nrf52",
+              "notes": "Bluetooth-компаньон с энергосбережением (powersave). Собрано из MeshCore 1.18."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "RAK WisMesh Tag",
+      "maker": "rak",
+      "type": "nrf52",
+      "dfu": "auto",
+      "icon": "img/rak_wismesh_tag.svg",
+      "tooltip": "<img class='device' src='img/rak_wismesh_tag.svg'>",
+      "firmware": [
+        {
+          "class": "spb",
+          "role": "companionBle",
+          "versions": {
+            "v1.18 · PS": {
+              "archive": "rak_wismesh_tag_companion_radio_ble-v1.18-ps.zip",
+              "fileSet": "nrf52",
+              "notes": "Bluetooth-компаньон с энергосбережением (powersave). Собрано из MeshCore 1.18."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Seeed Studio SenseCAP T1000-E",
+      "maker": "seeed",
+      "type": "nrf52",
+      "dfu": "auto",
+      "icon": "img/sensecap_t1000e.svg",
+      "tooltip": "<img class='device' src='img/sensecap_t1000e.svg'>",
+      "firmware": [
+        {
+          "class": "spb",
+          "role": "companionBle",
+          "versions": {
+            "v1.18 · PS": {
+              "archive": "t1000e_companion_radio_ble-v1.18-ps.zip",
+              "fileSet": "nrf52",
+              "notes": "Bluetooth-компаньон с энергосбережением (powersave). Собрано из MeshCore 1.18."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Seeed Studio Wio Tracker L1 Pro",
+      "maker": "seeed",
+      "type": "nrf52",
+      "dfu": "auto",
+      "icon": "img/wio_tracker_l1.svg",
+      "tooltip": "<img class='device' src='img/wio_tracker_l1.svg'>",
+      "firmware": [
+        {
+          "class": "spb",
+          "role": "companionBle",
+          "versions": {
+            "v1.18 · PS": {
+              "archive": "wiotrackerl1_companion_radio_ble-v1.18-ps.zip",
+              "fileSet": "nrf52",
+              "notes": "Bluetooth-компаньон с энергосбережением (powersave). Собрано из MeshCore 1.18."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Seeed Studio Xiao nRF52 WIO",
+      "maker": "seeed",
+      "type": "nrf52",
+      "dfu": "auto",
+      "icon": "img/xiao_nrf52.svg",
+      "tooltip": "<img class='device' src='img/xiao_nrf52.svg'>",
+      "firmware": [
+        {
+          "class": "spb",
+          "role": "companionBle",
+          "versions": {
+            "v1.18 · PS": {
+              "archive": "xiao_nrf52_companion_radio_ble-v1.18-ps.zip",
+              "fileSet": "nrf52",
+              "notes": "Bluetooth-компаньон с энергосбережением (powersave). Собрано из MeshCore 1.18."
+            }
+          }
         }
       ]
     }

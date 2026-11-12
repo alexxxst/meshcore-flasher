@@ -170,6 +170,7 @@ parse_archive() {
 
   A_BRIDGE=0
   A_OBS=0
+  A_COMPANION=0
   case "$head" in
     *_bridge_espnow_mqtt)
       A_BRIDGE=1
@@ -180,16 +181,22 @@ parse_archive() {
       A_BRIDGE=1
       head=${head%_bridge_espnow}
       ;;
+    *_companion_radio_ble|*_companion_radio_usb)
+      A_COMPANION=1
+      head=${head%_companion_radio_*}
+      ;;
     *_mqtt)
       A_OBS=1
       head=${head%_mqtt}
       ;;
   esac
 
-  case "$head" in
-    *_repeater) head=${head%_repeater} ;;
-    *) return 1 ;;
-  esac
+  if [ "$A_COMPANION" = 0 ]; then
+    case "$head" in
+      *_repeater) head=${head%_repeater} ;;
+      *) return 1 ;;
+    esac
+  fi
 
   A_TOKEN=$head
   return 0
@@ -242,27 +249,36 @@ for path in "$FW_DIR"/*.zip; do
   features=$(printf '%s\n' "$vrow" | cut -f4)
   source=$(printf '%s\n' "$vrow" | cut -f5)
 
+  # вид роли по имени файла
+  if [ "$A_COMPANION" = 1 ]; then
+    kind=companion
+  elif [ "$A_OBS" = 1 ]; then
+    kind=observer
+  else
+    kind=repeater
+  fi
+
   # роль и класс
   if [ -n "$cprefix" ]; then
     role="${cprefix}_${band}"
     [ "$A_BRIDGE" = 1 ] && role="${role}_bridge"
-    if [ "$A_OBS" = 1 ]; then role="${role}_observer"; else role="${role}_repeater"; fi
+    role="${role}_${kind}"
     cls="${cprefix}-${band}"
     [ "$A_BRIDGE" = 1 ] && cls="${cls}-bridge"
   elif [ "$A_BRIDGE" = 1 ]; then
     if [ "$A_OBS" = 1 ]; then role=bridgeObserver; else role=bridgeRepeater; fi
     cls=bridge
+  elif [ "$A_COMPANION" = 1 ]; then
+    role=companionBle
+    cls=spb
   else
     if [ "$A_OBS" = 1 ]; then role=observer; else role=repeater; fi
     cls=spb
   fi
 
   # сверяем таблицу версий с именем файла
-  if [ "$A_OBS" = 1 ] && [ "$vkind" != observer ]; then
-    warn "в имени '$name' наблюдатель, а версия '$A_SUFFIX' помечена как $vkind"
-  fi
-  if [ "$A_OBS" = 0 ] && [ "$vkind" = observer ]; then
-    warn "в имени '$name' репитер, а версия '$A_SUFFIX' помечена как observer"
+  if [ "$kind" != "$vkind" ]; then
+    warn "в имени '$name' роль $kind, а версия '$A_SUFFIX' помечена как $vkind"
   fi
 
   notes="${features}. Собрано из MeshCore ${source}."
@@ -273,11 +289,16 @@ for path in "$FW_DIR"/*.zip; do
   devord=$(device_order "$dev_name")
   verord=$(version_order "$A_SUFFIX")
 
-  # ключ сортировки ролей: мосты после обычных, 868 перед 433, репитер перед наблюдателем
+  # ключ сортировки ролей: мосты после обычных, 868 перед 433,
+  # внутри блока компаньон, затем репитер, затем наблюдатель
   bandord=0
   [ "$band" = '433' ] && bandord=1
-  if [ "$A_OBS" = 1 ]; then kindord=1; else kindord=0; fi
-  roleord=$(( A_BRIDGE * 4 + bandord * 2 + kindord ))
+  case "$kind" in
+    companion) kindord=0 ;;
+    repeater) kindord=1 ;;
+    *) kindord=2 ;;
+  esac
+  roleord=$(( A_BRIDGE * 6 + bandord * 3 + kindord ))
 
   printf '%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n' \
     "$devord" "$roleord" "$verord" \

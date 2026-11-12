@@ -145,38 +145,6 @@ button {
   max-width: 62ch;
 }
 
-.page-intro .intro-note {
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  max-width: none;
-  margin: 14px 0 0;
-  padding-top: 12px;
-  border-top: 1px solid var(--outline-variant);
-  font-size: 0.82rem;
-}
-
-.intro-note i {
-  flex: none;
-  min-inline-size: 0;
-  font-size: 1.15rem;
-  /* высота строки = 0.82rem × 1.5 (см. .page-intro .intro-note) */
-  block-size: 1.23rem;
-  min-block-size: 1.23rem;
-  line-height: 1.23rem;
-  color: var(--spb-blue);
-}
-
-.intro-note a {
-  color: var(--spb-blue);
-  font-weight: 600;
-  text-decoration: none;
-}
-
-.intro-note a:hover {
-  text-decoration: underline;
-}
-
 .section-title {
   display: flex;
   align-items: baseline;
@@ -961,22 +929,10 @@ button {
   right: 0;
 }
 
-#app .tooltip:has(> .device),
-#app .tooltip:has(.device-pair) {
+#app .tooltip:has(> .device) {
   background: #ffffffdd;
   width: auto;
   padding: 8px;
-}
-
-#app .device-pair {
-  display: flex;
-  align-items: flex-end;
-  gap: 8px;
-}
-
-#app .device-pair img.device {
-  width: 180px;
-  max-width: 180px;
 }
 
 #app img.device {

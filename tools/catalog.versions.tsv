@@ -6,6 +6,7 @@
 #   features — что внутри; идёт в "notes" перед "Собрано из MeshCore …"
 #   source   — версия MeshCore для хвоста "Собрано из MeshCore <source>."
 # Порядок строк = порядок версий в селекторе.
+v1.18-ps	v1.18 · PS	companion	Bluetooth-компаньон с энергосбережением (powersave)	1.18
 v1.18-bl-ps-ts	v1.18 · BL+PS+TS	repeater	Blacklist каналов и префиксов (#2343), энергосбережение, синхронизация времени	1.18
 v1.18-bl-ps	v1.18 · BL+PS	repeater	Blacklist каналов и префиксов (#2343), энергосбережение	1.18
 v1.18-pr2343	v1.18 · PR2343	repeater	Blacklist каналов и префиксов (#2343)	1.18

@@ -121,7 +121,7 @@
             <i class="firmware-icon">{{ fwValue(selected.firmware, 'icon') }}</i>
             <div>
               <h5>{{ fwValue(selected.firmware, 'title') }} {{ fwValue(selected.firmware, 'subTitle') }}</h5>
-              <p>{{ fwValue(selected.firmware, 'tooltip') }}</p>
+              <p>{{ roleDescription(selected.firmware) }}</p>
             </div>
           </div>
 
@@ -131,6 +131,10 @@
           <div class="settings-link" v-if="isRepeaterRole">
             <a v-if="isObserver" class="settings-chip primary" :href="wikiObserverUrl" target="_blank" rel="noopener"><i>sensors</i>Настройки наблюдателя</a>
             <a class="settings-chip" :class="{ primary: !isObserver }" :href="wikiRepeaterSettingsUrl" target="_blank" rel="noopener"><i>tune</i>Рекомендуемые настройки репитера</a>
+            <a class="settings-chip" :href="wikiSettingsUrl" target="_blank" rel="noopener"><i>settings_input_antenna</i>Настройки сети</a>
+          </div>
+
+          <div class="settings-link" v-else-if="isCompanionRole">
             <a class="settings-chip" :href="wikiSettingsUrl" target="_blank" rel="noopener"><i>settings_input_antenna</i>Настройки сети</a>
           </div>
 
@@ -249,7 +253,7 @@
                 <i>{{ fwValue(firmware, 'icon') }}</i>
                 <div class="role-text">
                   <strong>{{ fwValue(firmware, 'title') }} {{ fwValue(firmware, 'subTitle') }}</strong>
-                  <span v-if="fwValue(firmware, 'tooltip')">{{ fwValue(firmware, 'tooltip') }}</span>
+                  <span v-if="roleDescription(firmware)">{{ roleDescription(firmware) }}</span>
                 </div>
                 <i class="chevron">chevron_right</i>
               </button>
@@ -263,15 +267,7 @@
 
         <article class="page-intro">
           <h5>Прошивка нод MeshCore</h5>
-          <p>Выберите плату, затем роль — репитер или наблюдатель. Прошивки собраны сообществом Санкт-Петербурга.</p>
-          <p class="intro-note">
-            <i>info</i>
-            <span>
-              Здесь только репитеры, наблюдатели и мосты ESPNow. Компаньон
-              (Bluetooth/USB) и другие платформы — в
-              <a :href="officialFlasherUrl" target="_blank" rel="noopener">официальном прошивальщике</a>.
-            </span>
-          </p>
+          <p>Выберите плату, затем роль — компаньон, репитер или наблюдатель. Прошивки собраны сообществом Санкт-Петербурга.</p>
         </article>
 
         <div class="section-title">

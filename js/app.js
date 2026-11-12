@@ -6,7 +6,7 @@ import { pickFirmwareFile, requiresObserverConfirmation, isMergedFilename, resol
 import { Dfu, flashEsp32, flashNrf52, releaseFlasher } from './flash.js';
 import { CONSOLE_PATH, buildPath, parsePath, isSamePage, pathFromHash, hashForPath } from './router.js';
 import { serialAPI, serialSupported } from './serial.js';
-import { logoFile, siteTitle, siteSubtitle, wikiExperimentUrl, wikiFlashUrl, wikiRepeaterSettingsUrl, wikiSettingsUrl, wikiObserverUrl, officialFlasherUrl, wikiNrf52Url, nrfEraseArchive, nrfEraseUf2 } from './site.js';
+import { logoFile, siteTitle, siteSubtitle, wikiExperimentUrl, wikiFlashUrl, wikiRepeaterSettingsUrl, wikiSettingsUrl, wikiObserverUrl, officialFlasherUrl, wikiNrf52Url, nrfEraseArchive, nrfEraseUf2, esp32CompanionWifiNote } from './site.js';
 import { loadArchiveEntry } from './zip-loader.js';
 
 const WEB_SERIAL_UNSUPPORTED = 'Браузер не поддерживает Web Serial. Откройте сайт в Chrome или Edge на компьютере.';
@@ -74,6 +74,16 @@ export function createSetup(config) {
       const role = selected.firmware?.role?.toLowerCase() ?? '';
       return role.includes('repeater') || role.includes('observer');
     });
+    const isCompanionRole = computed(() => selected.firmware?.role?.toLowerCase().includes('companion') ?? false);
+    // у BLE-компаньонов на ESP32 есть Wi-Fi — дописываем это к описанию роли
+    const roleDescription = (firmware) => {
+      const text = firmware ? fwValue(firmware, 'tooltip') : '';
+      const role = firmware?.role?.toLowerCase() ?? '';
+      if (role.includes('companion') && selected.device?.type === 'esp32') {
+        return text ? `${text} ${esp32CompanionWifiNote}` : esp32CompanionWifiNote;
+      }
+      return text;
+    };
     const needsConfirmation = computed(() => selected.firmware ? requiresObserverConfirmation(selected.firmware.role) : false);
     const canFlash = computed(() => (!needsConfirmation.value || selected.observerConfirmed) && !archiveBusy.value);
 
@@ -82,7 +92,15 @@ export function createSetup(config) {
       const key = selected.firmware.notice ?? (isObserver.value ? 'observer' : null);
       return key ? renderNotice(config, selected.device, { ...selected.firmware, notice: key }) : '';
     });
-    const switchNotice = computed(() => config.notice?.switchType ?? '');
+    const switchNotice = computed(() => {
+      const notices = config.notice ?? {};
+      const nrf = selected.device?.type === 'nrf52';
+      if (isCompanionRole.value) {
+        return (nrf ? notices.switchTypeCompanionNrf52 : notices.switchTypeCompanion)
+          ?? notices.switchType ?? '';
+      }
+      return (nrf ? notices.switchTypeNrf52 : notices.switchType) ?? '';
+    });
 
     const devices = computed(() => {
       const filter = deviceFilterText.value.toLowerCase();
@@ -542,8 +560,8 @@ export function createSetup(config) {
       snackbar, archiveBusy, archiveProgress,
       selected, flashing, serialCon,
       deviceFilterText, hoveredDevice, devices, deviceFirmwareByClass,
-      currentVersion, currentArchiveUrl, roleNotice, switchNotice, needsConfirmation, canFlash, isRepeaterRole, isObserver, isNrf52, wikiNrf52Url,
-      versionOptions, downloads, fwValue, formatNotes,
+      currentVersion, currentArchiveUrl, roleNotice, switchNotice, needsConfirmation, canFlash, isRepeaterRole, isCompanionRole, isObserver, isNrf52, wikiNrf52Url,
+      versionOptions, downloads, fwValue, roleDescription, formatNotes,
       selectDevice, selectFirmware, stepBack, retry, close, downloadFile,
       consoleEditBox, consoleWindow, consoleMouseUp, openSerialCon, closeSerialCon, sendCommand, openSerialGUI,
       dfuMode, eraseFlash, flashDevice, customFirmwareLoad,

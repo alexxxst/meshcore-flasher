@@ -33,6 +33,11 @@
       "subTitle": "ESPNow",
       "tooltip": "Репитер-наблюдатель с ESPNow-мостом."
     },
+    "mtl1_868_companion": {
+      "icon": "smartphone",
+      "title": "Компаньон",
+      "tooltip": "Чат через мобильное приложение или веб-клиент по Bluetooth."
+    },
     "mtl1_868_repeater": {
       "icon": "cell_tower",
       "title": "Репитер",
@@ -55,10 +60,20 @@
       "tooltip": "Репитер-наблюдатель с ESPNow-мостом.",
       "subTitle": "ESPNow"
     },
+    "mtl2_868_companion": {
+      "icon": "smartphone",
+      "title": "Компаньон",
+      "tooltip": "Чат через мобильное приложение или веб-клиент по Bluetooth."
+    },
     "mtl2_868_repeater": {
       "icon": "cell_tower",
       "title": "Репитер",
       "tooltip": "Ретранслятор: передаёт весь трафик в сети. Настройка через конфигуратор или консоль."
+    },
+    "mtl1_433_companion": {
+      "icon": "smartphone",
+      "title": "Компаньон",
+      "tooltip": "Чат через мобильное приложение или веб-клиент по Bluetooth."
     },
     "mtl1_433_repeater": {
       "icon": "cell_tower",
@@ -81,6 +96,11 @@
       "title": "Наблюдатель",
       "tooltip": "Репитер-наблюдатель с ESPNow-мостом.",
       "subTitle": "ESPNow"
+    },
+    "mtl2_433_companion": {
+      "icon": "smartphone",
+      "title": "Компаньон",
+      "tooltip": "Чат через мобильное приложение или веб-клиент по Bluetooth."
     },
     "mtl2_433_repeater": {
       "icon": "cell_tower",
@@ -124,5 +144,8 @@
   },
   "notice": {
     "observer": "<article class='observer-notice'><b>Только для Санкт-Петербурга.</b> Прошивка наблюдателя собирает статистику в <a target='_blank' href='https://mc.meshcore.spb.ru/'>CoreScope СПб</a>. В другом регионе она не подойдёт.</article>",
-    "switchType": "<article class='switch-notice'><b>Смена типа прошивки.</b> Если вы прошиваетесь с прошивки другого типа (не с официальной), <a target='_blank' href='https://meshcore.spb.ru/wiki/backup'>сохраните настройки и приватные ключи</a>, прошейте merged-версию с очисткой данных, затем восстановите настройки. При обновлении с обычного репитера используйте upgrade.</article>"
+    "switchType": "<article class='switch-notice'><b>Смена типа прошивки.</b> Если вы прошиваетесь с прошивки другого типа (не с официальной), <a target='_blank' href='https://meshcore.spb.ru/wiki/backup'>сохраните настройки и приватные ключи</a>, прошейте merged-версию с очисткой данных, затем восстановите настройки. При обновлении с обычного репитера используйте upgrade.</article>",
+    "switchTypeNrf52": "<article class='switch-notice'><b>Смена типа прошивки.</b> Если вы прошиваетесь с прошивки другого типа (не с официальной), <a target='_blank' href='https://meshcore.spb.ru/wiki/backup'>сохраните настройки и приватные ключи</a>, нажмите «Стереть flash», затем прошейте ноду заново и восстановите настройки. При обычном обновлении прошивку можно ставить поверх — очистка не нужна.</article>",
+    "switchTypeCompanion": "<article class='switch-notice'><b>Смена типа прошивки.</b> Если вы прошиваетесь с прошивки другого типа (не с официальной), <a target='_blank' href='https://meshcore.spb.ru/wiki/backup'>сохраните настройки и приватные ключи</a>, отметьте «Очистить устройство (merged)» и прошейте заново, затем восстановите настройки.</article>",
+    "switchTypeCompanionNrf52": "<article class='switch-notice'><b>Смена типа прошивки.</b> Если вы прошиваетесь с прошивки другого типа (не с официальной), <a target='_blank' href='https://meshcore.spb.ru/wiki/backup'>сохраните настройки и приватные ключи</a>, нажмите «Стереть flash» и прошейте ноду заново, затем восстановите настройки.</article>"
   },

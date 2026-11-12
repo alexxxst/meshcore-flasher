@@ -15,10 +15,10 @@ class BuildConfigTest(unittest.TestCase):
         self.config = build_config(self.manifest)
 
     def test_catalog_has_expected_device_firmware_and_version_counts(self):
-        self.assertEqual(len(self.config["device"]), 10)
+        self.assertEqual(len(self.config["device"]), 23)
         self.assertEqual(
             sum(len(device["firmware"]) for device in self.config["device"]),
-            22,
+            48,
         )
         self.assertEqual(
             sum(
@@ -26,7 +26,7 @@ class BuildConfigTest(unittest.TestCase):
                 for device in self.config["device"]
                 for firmware in device["firmware"]
             ),
-            77,
+            103,
         )
 
     def test_device_names_are_unique(self):
@@ -34,7 +34,8 @@ class BuildConfigTest(unittest.TestCase):
         self.assertEqual(len(names), len(set(names)))
 
     def test_firmware_versions_are_wrapped_with_archive_and_notes(self):
-        firmware = self.config["device"][0]["firmware"][0]
+        device = self.config["device"][0]
+        firmware = next(f for f in device["firmware"] if f["role"] == "repeater")
         self.assertIn("v1.18 · BL+PS+TS", firmware["version"])
         version = firmware["version"]["v1.18 · BL+PS+TS"]
         self.assertTrue(version["archive"].endswith(".zip"))
@@ -68,7 +69,8 @@ class BuildConfigTest(unittest.TestCase):
         self.assertEqual(list(promicro["version"]), ["v1.18 · BL+PS+TS"])
 
     def test_file_set_patterns_match_old_and_new_esp32_update_names(self):
-        firmware = self.config["device"][0]["firmware"][0]
+        device = self.config["device"][0]
+        firmware = next(f for f in device["firmware"] if f["role"] == "repeater")
         files = firmware["version"]["v1.18 · BL+PS+TS"]["files"]
         wipe = next(f for f in files if f["type"] == "flash-wipe")
         update = next(f for f in files if f["type"] == "flash-update")
@@ -78,7 +80,29 @@ class BuildConfigTest(unittest.TestCase):
         self.assertIsNotNone(re.search(update["match"], "Heltec_v3-...-96b324bc.bin"))
         self.assertIsNone(re.search(update["match"], "Heltec_v3-...-merged.bin"))
 
-    def test_companion_roles_are_reserved_for_future_firmware(self):
+    def test_companions_are_first_in_every_block(self):
+        by_name = {d["name"]: d for d in self.config["device"]}
+        heltec = by_name["Heltec v3"]
+        self.assertEqual(
+            [f["role"] for f in heltec["firmware"]],
+            ["companionBle", "repeater", "observer"],
+        )
+        companion = heltec["firmware"][0]
+        self.assertEqual(list(companion["version"]), ["v1.18 · PS"])
+        self.assertTrue(companion["version"]["v1.18 · PS"]["archive"].endswith("-v1.18-ps.zip"))
+
+        mtl1 = by_name["MTL-1"]
+        self.assertEqual(mtl1["firmware"][0]["role"], "mtl1_868_companion")
+        self.assertEqual(mtl1["firmware"][3]["role"], "mtl1_433_companion")
+        self.assertIn("mtl1_868_companion", self.config["role"])
+        self.assertIn("mtl2_433_companion", self.config["role"])
+
+        tbeam1w = by_name["LilyGo T-Beam 1W"]
+        self.assertEqual([f["role"] for f in tbeam1w["firmware"]], ["companionBle", "repeater"])
+
+        # платы только с компаньоном
+        echo = by_name["LilyGo T-Echo"]
+        self.assertEqual([f["role"] for f in echo["firmware"]], ["companionBle"])
         self.assertIn("companionBle", self.config["role"])
         self.assertIn("companionUsb", self.config["role"])
 
@@ -91,17 +115,17 @@ class BuildConfigTest(unittest.TestCase):
         mtl1_classes = [f["class"] for f in by_name["MTL-1"]["firmware"]]
         self.assertEqual(
             mtl1_classes,
-            ["mtl1-868", "mtl1-868", "mtl1-433", "mtl1-433",
+            ["mtl1-868", "mtl1-868", "mtl1-868", "mtl1-433", "mtl1-433", "mtl1-433",
              "mtl1-868-bridge", "mtl1-868-bridge", "mtl1-433-bridge", "mtl1-433-bridge"],
         )
         mtl2_classes = [f["class"] for f in by_name["MTL-2"]["firmware"]]
-        self.assertEqual(mtl2_classes, ["mtl2-868", "mtl2-433"])
+        self.assertEqual(mtl2_classes, ["mtl2-868", "mtl2-868", "mtl2-433", "mtl2-433"])
 
     def test_bridge_is_a_class_inside_base_devices(self):
         by_name = {device["name"]: device for device in self.config["device"]}
         self.assertNotIn("Heltec v4 ESPNow Bridge", by_name)
         heltec = by_name["Heltec v4"]
-        self.assertEqual(len(heltec["firmware"]), 4)
+        self.assertEqual(len(heltec["firmware"]), 5)
         bridge_roles = [f["role"] for f in heltec["firmware"] if f["class"] == "bridge"]
         self.assertEqual(bridge_roles, ["bridgeRepeater", "bridgeObserver"])
         self.assertEqual(self.config["firmwareClass"]["bridge"]["title"], "Мосты ESPNow")
@@ -133,6 +157,24 @@ class BuildConfigTest(unittest.TestCase):
     def test_firmware_base_is_relative_for_subdirectory_hosting(self):
         self.assertFalse(self.config["firmwareBase"].startswith("/"))
         self.assertFalse(self.config["firmwareBase"].startswith("http"))
+
+    def test_switch_notice_matches_flash_type_and_role(self):
+        notice = self.config["notice"]
+        for key in ("switchType", "switchTypeNrf52", "switchTypeCompanion", "switchTypeCompanionNrf52"):
+            self.assertIn(key, notice)
+
+        # для nRF52 не может быть merged — там стирание отдельной прошивкой
+        self.assertNotIn("merged", notice["switchTypeNrf52"].lower())
+        self.assertIn("Стереть flash", notice["switchTypeNrf52"])
+        self.assertNotIn("merged", notice["switchTypeCompanionNrf52"].lower())
+        self.assertIn("Стереть flash", notice["switchTypeCompanionNrf52"])
+
+        # на странице компаньона не говорим про репитеры
+        for key in ("switchTypeCompanion", "switchTypeCompanionNrf52"):
+            self.assertNotIn("репитер", notice[key].lower())
+
+        self.assertIn("merged", notice["switchType"].lower())
+        self.assertIn("репитера", notice["switchType"].lower())
 
     def test_manual_dfu_boards_are_marked(self):
         by_name = {device["name"]: device for device in self.config["device"]}
