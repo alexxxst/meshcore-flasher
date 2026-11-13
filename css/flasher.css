@@ -278,8 +278,55 @@ button {
   font-size: 0.78rem;
 }
 
-.site-footer a {
+/* Обычные текстовые ссылки — подчёркивание только при наведении.
+   Сюда же относятся «Настройка» и «Консоль» в футере: это кнопки,
+   но выглядят и ведут себя как ссылки. */
+.site-footer a,
+.wiki-link,
+.inline-note a,
+.site-footer .footer-action {
   text-decoration: none;
+}
+
+.site-footer a:hover,
+.wiki-link:hover,
+.inline-note a:hover,
+.site-footer .footer-action:hover:not(:disabled) {
+  text-decoration: underline;
+}
+
+/* «Настройка» и «Консоль» в футере выглядят как обычные ссылки,
+   но открывают конфигуратор и последовательную консоль */
+.site-footer .footer-action {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  block-size: auto;
+  min-block-size: 0;
+  min-inline-size: 0;
+  box-shadow: none;
+  color: var(--spb-blue);
+  font: inherit;
+  font-size: 0.78rem;
+  line-height: inherit;
+  cursor: pointer;
+}
+
+/* BeerCSS добавляет кнопкам волну и тень при наведении — для ссылки не нужно */
+.site-footer .footer-action::after {
+  display: none;
+}
+
+.site-footer .footer-action:hover:not(:disabled) {
+  box-shadow: none;
+}
+
+.site-footer .footer-action:disabled {
+  color: var(--spb-muted);
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 .footer-credit {
@@ -981,8 +1028,10 @@ button {
     flex: 1 0 100%;
   }
 
+  /* на узком экране кнопки шапки не влезают и занимали целую строку:
+     прячем их, «Настройка» и «Консоль» доступны в футере */
   .top-nav > button {
-    padding-inline: 6px;
+    display: none;
   }
 
   .firmware-card,
@@ -1014,6 +1063,11 @@ button {
 @media screen and (max-width: 420px) {
   .brand-text small {
     display: none;
+  }
+
+  /* 320 px: с 14.4 px «MeshCore Санкт-Петербург» не влезает и обрезается */
+  .brand-text strong {
+    font-size: 0.8rem;
   }
 
   .device-name {

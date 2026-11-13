@@ -310,8 +310,11 @@
       <footer class="site-footer">
         <a :href="wikiExperimentUrl" target="_blank" rel="noopener">О прошивках</a>
         <a :href="wikiSettingsUrl" target="_blank" rel="noopener">Настройки сети</a>
-        <a :href="wikiRepeaterSettingsUrl" target="_blank" rel="noopener">Рекомендуемые настройки</a>
-        <a :href="wikiFlashUrl" target="_blank" rel="noopener">Как прошить</a>
+        <a :href="wikiRepeaterSettingsUrl" target="_blank" rel="noopener">Рекомендуемые настройки репитера</a>
+        <a :href="wikiCompanionFlashUrl" target="_blank" rel="noopener">Как прошить компаньон</a>
+        <a :href="wikiRepeaterFlashUrl" target="_blank" rel="noopener">Как прошить репитер</a>
+        <button class="footer-action" @click="openSerialGUI()">Настройка</button>
+        <button class="footer-action" @click="openSerialCon()" :disabled="!flashing.supported">Консоль</button>
         <span class="footer-credit">Основано на <a href="https://github.com/meshcore-dev/flasher.meshcore.io" target="_blank" rel="noopener">flasher.meshcore.io</a> (MIT)</span>
       </footer>
 

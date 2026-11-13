@@ -6,7 +6,7 @@ import { pickFirmwareFile, requiresObserverConfirmation, isMergedFilename, resol
 import { Dfu, flashEsp32, flashNrf52, releaseFlasher } from './flash.js';
 import { CONSOLE_PATH, buildPath, parsePath, isSamePage, pathFromHash, hashForPath } from './router.js';
 import { serialAPI, serialSupported } from './serial.js';
-import { logoFile, siteTitle, siteSubtitle, wikiExperimentUrl, wikiFlashUrl, wikiRepeaterSettingsUrl, wikiSettingsUrl, wikiObserverUrl, officialFlasherUrl, wikiNrf52Url, nrfEraseArchive, nrfEraseUf2, esp32CompanionWifiNote } from './site.js';
+import { logoFile, siteTitle, siteSubtitle, wikiExperimentUrl, wikiCompanionFlashUrl, wikiRepeaterFlashUrl, wikiRepeaterSettingsUrl, wikiSettingsUrl, wikiObserverUrl, officialFlasherUrl, wikiNrf52Url, nrfEraseArchive, nrfEraseUf2, esp32CompanionWifiNote } from './site.js';
 import { loadArchiveEntry } from './zip-loader.js';
 
 const WEB_SERIAL_UNSUPPORTED = 'Браузер не поддерживает Web Serial. Откройте сайт в Chrome или Edge на компьютере.';
@@ -555,7 +555,7 @@ export function createSetup(config) {
     };
 
     return {
-      config, asset, logoFile, siteTitle, siteSubtitle, wikiExperimentUrl, wikiFlashUrl, wikiRepeaterSettingsUrl, wikiSettingsUrl, wikiObserverUrl, officialFlasherUrl,
+      config, asset, logoFile, siteTitle, siteSubtitle, wikiExperimentUrl, wikiCompanionFlashUrl, wikiRepeaterFlashUrl, wikiRepeaterSettingsUrl, wikiSettingsUrl, wikiObserverUrl, officialFlasherUrl,
       commandReference, firmwareClasses, WEB_SERIAL_UNSUPPORTED,
       snackbar, archiveBusy, archiveProgress,
       selected, flashing, serialCon,
