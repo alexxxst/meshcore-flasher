@@ -72,6 +72,16 @@
   лечится одной командой. Проверено: таблицы, собранные скриптом, и
   `config.json`, собранный по ним, байт-в-байт совпадают с результатом
   python-пути.
+- Кэш-бастинг: nginx отдаёт JS/CSS с `Cache-Control: max-age=604800`
+  (7 дней), HTML — без кэш-заголовков. Поэтому все локальные стили и
+  скрипты помечаются одним токеном `?v=<hash>`, где hash — первые
+  10 символов SHA-1 от содержимого CSS/JS (сами `?v=` при подсчёте
+  отбрасываются). Токен меняется только при реальной правке файлов и
+  обновляется автоматически хуком `.githooks/pre-commit`; вручную
+  ничего запускать не нужно. `pre-push` дополнительно проверяет, что
+  версия не устарела. Картинки, шрифты и `config.json` не
+  версионируются (конфиг грузится с `cache: 'no-store'`). nginx не
+  трогаем.
 
 ## Архитектура
 
@@ -134,6 +144,9 @@ img/
   mtl_1.webp, mtl_2_868.webp, mtl_2_433.webp
   heltec_v3.svg, heltec_v4.svg, heltec_t096.svg, heltec_t114.svg,
   lilygo_tbeam.svg, gatiot_gat562_30s.svg
+.githooks/
+  pre-commit             # авто-версия ?v= для CSS/JS перед коммитом
+  pre-push               # проверка, что версия не устарела
 tools/
   build-config.sh        # папка с ZIP → config.json (bash, основной путь)
   catalog.devices.tsv    # таблица плат
@@ -144,6 +157,8 @@ tools/
   build_config.py        # manifest → config.json; --tables → catalog.*
   check_config.py
   test_build_config.py
+  asset_version.py       # ?v= по хешу содержимого CSS/JS; --auto, --check
+  test_asset_version.py
 tests/
   build-config.test.sh
   firmware.test.mjs
@@ -456,11 +471,33 @@ python3 tools/build_config.py --tables   # пересобрать tools/catalog.
 python3 tools/check_config.py
 ```
 
+Версии стилей и скриптов (`?v=`) обновляются автоматически:
+
+```bash
+git config core.hooksPath .githooks   # один раз после клонирования
+```
+
+`.githooks/pre-commit` перед каждым коммитом считает SHA-1 от
+содержимого CSS/JS и, если оно изменилось, переписывает `?v=` во всех
+ссылках и добавляет изменённые файлы в тот же коммит. `.githooks/pre-push`
+проверяет, что версия не устарела, и не даёт запушить рассинхрон
+(например, после `--no-verify`). Вручную запускать ничего не нужно;
+для проверки есть `python3 tools/asset_version.py --check`, для ручной
+простановки — `--auto` или явный токен.
+
+nginx отдаёт JS/CSS с `Cache-Control: max-age=604800`, поэтому без смены
+токена браузер до недели держит старые модули. Версионируются
+`css/*.css` и `flasher.js` в `index.html` и все локальные импорты в
+`flasher.js`, `js/*.js`, `lib/*.js` (кроме `*.min.js`) и
+`lib/polyfill/*.js`. Картинки, шрифты, `config.json` и ZIP-прошивки —
+без токена (`config.json` грузится с `cache: 'no-store'`).
+
 Тесты:
 
 ```bash
 node --test tests/
 bash tests/build-config.test.sh
+python3 -m unittest discover -s tools
 ```
 
 ## Ограничения и риски
@@ -777,3 +814,27 @@ bash tests/build-config.test.sh
   ведут себя ровно как ссылки. Проверено computed style при реальном
   hover: у всех `text-decoration: underline`, тень `none`, фон
   прозрачный.
+- 2026-11-13: добавлен кэш-бастинг стилей и скриптов. nginx отдаёт
+  JS/CSS с `Cache-Control: max-age=604800` (7 дней), HTML — без
+  кэш-заголовков, поэтому после выкладки у пользователей оставались
+  старые модули. `tools/asset_version.py` проставляет один токен
+  `?v=YYYYMMDD.N` в `index.html` (`css/*.css`, `flasher.js`) и во все
+  локальные импорты (`flasher.js`, `js/*.js`, `lib/*.js` кроме
+  `*.min.js`, `lib/polyfill/*.js`); `--check` проверяет единство
+  версии. Картинки, шрифты и `config.json` не версионируются. Тогда
+  токен был датой `20261113.1`, позже заменён на хеш содержимого.
+  Тесты: python 23 (7 новых), node 17, bash 4/4. Проверено в headless
+  Chrome: все локальные JS/CSS идут с `?v=20261113.1`, картинки и
+  шрифт — без токена, ошибок JS нет, каталог и футер на месте.
+- 2026-11-13: версия CSS/JS стала автоматической. Токен — первые
+  10 символов SHA-1 от содержимого `css/*.css` и всех версионируемых
+  JS; сами `?v=` при подсчёте отбрасываются, поэтому версия меняется
+  только при реальной правке кода. `.githooks/pre-commit` пересчитывает
+  токен и добавляет изменённые ссылки в тот же коммит,
+  `.githooks/pre-push` запускает `--check` и блокирует пуш, если версия
+  устарела. После клонирования нужно один раз выполнить
+  `git config core.hooksPath .githooks`. Проверено на копии
+  репозитория: правка `js/site.js` → в коммите новые `?v=`
+  (`1a459fe26f` → `f01c5d03dc`), pre-push зелёный; при подмене токена
+  на устаревший pre-push возвращает 1. Тесты: python 26, node 17,
+  bash 4/4.

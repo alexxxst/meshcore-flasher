@@ -1,13 +1,13 @@
-import { reactive, ref, shallowRef, nextTick, watch, computed } from '../lib/vue.min.js';
-import { SerialConsole } from '../lib/console.js';
-import { commandReference } from './commands.js';
-import { hasVersions, roleValue, renderNotice, formatNotes } from './catalog.js';
-import { pickFirmwareFile, requiresObserverConfirmation, isMergedFilename, resolveArchiveUrl, esp32Address } from './firmware.js';
-import { Dfu, flashEsp32, flashNrf52, releaseFlasher } from './flash.js';
-import { CONSOLE_PATH, buildPath, parsePath, isSamePage, pathFromHash, hashForPath } from './router.js';
-import { serialAPI, serialSupported } from './serial.js';
-import { logoFile, siteTitle, siteSubtitle, wikiExperimentUrl, wikiCompanionFlashUrl, wikiRepeaterFlashUrl, wikiRepeaterSettingsUrl, wikiSettingsUrl, wikiObserverUrl, officialFlasherUrl, wikiNrf52Url, nrfEraseArchive, nrfEraseUf2, esp32CompanionWifiNote } from './site.js';
-import { loadArchiveEntry } from './zip-loader.js';
+import { reactive, ref, shallowRef, nextTick, watch, computed } from '../lib/vue.min.js?v=1a459fe26f';
+import { SerialConsole } from '../lib/console.js?v=1a459fe26f';
+import { commandReference } from './commands.js?v=1a459fe26f';
+import { hasVersions, roleValue, renderNotice, formatNotes } from './catalog.js?v=1a459fe26f';
+import { pickFirmwareFile, requiresObserverConfirmation, isMergedFilename, resolveArchiveUrl, esp32Address } from './firmware.js?v=1a459fe26f';
+import { Dfu, flashEsp32, flashNrf52, releaseFlasher } from './flash.js?v=1a459fe26f';
+import { CONSOLE_PATH, buildPath, parsePath, isSamePage, pathFromHash, hashForPath } from './router.js?v=1a459fe26f';
+import { serialAPI, serialSupported } from './serial.js?v=1a459fe26f';
+import { logoFile, siteTitle, siteSubtitle, wikiExperimentUrl, wikiCompanionFlashUrl, wikiRepeaterFlashUrl, wikiRepeaterSettingsUrl, wikiSettingsUrl, wikiObserverUrl, officialFlasherUrl, wikiNrf52Url, nrfEraseArchive, nrfEraseUf2, esp32CompanionWifiNote } from './site.js?v=1a459fe26f';
+import { loadArchiveEntry } from './zip-loader.js?v=1a459fe26f';
 
 const WEB_SERIAL_UNSUPPORTED = 'Браузер не поддерживает Web Serial. Откройте сайт в Chrome или Edge на компьютере.';
 

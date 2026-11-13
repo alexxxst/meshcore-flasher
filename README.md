@@ -107,6 +107,9 @@ js/
 lib/                     # Vue, BeerCSS, esptool, DFU, zip.js, консоль
 img/                     # логотип, иконки, mtl_1.webp, mtl_2_*.webp
 firmware/                # FLASH_ERASE для nRF52 (zip для DFU и uf2 для диска)
+.githooks/
+  pre-commit             # авто-версия ?v= для CSS/JS перед коммитом
+  pre-push               # проверка, что версия не устарела
 tools/
   build-config.sh        # папка с ZIP → config.json (основной путь, bash)
   catalog.devices.tsv    # таблица плат: токен, название, тип, dfu, иконка
@@ -117,6 +120,8 @@ tools/
   build_config.py        # manifest → config.json; --tables → tools/catalog.*
   check_config.py        # проверка ZIP на wiki
   test_build_config.py   # тесты генератора
+  asset_version.py       # ?v= по хешу содержимого CSS/JS, --auto/--check
+  test_asset_version.py  # тесты версионирования
 tests/
   build-config.test.sh   # проверка сборки конфига из имён архивов
   firmware.test.mjs      # тесты выбора файлов и адресов
@@ -189,12 +194,37 @@ python3 tools/build_config.py --tables   # пересобрать tools/catalog.
 python3 tools/check_config.py     # скачивает все ZIP и проверяет regex
 ```
 
+### Версии стилей и скриптов
+
+nginx отдаёт JS/CSS с `Cache-Control: max-age=604800`, поэтому после
+выкладки браузер может неделю держать старые модули. Версия `?v=`
+считается как SHA-1 от содержимого стилей и скриптов и обновляется
+автоматически — вручную ничего запускать не нужно.
+
+Один раз после клонирования включите хуки:
+
+```bash
+git config core.hooksPath .githooks
+```
+
+- `.githooks/pre-commit` перед коммитом пересчитывает версию; если
+  CSS/JS изменились, переписывает `?v=` во всех ссылках и добавляет
+  файлы в тот же коммит;
+- `.githooks/pre-push` не даст запушить устаревшую версию (например,
+  если коммит сделан с `--no-verify`).
+
+Проверить вручную: `python3 tools/asset_version.py --check`.
+Токен попадает в `css/*.css` и `flasher.js` в `index.html` и во все
+локальные импорты (`flasher.js`, `js/*.js`, `lib/*.js` кроме
+`*.min.js`, `lib/polyfill/*.js`). Картинки, шрифты и `config.json` не
+версионируются — конфиг и так грузится с `cache: 'no-store'`.
+
 ### Тесты
 
 ```bash
 node --test tests/
 bash tests/build-config.test.sh
-cd tools && python3 -m unittest test_build_config -v
+python3 -m unittest discover -s tools
 ```
 
 ## Как добавить компаньона

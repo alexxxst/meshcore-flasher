@@ -1,7 +1,7 @@
 // Hash-based URL scheme: #/[class-]<device>/<role>/<version>, plus #/console.
 // A class prefix (e.g. #/spb-heltec-v3/) limits the device's firmware list to that class.
-import { hasVersions } from './catalog.js';
-import { toSlug } from './util.js';
+import { hasVersions } from './catalog.js?v=1a459fe26f';
+import { toSlug } from './util.js?v=1a459fe26f';
 
 export const CONSOLE_PATH = '/console';
 

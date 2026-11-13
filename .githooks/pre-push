@@ -1,0 +1,14 @@
+#!/bin/sh
+# Не даёт запушить устаревшие версии CSS/JS: если коммит сделан в обход
+# pre-commit, версии разъедутся, и браузер до недели будет держать старый код.
+set -e
+cd "$(git rev-parse --show-toplevel)"
+
+if ! python3 tools/asset_version.py --check --ref HEAD; then
+  echo "" >&2
+  echo "Версии CSS/JS устарели. Выполните:" >&2
+  echo "  python3 tools/asset_version.py --auto" >&2
+  echo "  git add index.html flasher.js js lib" >&2
+  echo "  git commit --amend --no-edit" >&2
+  exit 1
+fi

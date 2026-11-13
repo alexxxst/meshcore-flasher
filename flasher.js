@@ -1,7 +1,7 @@
-import './lib/beer.min.js';
-import { createApp } from './lib/vue.min.js';
-import { createSetup } from './js/app.js';
-import { loadCatalog } from './js/catalog.js';
+import './lib/beer.min.js?v=1a459fe26f';
+import { createApp } from './lib/vue.min.js?v=1a459fe26f';
+import { createSetup } from './js/app.js?v=1a459fe26f';
+import { loadCatalog } from './js/catalog.js?v=1a459fe26f';
 
 try {
   const config = await loadCatalog();

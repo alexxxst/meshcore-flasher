@@ -1,0 +1,11 @@
+#!/bin/sh
+# Обновляет ?v= у стилей и скриптов, если изменилось их содержимое.
+# Токен — хеш содержимого, поэтому меняется только при реальных правках.
+set -e
+cd "$(git rev-parse --show-toplevel)"
+
+files=$(python3 tools/asset_version.py --auto --print-changed)
+if [ -n "$files" ]; then
+  echo "asset-version: обновляю версию CSS/JS" >&2
+  git add -- $files
+fi
