@@ -812,6 +812,12 @@ button {
   white-space: pre-wrap;
   overflow-wrap: anywhere;
   margin: 0;
+  /* BeerCSS красит любой pre в светлый фон с синей полосой — внутри
+     тёмного лога прошивки это делает текст нечитаемым */
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
 }
 
 .progress-row {
