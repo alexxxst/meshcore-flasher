@@ -8,10 +8,10 @@
   <meta name="description" content="Прошивальщик нод MeshCore сообщества Санкт-Петербурга: репитер и наблюдатель.">
   <meta name="theme-color" content="#0042aa">
   <link rel="icon" href="./img/logo.png">
-  <link href="./css/beer.css?v=844bfa7eda" rel="stylesheet">
-  <link href="./css/theme.css?v=844bfa7eda" rel="stylesheet">
-  <link href="./css/flasher.css?v=844bfa7eda" rel="stylesheet">
-  <script type="module" src="./flasher.js?v=844bfa7eda"></script>
+  <link href="./css/beer.css?v=d9667ec5ca" rel="stylesheet">
+  <link href="./css/theme.css?v=d9667ec5ca" rel="stylesheet">
+  <link href="./css/flasher.css?v=d9667ec5ca" rel="stylesheet">
+  <script type="module" src="./flasher.js?v=d9667ec5ca"></script>
 </head>
 
 <body class="light">
@@ -63,7 +63,7 @@
             <span class="node-name">{{ selected.device.name }}</span>
             <i>chevron_right</i>
             <i>{{ fwValue(selected.firmware, 'icon') }}</i>
-            <span class="small strong">{{ fwValue(selected.firmware, 'title') }}<template v-if="firmwareBand"> · {{ firmwareBand }} МГц</template></span>
+            <span class="small strong">{{ fwValue(selected.firmware, 'title') }}<template v-if="firmwareBand"> · {{ firmwareBand }} МГц</template><template v-if="firmwareScreen"> · {{ firmwareScreen }}</template></span>
           </nav>
         </header>
 
@@ -125,7 +125,11 @@
                   class="band-tag"
                   v-if="firmwareBand"
                   :title="firmwareBandDefault ? 'Диапазон по умолчанию — 868 МГц' : 'Диапазон платы'"
-                >{{ firmwareBand }} МГц</span>
+                >{{ firmwareBand }} МГц</span><span
+                  class="band-tag screen-tag"
+                  v-if="firmwareScreen"
+                  title="Вариант экрана"
+                >{{ firmwareScreen }}</span>
               </h5>
               <p>{{ roleDescription(selected.firmware) }}</p>
             </div>

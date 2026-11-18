@@ -55,3 +55,11 @@ export function bandOf(firmware) {
 
   return '868';
 }
+
+// Screen variant of a firmware entry: sh1106/ssd1306. Empty when the board
+// has no screen variants (only the MTL-2 builds currently do).
+export function screenOf(firmware) {
+  const text = `${firmware?.class ?? ''} ${firmware?.role ?? ''}`;
+  const match = /(sh1106|ssd1306)/i.exec(text);
+  return match ? match[1].toUpperCase() : '';
+}

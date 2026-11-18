@@ -62,16 +62,6 @@
       "tooltip": "Репитер-наблюдатель с ESPNow-мостом.",
       "subTitle": "ESPNow"
     },
-    "mtl2_868_companion": {
-      "icon": "smartphone",
-      "title": "Компаньон",
-      "tooltip": "Чат через мобильное приложение или веб-клиент по Bluetooth."
-    },
-    "mtl2_868_repeater": {
-      "icon": "cell_tower",
-      "title": "Репитер",
-      "tooltip": "Ретранслятор: передаёт весь трафик в сети. Настройка через конфигуратор или консоль."
-    },
     "mtl1_433_companion": {
       "icon": "smartphone",
       "title": "Компаньон",
@@ -99,22 +89,52 @@
       "tooltip": "Репитер-наблюдатель с ESPNow-мостом.",
       "subTitle": "ESPNow"
     },
-    "mtl2_433_companion": {
-      "icon": "smartphone",
-      "title": "Компаньон",
-      "tooltip": "Чат через мобильное приложение или веб-клиент по Bluetooth."
-    },
-    "mtl2_433_repeater": {
-      "icon": "cell_tower",
-      "title": "Репитер",
-      "tooltip": "Ретранслятор: передаёт весь трафик в сети. Настройка через конфигуратор или консоль."
-    },
     "s3zero_868_repeater": {
       "icon": "cell_tower",
       "title": "Репитер",
       "tooltip": "Ретранслятор: передаёт весь трафик в сети. Настройка через конфигуратор или консоль."
     },
     "s3zero_433_repeater": {
+      "icon": "cell_tower",
+      "title": "Репитер",
+      "tooltip": "Ретранслятор: передаёт весь трафик в сети. Настройка через конфигуратор или консоль."
+    },
+    "mtl2sh1106_868_companion": {
+      "icon": "smartphone",
+      "title": "Компаньон",
+      "tooltip": "Чат через мобильное приложение или веб-клиент по Bluetooth."
+    },
+    "mtl2sh1106_868_repeater": {
+      "icon": "cell_tower",
+      "title": "Репитер",
+      "tooltip": "Ретранслятор: передаёт весь трафик в сети. Настройка через конфигуратор или консоль."
+    },
+    "mtl2ssd1306_868_companion": {
+      "icon": "smartphone",
+      "title": "Компаньон",
+      "tooltip": "Чат через мобильное приложение или веб-клиент по Bluetooth."
+    },
+    "mtl2ssd1306_868_repeater": {
+      "icon": "cell_tower",
+      "title": "Репитер",
+      "tooltip": "Ретранслятор: передаёт весь трафик в сети. Настройка через конфигуратор или консоль."
+    },
+    "mtl2sh1106_433_companion": {
+      "icon": "smartphone",
+      "title": "Компаньон",
+      "tooltip": "Чат через мобильное приложение или веб-клиент по Bluetooth."
+    },
+    "mtl2sh1106_433_repeater": {
+      "icon": "cell_tower",
+      "title": "Репитер",
+      "tooltip": "Ретранслятор: передаёт весь трафик в сети. Настройка через конфигуратор или консоль."
+    },
+    "mtl2ssd1306_433_companion": {
+      "icon": "smartphone",
+      "title": "Компаньон",
+      "tooltip": "Чат через мобильное приложение или веб-клиент по Bluetooth."
+    },
+    "mtl2ssd1306_433_repeater": {
       "icon": "cell_tower",
       "title": "Репитер",
       "tooltip": "Ретранслятор: передаёт весь трафик в сети. Настройка через конфигуратор или консоль."
@@ -145,13 +165,21 @@
       "title": "MTL-1 · 433 МГц · Мосты ESPNow",
       "tooltip": "ESPNow-мост для MTL-1 на 433 МГц."
     },
-    "mtl2-868": {
-      "title": "MTL-2 · 868 МГц",
-      "tooltip": "Рекомендуемые прошивки для MTL-2 на 868 МГц."
+    "mtl2sh1106-868": {
+      "title": "MTL-2 · 868 МГц · SH1106",
+      "tooltip": "Рекомендуемые прошивки для MTL-2 на 868 МГц с экраном SH1106."
     },
-    "mtl2-433": {
-      "title": "MTL-2 · 433 МГц",
-      "tooltip": "Рекомендуемые прошивки для MTL-2 на 433 МГц."
+    "mtl2ssd1306-868": {
+      "title": "MTL-2 · 868 МГц · SSD1306",
+      "tooltip": "Рекомендуемые прошивки для MTL-2 на 868 МГц с экраном SSD1306."
+    },
+    "mtl2sh1106-433": {
+      "title": "MTL-2 · 433 МГц · SH1106",
+      "tooltip": "Рекомендуемые прошивки для MTL-2 на 433 МГц с экраном SH1106."
+    },
+    "mtl2ssd1306-433": {
+      "title": "MTL-2 · 433 МГц · SSD1306",
+      "tooltip": "Рекомендуемые прошивки для MTL-2 на 433 МГц с экраном SSD1306."
     },
     "s3zero-868": {
       "title": "Generic ESP32-S3 Zero · 868 МГц",
@@ -983,11 +1011,11 @@
       "tooltip": "<img class='device' src='img/mtl_2_868.webp'>",
       "firmware": [
         {
-          "class": "mtl2-868",
-          "role": "mtl2_868_companion",
+          "class": "mtl2sh1106-868",
+          "role": "mtl2sh1106_868_companion",
           "version": {
             "v1.18 · PS": {
-              "archive": "mtl_2_e22_sx1262_companion_radio_ble-v1.18-ps.zip",
+              "archive": "mtl_2_sx1262_sh1106_companion_radio_ble-v1.18-ps.zip",
               "notes": "Bluetooth-компаньон с энергосбережением (powersave). Собрано из MeshCore 1.18.",
               "files": [
                 {
@@ -1005,11 +1033,33 @@
           }
         },
         {
-          "class": "mtl2-868",
-          "role": "mtl2_868_repeater",
+          "class": "mtl2ssd1306-868",
+          "role": "mtl2ssd1306_868_companion",
+          "version": {
+            "v1.18 · PS": {
+              "archive": "mtl_2_sx1262_ssd1306_companion_radio_ble-v1.18-ps.zip",
+              "notes": "Bluetooth-компаньон с энергосбережением (powersave). Собрано из MeshCore 1.18.",
+              "files": [
+                {
+                  "type": "flash",
+                  "match": "\\.zip$",
+                  "title": "OTA-пакет для DFU"
+                },
+                {
+                  "type": "download",
+                  "match": "\\.uf2$",
+                  "title": "UF2 для ручного DFU"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "class": "mtl2sh1106-868",
+          "role": "mtl2sh1106_868_repeater",
           "version": {
             "v1.18 · BL+PS+TS": {
-              "archive": "mtl_2_e22_sx1262_repeater-v1.18-bl-ps-ts.zip",
+              "archive": "mtl_2_sx1262_sh1106_repeater-v1.18-bl-ps-ts.zip",
               "notes": "Blacklist каналов и префиксов (#2343), энергосбережение, синхронизация времени. Собрано из MeshCore 1.18.",
               "files": [
                 {
@@ -1027,11 +1077,33 @@
           }
         },
         {
-          "class": "mtl2-433",
-          "role": "mtl2_433_companion",
+          "class": "mtl2ssd1306-868",
+          "role": "mtl2ssd1306_868_repeater",
+          "version": {
+            "v1.18 · BL+PS+TS": {
+              "archive": "mtl_2_sx1262_ssd1306_repeater-v1.18-bl-ps-ts.zip",
+              "notes": "Blacklist каналов и префиксов (#2343), энергосбережение, синхронизация времени. Собрано из MeshCore 1.18.",
+              "files": [
+                {
+                  "type": "flash",
+                  "match": "\\.zip$",
+                  "title": "OTA-пакет для DFU"
+                },
+                {
+                  "type": "download",
+                  "match": "\\.uf2$",
+                  "title": "UF2 для ручного DFU"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "class": "mtl2sh1106-433",
+          "role": "mtl2sh1106_433_companion",
           "version": {
             "v1.18 · PS": {
-              "archive": "mtl_2_e22_sx1268_companion_radio_ble-v1.18-ps.zip",
+              "archive": "mtl_2_sx1268_sh1106_companion_radio_ble-v1.18-ps.zip",
               "notes": "Bluetooth-компаньон с энергосбережением (powersave). Собрано из MeshCore 1.18.",
               "files": [
                 {
@@ -1049,11 +1121,55 @@
           }
         },
         {
-          "class": "mtl2-433",
-          "role": "mtl2_433_repeater",
+          "class": "mtl2ssd1306-433",
+          "role": "mtl2ssd1306_433_companion",
+          "version": {
+            "v1.18 · PS": {
+              "archive": "mtl_2_sx1268_ssd1306_companion_radio_ble-v1.18-ps.zip",
+              "notes": "Bluetooth-компаньон с энергосбережением (powersave). Собрано из MeshCore 1.18.",
+              "files": [
+                {
+                  "type": "flash",
+                  "match": "\\.zip$",
+                  "title": "OTA-пакет для DFU"
+                },
+                {
+                  "type": "download",
+                  "match": "\\.uf2$",
+                  "title": "UF2 для ручного DFU"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "class": "mtl2sh1106-433",
+          "role": "mtl2sh1106_433_repeater",
           "version": {
             "v1.18 · BL+PS+TS": {
-              "archive": "mtl_2_e22_sx1268_repeater-v1.18-bl-ps-ts.zip",
+              "archive": "mtl_2_sx1268_sh1106_repeater-v1.18-bl-ps-ts.zip",
+              "notes": "Blacklist каналов и префиксов (#2343), энергосбережение, синхронизация времени. Собрано из MeshCore 1.18.",
+              "files": [
+                {
+                  "type": "flash",
+                  "match": "\\.zip$",
+                  "title": "OTA-пакет для DFU"
+                },
+                {
+                  "type": "download",
+                  "match": "\\.uf2$",
+                  "title": "UF2 для ручного DFU"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "class": "mtl2ssd1306-433",
+          "role": "mtl2ssd1306_433_repeater",
+          "version": {
+            "v1.18 · BL+PS+TS": {
+              "archive": "mtl_2_sx1268_ssd1306_repeater-v1.18-bl-ps-ts.zip",
               "notes": "Blacklist каналов и префиксов (#2343), энергосбережение, синхронизация времени. Собрано из MeshCore 1.18.",
               "files": [
                 {

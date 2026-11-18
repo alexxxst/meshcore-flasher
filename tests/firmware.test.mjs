@@ -9,6 +9,7 @@ import {
   resolveArchiveUrl,
   esp32Address,
   bandOf,
+  screenOf,
 } from '../js/firmware.js';
 
 test('pickArchiveEntry returns the entry matching the pattern', () => {
@@ -101,4 +102,12 @@ test('bandOf falls back to the role and defaults to 868', () => {
   assert.equal(bandOf({ role: 'mtl1_868_repeater' }), '868');
   assert.equal(bandOf({ role: 'repeater' }), '868');
   assert.equal(bandOf({ role: 'custom' }), '868');
+});
+
+test('screenOf detects the display variant and returns empty otherwise', () => {
+  assert.equal(screenOf({ class: 'mtl2sh1106-868' }), 'SH1106');
+  assert.equal(screenOf({ class: 'mtl2ssd1306-433' }), 'SSD1306');
+  assert.equal(screenOf({ role: 'mtl2ssd1306_868_repeater' }), 'SSD1306');
+  assert.equal(screenOf({ class: 'spb', role: 'repeater' }), '');
+  assert.equal(screenOf({ role: 'custom' }), '');
 });

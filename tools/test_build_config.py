@@ -18,7 +18,7 @@ class BuildConfigTest(unittest.TestCase):
         self.assertEqual(len(self.config["device"]), 24)
         self.assertEqual(
             sum(len(device["firmware"]) for device in self.config["device"]),
-            50,
+            54,
         )
         self.assertEqual(
             sum(
@@ -26,7 +26,7 @@ class BuildConfigTest(unittest.TestCase):
                 for device in self.config["device"]
                 for firmware in device["firmware"]
             ),
-            50,
+            54,
         )
 
     def test_device_names_are_unique(self):
@@ -48,6 +48,21 @@ class BuildConfigTest(unittest.TestCase):
         observer = next(f for f in device["firmware"] if f["role"] == "observer")
         self.assertEqual(list(repeater["version"]), ["v1.18 · BL+PS+TS"])
         self.assertEqual(list(observer["version"]), ["v1.18"])
+
+    def test_mtl2_has_screen_variants(self):
+        device = next(d for d in self.config["device"] if d["name"] == "MTL-2")
+        self.assertEqual(
+            sorted({f["class"] for f in device["firmware"]}),
+            ["mtl2sh1106-433", "mtl2sh1106-868", "mtl2ssd1306-433", "mtl2ssd1306-868"],
+        )
+        self.assertEqual(len(device["firmware"]), 8)
+        archives = {f["version"]["v1.18 · BL+PS+TS"]["archive"] for f in device["firmware"] if "repeater" in f["role"]}
+        self.assertEqual(archives, {
+            "mtl_2_sx1262_sh1106_repeater-v1.18-bl-ps-ts.zip",
+            "mtl_2_sx1262_ssd1306_repeater-v1.18-bl-ps-ts.zip",
+            "mtl_2_sx1268_sh1106_repeater-v1.18-bl-ps-ts.zip",
+            "mtl_2_sx1268_ssd1306_repeater-v1.18-bl-ps-ts.zip",
+        })
 
     def test_generic_esp32s3_zero_has_two_band_repeaters(self):
         device = next(d for d in self.config["device"] if d["name"] == "Generic ESP32-S3 Zero")
@@ -99,7 +114,7 @@ class BuildConfigTest(unittest.TestCase):
         self.assertEqual(mtl1["firmware"][0]["role"], "mtl1_868_companion")
         self.assertEqual(mtl1["firmware"][3]["role"], "mtl1_433_companion")
         self.assertIn("mtl1_868_companion", self.config["role"])
-        self.assertIn("mtl2_433_companion", self.config["role"])
+        self.assertIn("mtl2sh1106_433_companion", self.config["role"])
 
         tbeam1w = by_name["LilyGo T-Beam 1W"]
         self.assertEqual([f["role"] for f in tbeam1w["firmware"]], ["companionBle", "repeater"])
@@ -123,7 +138,11 @@ class BuildConfigTest(unittest.TestCase):
              "mtl1-868-bridge", "mtl1-868-bridge", "mtl1-433-bridge", "mtl1-433-bridge"],
         )
         mtl2_classes = [f["class"] for f in by_name["MTL-2"]["firmware"]]
-        self.assertEqual(mtl2_classes, ["mtl2-868", "mtl2-868", "mtl2-433", "mtl2-433"])
+        self.assertEqual(
+            mtl2_classes,
+            ["mtl2sh1106-868", "mtl2sh1106-868", "mtl2ssd1306-868", "mtl2ssd1306-868",
+             "mtl2sh1106-433", "mtl2sh1106-433", "mtl2ssd1306-433", "mtl2ssd1306-433"],
+        )
 
     def test_bridge_is_a_class_inside_base_devices(self):
         by_name = {device["name"]: device for device in self.config["device"]}

@@ -22,8 +22,10 @@ generic_esp32s3_zero_sx1268	Generic ESP32-S3 Zero	generic	esp32	auto	s3zero	433	
 promicro	ProMicro nRF52 (fakeTec)	promicro	nrf52	auto	-	-	img/faketec.svg	<img class='device' src='img/faketec.svg'>
 mtl_1	MTL-1	mtl	esp32	auto	mtl1	868	img/mtl_1.webp	<img class='device' src='img/mtl_1.webp'>
 mtl_1_sx1268	MTL-1	mtl	esp32	auto	mtl1	433	img/mtl_1.webp	<img class='device' src='img/mtl_1.webp'>
-mtl_2_e22_sx1262	MTL-2	mtl	nrf52	auto	mtl2	868	img/mtl_2_868.webp	<img class='device' src='img/mtl_2_868.webp'>
-mtl_2_e22_sx1268	MTL-2	mtl	nrf52	auto	mtl2	433	img/mtl_2_868.webp	<img class='device' src='img/mtl_2_868.webp'>
+mtl_2_sx1262_sh1106	MTL-2	mtl	nrf52	auto	mtl2sh1106	868	img/mtl_2_868.webp	<img class='device' src='img/mtl_2_868.webp'>
+mtl_2_sx1262_ssd1306	MTL-2	mtl	nrf52	auto	mtl2ssd1306	868	img/mtl_2_868.webp	<img class='device' src='img/mtl_2_868.webp'>
+mtl_2_sx1268_sh1106	MTL-2	mtl	nrf52	auto	mtl2sh1106	433	img/mtl_2_868.webp	<img class='device' src='img/mtl_2_868.webp'>
+mtl_2_sx1268_ssd1306	MTL-2	mtl	nrf52	auto	mtl2ssd1306	433	img/mtl_2_868.webp	<img class='device' src='img/mtl_2_868.webp'>
 thinknode_m1	Elecrow ThinkNode M1	elecrow	nrf52	auto	-	-	img/thinknode_m1.svg	<img class='device' src='img/thinknode_m1.svg'>
 thinknode_m5	Elecrow ThinkNode M5	elecrow	esp32	auto	-	-	img/thinknode_m5.svg	<img class='device' src='img/thinknode_m5.svg'>
 gat562_mesh_tracker_pro	GAT-IoT GAT562 Tracker	gat-iot	nrf52	auto	-	-	img/gatiot_gat562.svg	<img class='device' src='img/gatiot_gat562.svg'>
