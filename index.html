@@ -8,10 +8,10 @@
   <meta name="description" content="Прошивальщик нод MeshCore сообщества Санкт-Петербурга: репитер и наблюдатель.">
   <meta name="theme-color" content="#0042aa">
   <link rel="icon" href="./img/logo.png">
-  <link href="./css/beer.css?v=06b69fffcc" rel="stylesheet">
-  <link href="./css/theme.css?v=06b69fffcc" rel="stylesheet">
-  <link href="./css/flasher.css?v=06b69fffcc" rel="stylesheet">
-  <script type="module" src="./flasher.js?v=06b69fffcc"></script>
+  <link href="./css/beer.css?v=844bfa7eda" rel="stylesheet">
+  <link href="./css/theme.css?v=844bfa7eda" rel="stylesheet">
+  <link href="./css/flasher.css?v=844bfa7eda" rel="stylesheet">
+  <script type="module" src="./flasher.js?v=844bfa7eda"></script>
 </head>
 
 <body class="light">
@@ -63,7 +63,7 @@
             <span class="node-name">{{ selected.device.name }}</span>
             <i>chevron_right</i>
             <i>{{ fwValue(selected.firmware, 'icon') }}</i>
-            <span class="small strong">{{ fwValue(selected.firmware, 'title') }}</span>
+            <span class="small strong">{{ fwValue(selected.firmware, 'title') }}<template v-if="firmwareBand"> · {{ firmwareBand }} МГц</template></span>
           </nav>
         </header>
 
@@ -120,7 +120,13 @@
           <div class="firmware-heading">
             <i class="firmware-icon">{{ fwValue(selected.firmware, 'icon') }}</i>
             <div>
-              <h5>{{ fwValue(selected.firmware, 'title') }} {{ fwValue(selected.firmware, 'subTitle') }}</h5>
+              <h5>
+                {{ fwValue(selected.firmware, 'title') }} {{ fwValue(selected.firmware, 'subTitle') }}<span
+                  class="band-tag"
+                  v-if="firmwareBand"
+                  :title="firmwareBandDefault ? 'Диапазон по умолчанию — 868 МГц' : 'Диапазон платы'"
+                >{{ firmwareBand }} МГц</span>
+              </h5>
               <p>{{ roleDescription(selected.firmware) }}</p>
             </div>
           </div>
@@ -154,6 +160,7 @@
             <div class="notes" v-if="currentVersion && currentVersion.notes">
               <b>Что внутри:</b>
               <div v-html="formatNotes(currentVersion.notes)"></div>
+              <a class="notes-link" :href="wikiExperimentUrl" target="_blank" rel="noopener">Подробнее о прошивках</a>
             </div>
           </div>
 

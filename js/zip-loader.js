@@ -1,6 +1,6 @@
 // Downloads a firmware archive from the wiki and extracts one entry with zip.js.
-import { ZipReader, BlobReader, BlobWriter } from '../lib/zip.min.js?v=06b69fffcc';
-import { pickArchiveEntry } from './firmware.js?v=06b69fffcc';
+import { ZipReader, BlobReader, BlobWriter } from '../lib/zip.min.js?v=844bfa7eda';
+import { pickArchiveEntry } from './firmware.js?v=844bfa7eda';
 
 const archiveCache = new Map();
 const entryCache = new Map();

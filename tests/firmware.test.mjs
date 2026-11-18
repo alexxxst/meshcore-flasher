@@ -8,6 +8,7 @@ import {
   isMergedFilename,
   resolveArchiveUrl,
   esp32Address,
+  bandOf,
 } from '../js/firmware.js';
 
 test('pickArchiveEntry returns the entry matching the pattern', () => {
@@ -83,4 +84,21 @@ test('resolveArchiveUrl resolves relative archives against the firmware base', (
     resolveArchiveUrl('https://meshcore.spb.ru/wiki/files/', 'https://cdn.example/fw.zip'),
     'https://cdn.example/fw.zip',
   );
+});
+
+test('bandOf takes the band from the class', () => {
+  assert.equal(bandOf({ class: 'spb' }), '868');
+  assert.equal(bandOf({ class: 'bridge' }), '868');
+  assert.equal(bandOf({ class: 'mtl1-868' }), '868');
+  assert.equal(bandOf({ class: 'mtl1-433' }), '433');
+  assert.equal(bandOf({ class: 'mtl1-433-bridge' }), '433');
+  assert.equal(bandOf({ class: 's3zero-868' }), '868');
+  assert.equal(bandOf({ class: 's3zero-433' }), '433');
+});
+
+test('bandOf falls back to the role and defaults to 868', () => {
+  assert.equal(bandOf({ role: 'mtl1_433_observer' }), '433');
+  assert.equal(bandOf({ role: 'mtl1_868_repeater' }), '868');
+  assert.equal(bandOf({ role: 'repeater' }), '868');
+  assert.equal(bandOf({ role: 'custom' }), '868');
 });

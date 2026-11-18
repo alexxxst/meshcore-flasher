@@ -108,6 +108,16 @@
       "icon": "cell_tower",
       "title": "Репитер",
       "tooltip": "Ретранслятор: передаёт весь трафик в сети. Настройка через конфигуратор или консоль."
+    },
+    "s3zero_868_repeater": {
+      "icon": "cell_tower",
+      "title": "Репитер",
+      "tooltip": "Ретранслятор: передаёт весь трафик в сети. Настройка через конфигуратор или консоль."
+    },
+    "s3zero_433_repeater": {
+      "icon": "cell_tower",
+      "title": "Репитер",
+      "tooltip": "Ретранслятор: передаёт весь трафик в сети. Настройка через конфигуратор или консоль."
     }
   },
   "firmwareClass": {
@@ -142,6 +152,14 @@
     "mtl2-433": {
       "title": "MTL-2 · 433 МГц",
       "tooltip": "Рекомендуемые прошивки для MTL-2 на 433 МГц."
+    },
+    "s3zero-868": {
+      "title": "Generic ESP32-S3 Zero · 868 МГц",
+      "tooltip": "Рекомендуемые прошивки для Generic ESP32-S3 Zero на 868 МГц (SX1262)."
+    },
+    "s3zero-433": {
+      "title": "Generic ESP32-S3 Zero · 433 МГц",
+      "tooltip": "Рекомендуемые прошивки для Generic ESP32-S3 Zero на 433 МГц (SX1268)."
     }
   },
   "notice": {
@@ -201,70 +219,6 @@
                   "title": "upgrade — обновление"
                 }
               ]
-            },
-            "v1.18 · BL+PS": {
-              "archive": "heltec_v3_repeater-v1.18-bl-ps.zip",
-              "notes": "Blacklist каналов и префиксов (#2343), энергосбережение. Собрано из MeshCore 1.18.",
-              "files": [
-                {
-                  "type": "flash-wipe",
-                  "match": "-merged\\.bin$",
-                  "title": "merged — с очисткой данных"
-                },
-                {
-                  "type": "flash-update",
-                  "match": "^(?!.*-merged\\.bin$).*\\.bin$",
-                  "title": "upgrade — обновление"
-                }
-              ]
-            },
-            "v1.18 · PR2343": {
-              "archive": "heltec_v3_repeater-v1.18-pr2343.zip",
-              "notes": "Blacklist каналов и префиксов (#2343). Собрано из MeshCore 1.18.",
-              "files": [
-                {
-                  "type": "flash-wipe",
-                  "match": "-merged\\.bin$",
-                  "title": "merged — с очисткой данных"
-                },
-                {
-                  "type": "flash-update",
-                  "match": "^(?!.*-merged\\.bin$).*\\.bin$",
-                  "title": "upgrade — обновление"
-                }
-              ]
-            },
-            "v1.17.1 · PR2343": {
-              "archive": "heltec_v3_repeater-v1.17.1-pr2343.zip",
-              "notes": "Blacklist каналов и префиксов (#2343). Собрано из MeshCore 1.17.1.",
-              "files": [
-                {
-                  "type": "flash-wipe",
-                  "match": "-merged\\.bin$",
-                  "title": "merged — с очисткой данных"
-                },
-                {
-                  "type": "flash-update",
-                  "match": "^(?!.*-merged\\.bin$).*\\.bin$",
-                  "title": "upgrade — обновление"
-                }
-              ]
-            },
-            "v1.16 · PR2343": {
-              "archive": "heltec_v3_repeater-v1.16-pr2343.zip",
-              "notes": "Blacklist каналов и префиксов (#2343). Собрано из MeshCore 1.16.",
-              "files": [
-                {
-                  "type": "flash-wipe",
-                  "match": "-merged\\.bin$",
-                  "title": "merged — с очисткой данных"
-                },
-                {
-                  "type": "flash-update",
-                  "match": "^(?!.*-merged\\.bin$).*\\.bin$",
-                  "title": "upgrade — обновление"
-                }
-              ]
             }
           }
         },
@@ -275,38 +229,6 @@
             "v1.18": {
               "archive": "heltec_v3_repeater_mqtt-v1.18.zip",
               "notes": "Репитер-наблюдатель с веб-панелью и сбором статистики в CoreScope СПб. Собрано из MeshCore 1.18 (форк MeshCoreTel).",
-              "files": [
-                {
-                  "type": "flash-wipe",
-                  "match": "-merged\\.bin$",
-                  "title": "merged — с очисткой данных"
-                },
-                {
-                  "type": "flash-update",
-                  "match": "^(?!.*-merged\\.bin$).*\\.bin$",
-                  "title": "upgrade — обновление"
-                }
-              ]
-            },
-            "v1.16": {
-              "archive": "heltec_v3_repeater_mqtt-v1.16.zip",
-              "notes": "Репитер-наблюдатель с веб-панелью и сбором статистики в CoreScope СПб. Собрано из MeshCore 1.16 (форк MeshCoreTel).",
-              "files": [
-                {
-                  "type": "flash-wipe",
-                  "match": "-merged\\.bin$",
-                  "title": "merged — с очисткой данных"
-                },
-                {
-                  "type": "flash-update",
-                  "match": "^(?!.*-merged\\.bin$).*\\.bin$",
-                  "title": "upgrade — обновление"
-                }
-              ]
-            },
-            "v1.16 · CAD": {
-              "archive": "heltec_v3_repeater_mqtt-v1.16_cad.zip",
-              "notes": "Репитер-наблюдатель с CAD. Собрано из MeshCore 1.16.",
               "files": [
                 {
                   "type": "flash-wipe",
@@ -373,70 +295,6 @@
                   "title": "upgrade — обновление"
                 }
               ]
-            },
-            "v1.18 · BL+PS": {
-              "archive": "heltec_v4_repeater-v1.18-bl-ps.zip",
-              "notes": "Blacklist каналов и префиксов (#2343), энергосбережение. Собрано из MeshCore 1.18.",
-              "files": [
-                {
-                  "type": "flash-wipe",
-                  "match": "-merged\\.bin$",
-                  "title": "merged — с очисткой данных"
-                },
-                {
-                  "type": "flash-update",
-                  "match": "^(?!.*-merged\\.bin$).*\\.bin$",
-                  "title": "upgrade — обновление"
-                }
-              ]
-            },
-            "v1.18 · PR2343": {
-              "archive": "heltec_v4_repeater-v1.18-pr2343.zip",
-              "notes": "Blacklist каналов и префиксов (#2343). Собрано из MeshCore 1.18.",
-              "files": [
-                {
-                  "type": "flash-wipe",
-                  "match": "-merged\\.bin$",
-                  "title": "merged — с очисткой данных"
-                },
-                {
-                  "type": "flash-update",
-                  "match": "^(?!.*-merged\\.bin$).*\\.bin$",
-                  "title": "upgrade — обновление"
-                }
-              ]
-            },
-            "v1.17.1 · PR2343": {
-              "archive": "heltec_v4_repeater-v1.17.1-pr2343.zip",
-              "notes": "Blacklist каналов и префиксов (#2343). Собрано из MeshCore 1.17.1.",
-              "files": [
-                {
-                  "type": "flash-wipe",
-                  "match": "-merged\\.bin$",
-                  "title": "merged — с очисткой данных"
-                },
-                {
-                  "type": "flash-update",
-                  "match": "^(?!.*-merged\\.bin$).*\\.bin$",
-                  "title": "upgrade — обновление"
-                }
-              ]
-            },
-            "v1.16 · PR2343": {
-              "archive": "heltec_v4_repeater-v1.16-pr2343.zip",
-              "notes": "Blacklist каналов и префиксов (#2343). Собрано из MeshCore 1.16.",
-              "files": [
-                {
-                  "type": "flash-wipe",
-                  "match": "-merged\\.bin$",
-                  "title": "merged — с очисткой данных"
-                },
-                {
-                  "type": "flash-update",
-                  "match": "^(?!.*-merged\\.bin$).*\\.bin$",
-                  "title": "upgrade — обновление"
-                }
-              ]
             }
           }
         },
@@ -447,38 +305,6 @@
             "v1.18": {
               "archive": "heltec_v4_repeater_mqtt-v1.18.zip",
               "notes": "Репитер-наблюдатель с веб-панелью и сбором статистики в CoreScope СПб. Собрано из MeshCore 1.18 (форк MeshCoreTel).",
-              "files": [
-                {
-                  "type": "flash-wipe",
-                  "match": "-merged\\.bin$",
-                  "title": "merged — с очисткой данных"
-                },
-                {
-                  "type": "flash-update",
-                  "match": "^(?!.*-merged\\.bin$).*\\.bin$",
-                  "title": "upgrade — обновление"
-                }
-              ]
-            },
-            "v1.16": {
-              "archive": "heltec_v4_repeater_mqtt-v1.16.zip",
-              "notes": "Репитер-наблюдатель с веб-панелью и сбором статистики в CoreScope СПб. Собрано из MeshCore 1.16 (форк MeshCoreTel).",
-              "files": [
-                {
-                  "type": "flash-wipe",
-                  "match": "-merged\\.bin$",
-                  "title": "merged — с очисткой данных"
-                },
-                {
-                  "type": "flash-update",
-                  "match": "^(?!.*-merged\\.bin$).*\\.bin$",
-                  "title": "upgrade — обновление"
-                }
-              ]
-            },
-            "v1.16 · CAD": {
-              "archive": "heltec_v4_repeater_mqtt-v1.16_cad.zip",
-              "notes": "Репитер-наблюдатель с CAD. Собрано из MeshCore 1.16.",
               "files": [
                 {
                   "type": "flash-wipe",
@@ -513,54 +339,6 @@
                   "title": "upgrade — обновление"
                 }
               ]
-            },
-            "v1.18 · BL+PS": {
-              "archive": "heltec_v4_repeater_bridge_espnow-v1.18-bl-ps.zip",
-              "notes": "Мост ESPNow. Blacklist каналов и префиксов (#2343), энергосбережение. Собрано из MeshCore 1.18.",
-              "files": [
-                {
-                  "type": "flash-wipe",
-                  "match": "-merged\\.bin$",
-                  "title": "merged — с очисткой данных"
-                },
-                {
-                  "type": "flash-update",
-                  "match": "^(?!.*-merged\\.bin$).*\\.bin$",
-                  "title": "upgrade — обновление"
-                }
-              ]
-            },
-            "v1.18 · PR2343": {
-              "archive": "heltec_v4_repeater_bridge_espnow-v1.18-pr2343.zip",
-              "notes": "Мост ESPNow. Blacklist каналов и префиксов (#2343). Собрано из MeshCore 1.18.",
-              "files": [
-                {
-                  "type": "flash-wipe",
-                  "match": "-merged\\.bin$",
-                  "title": "merged — с очисткой данных"
-                },
-                {
-                  "type": "flash-update",
-                  "match": "^(?!.*-merged\\.bin$).*\\.bin$",
-                  "title": "upgrade — обновление"
-                }
-              ]
-            },
-            "v1.17.1 · PR2343": {
-              "archive": "heltec_v4_repeater_bridge_espnow-v1.17.1-pr2343.zip",
-              "notes": "Мост ESPNow. Blacklist каналов и префиксов (#2343). Собрано из MeshCore 1.17.1.",
-              "files": [
-                {
-                  "type": "flash-wipe",
-                  "match": "-merged\\.bin$",
-                  "title": "merged — с очисткой данных"
-                },
-                {
-                  "type": "flash-update",
-                  "match": "^(?!.*-merged\\.bin$).*\\.bin$",
-                  "title": "upgrade — обновление"
-                }
-              ]
             }
           }
         },
@@ -571,38 +349,6 @@
             "v1.18": {
               "archive": "heltec_v4_repeater_bridge_espnow_mqtt-v1.18.zip",
               "notes": "Мост ESPNow, Репитер-наблюдатель с веб-панелью и сбором статистики в CoreScope СПб. Собрано из MeshCore 1.18 (форк MeshCoreTel).",
-              "files": [
-                {
-                  "type": "flash-wipe",
-                  "match": "-merged\\.bin$",
-                  "title": "merged — с очисткой данных"
-                },
-                {
-                  "type": "flash-update",
-                  "match": "^(?!.*-merged\\.bin$).*\\.bin$",
-                  "title": "upgrade — обновление"
-                }
-              ]
-            },
-            "v1.16": {
-              "archive": "heltec_v4_repeater_bridge_espnow_mqtt-v1.16.zip",
-              "notes": "Мост ESPNow, Репитер-наблюдатель с веб-панелью и сбором статистики в CoreScope СПб. Собрано из MeshCore 1.16 (форк MeshCoreTel).",
-              "files": [
-                {
-                  "type": "flash-wipe",
-                  "match": "-merged\\.bin$",
-                  "title": "merged — с очисткой данных"
-                },
-                {
-                  "type": "flash-update",
-                  "match": "^(?!.*-merged\\.bin$).*\\.bin$",
-                  "title": "upgrade — обновление"
-                }
-              ]
-            },
-            "v1.16 · CAD": {
-              "archive": "heltec_v4_repeater_bridge_espnow_mqtt-v1.16_cad.zip",
-              "notes": "Мост ESPNow, Репитер-наблюдатель с CAD. Собрано из MeshCore 1.16.",
               "files": [
                 {
                   "type": "flash-wipe",
@@ -669,54 +415,6 @@
                   "title": "upgrade — обновление"
                 }
               ]
-            },
-            "v1.18 · BL+PS": {
-              "archive": "tbeam_sx1262_repeater-v1.18-bl-ps.zip",
-              "notes": "Blacklist каналов и префиксов (#2343), энергосбережение. Собрано из MeshCore 1.18.",
-              "files": [
-                {
-                  "type": "flash-wipe",
-                  "match": "-merged\\.bin$",
-                  "title": "merged — с очисткой данных"
-                },
-                {
-                  "type": "flash-update",
-                  "match": "^(?!.*-merged\\.bin$).*\\.bin$",
-                  "title": "upgrade — обновление"
-                }
-              ]
-            },
-            "v1.18 · PR2343": {
-              "archive": "tbeam_sx1262_repeater-v1.18-pr2343.zip",
-              "notes": "Blacklist каналов и префиксов (#2343). Собрано из MeshCore 1.18.",
-              "files": [
-                {
-                  "type": "flash-wipe",
-                  "match": "-merged\\.bin$",
-                  "title": "merged — с очисткой данных"
-                },
-                {
-                  "type": "flash-update",
-                  "match": "^(?!.*-merged\\.bin$).*\\.bin$",
-                  "title": "upgrade — обновление"
-                }
-              ]
-            },
-            "v1.17.1 · PR2343": {
-              "archive": "tbeam_sx1262_repeater-v1.17.1-pr2343.zip",
-              "notes": "Blacklist каналов и префиксов (#2343). Собрано из MeshCore 1.17.1.",
-              "files": [
-                {
-                  "type": "flash-wipe",
-                  "match": "-merged\\.bin$",
-                  "title": "merged — с очисткой данных"
-                },
-                {
-                  "type": "flash-update",
-                  "match": "^(?!.*-merged\\.bin$).*\\.bin$",
-                  "title": "upgrade — обновление"
-                }
-              ]
             }
           }
         }
@@ -759,54 +457,6 @@
             "v1.18 · BL+PS+TS": {
               "archive": "tbeam_sx1276_repeater-v1.18-bl-ps-ts.zip",
               "notes": "Blacklist каналов и префиксов (#2343), энергосбережение, синхронизация времени. Собрано из MeshCore 1.18.",
-              "files": [
-                {
-                  "type": "flash-wipe",
-                  "match": "-merged\\.bin$",
-                  "title": "merged — с очисткой данных"
-                },
-                {
-                  "type": "flash-update",
-                  "match": "^(?!.*-merged\\.bin$).*\\.bin$",
-                  "title": "upgrade — обновление"
-                }
-              ]
-            },
-            "v1.18 · BL+PS": {
-              "archive": "tbeam_sx1276_repeater-v1.18-bl-ps.zip",
-              "notes": "Blacklist каналов и префиксов (#2343), энергосбережение. Собрано из MeshCore 1.18.",
-              "files": [
-                {
-                  "type": "flash-wipe",
-                  "match": "-merged\\.bin$",
-                  "title": "merged — с очисткой данных"
-                },
-                {
-                  "type": "flash-update",
-                  "match": "^(?!.*-merged\\.bin$).*\\.bin$",
-                  "title": "upgrade — обновление"
-                }
-              ]
-            },
-            "v1.18 · PR2343": {
-              "archive": "tbeam_sx1276_repeater-v1.18-pr2343.zip",
-              "notes": "Blacklist каналов и префиксов (#2343). Собрано из MeshCore 1.18.",
-              "files": [
-                {
-                  "type": "flash-wipe",
-                  "match": "-merged\\.bin$",
-                  "title": "merged — с очисткой данных"
-                },
-                {
-                  "type": "flash-update",
-                  "match": "^(?!.*-merged\\.bin$).*\\.bin$",
-                  "title": "upgrade — обновление"
-                }
-              ]
-            },
-            "v1.17.1 · PR2343": {
-              "archive": "tbeam_sx1276_repeater-v1.17.1-pr2343.zip",
-              "notes": "Blacklist каналов и префиксов (#2343). Собрано из MeshCore 1.17.1.",
               "files": [
                 {
                   "type": "flash-wipe",
@@ -873,70 +523,6 @@
                   "title": "UF2 для ручного DFU"
                 }
               ]
-            },
-            "v1.18 · BL+PS": {
-              "archive": "heltec_t096_repeater-v1.18-bl-ps.zip",
-              "notes": "Blacklist каналов и префиксов (#2343), энергосбережение. Собрано из MeshCore 1.18.",
-              "files": [
-                {
-                  "type": "flash",
-                  "match": "\\.zip$",
-                  "title": "OTA-пакет для DFU"
-                },
-                {
-                  "type": "download",
-                  "match": "\\.uf2$",
-                  "title": "UF2 для ручного DFU"
-                }
-              ]
-            },
-            "v1.18 · PR2343": {
-              "archive": "heltec_t096_repeater-v1.18-pr2343.zip",
-              "notes": "Blacklist каналов и префиксов (#2343). Собрано из MeshCore 1.18.",
-              "files": [
-                {
-                  "type": "flash",
-                  "match": "\\.zip$",
-                  "title": "OTA-пакет для DFU"
-                },
-                {
-                  "type": "download",
-                  "match": "\\.uf2$",
-                  "title": "UF2 для ручного DFU"
-                }
-              ]
-            },
-            "v1.17.1 · PR2343": {
-              "archive": "heltec_t096_repeater-v1.17.1-pr2343.zip",
-              "notes": "Blacklist каналов и префиксов (#2343). Собрано из MeshCore 1.17.1.",
-              "files": [
-                {
-                  "type": "flash",
-                  "match": "\\.zip$",
-                  "title": "OTA-пакет для DFU"
-                },
-                {
-                  "type": "download",
-                  "match": "\\.uf2$",
-                  "title": "UF2 для ручного DFU"
-                }
-              ]
-            },
-            "v1.16 · PR2343": {
-              "archive": "heltec_t096_repeater-v1.16-pr2343.zip",
-              "notes": "Blacklist каналов и префиксов (#2343). Собрано из MeshCore 1.16.",
-              "files": [
-                {
-                  "type": "flash",
-                  "match": "\\.zip$",
-                  "title": "OTA-пакет для DFU"
-                },
-                {
-                  "type": "download",
-                  "match": "\\.uf2$",
-                  "title": "UF2 для ручного DFU"
-                }
-              ]
             }
           }
         }
@@ -979,54 +565,6 @@
             "v1.18 · BL+PS+TS": {
               "archive": "heltec_t114_repeater-v1.18-bl-ps-ts.zip",
               "notes": "Blacklist каналов и префиксов (#2343), энергосбережение, синхронизация времени. Собрано из MeshCore 1.18.",
-              "files": [
-                {
-                  "type": "flash",
-                  "match": "\\.zip$",
-                  "title": "OTA-пакет для DFU"
-                },
-                {
-                  "type": "download",
-                  "match": "\\.uf2$",
-                  "title": "UF2 для ручного DFU"
-                }
-              ]
-            },
-            "v1.18 · BL+PS": {
-              "archive": "heltec_t114_repeater-v1.18-bl-ps.zip",
-              "notes": "Blacklist каналов и префиксов (#2343), энергосбережение. Собрано из MeshCore 1.18.",
-              "files": [
-                {
-                  "type": "flash",
-                  "match": "\\.zip$",
-                  "title": "OTA-пакет для DFU"
-                },
-                {
-                  "type": "download",
-                  "match": "\\.uf2$",
-                  "title": "UF2 для ручного DFU"
-                }
-              ]
-            },
-            "v1.18 · PR2343": {
-              "archive": "heltec_t114_repeater-v1.18-pr2343.zip",
-              "notes": "Blacklist каналов и префиксов (#2343). Собрано из MeshCore 1.18.",
-              "files": [
-                {
-                  "type": "flash",
-                  "match": "\\.zip$",
-                  "title": "OTA-пакет для DFU"
-                },
-                {
-                  "type": "download",
-                  "match": "\\.uf2$",
-                  "title": "UF2 для ручного DFU"
-                }
-              ]
-            },
-            "v1.17.1 · PR2343": {
-              "archive": "heltec_t114_repeater-v1.17.1-pr2343.zip",
-              "notes": "Blacklist каналов и префиксов (#2343). Собрано из MeshCore 1.17.1.",
               "files": [
                 {
                   "type": "flash",
@@ -1093,68 +631,58 @@
                   "title": "UF2 для ручного DFU"
                 }
               ]
-            },
-            "v1.18 · BL+PS": {
-              "archive": "gat562_30s_mesh_kit_repeater-v1.18-bl-ps.zip",
-              "notes": "Blacklist каналов и префиксов (#2343), энергосбережение. Собрано из MeshCore 1.18.",
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Generic ESP32-S3 Zero",
+      "maker": "generic",
+      "type": "esp32",
+      "dfu": "auto",
+      "icon": "img/esp32.svg",
+      "tooltip": "<b>Generic ESP32-S3 Zero</b> — DIY-плата на ESP32-S3 Zero с модулем E22 (SX1262 для 868 МГц, SX1268 для 433 МГц).",
+      "firmware": [
+        {
+          "class": "s3zero-868",
+          "role": "s3zero_868_repeater",
+          "version": {
+            "v1.18 · BL+PS+TS": {
+              "archive": "generic_esp32s3_zero_sx1262_repeater-v1.18-bl-ps-ts.zip",
+              "notes": "Blacklist каналов и префиксов (#2343), энергосбережение, синхронизация времени. Собрано из MeshCore 1.18.",
               "files": [
                 {
-                  "type": "flash",
-                  "match": "\\.zip$",
-                  "title": "OTA-пакет для DFU"
+                  "type": "flash-wipe",
+                  "match": "-merged\\.bin$",
+                  "title": "merged — с очисткой данных"
                 },
                 {
-                  "type": "download",
-                  "match": "\\.uf2$",
-                  "title": "UF2 для ручного DFU"
+                  "type": "flash-update",
+                  "match": "^(?!.*-merged\\.bin$).*\\.bin$",
+                  "title": "upgrade — обновление"
                 }
               ]
-            },
-            "v1.18 · PR2343": {
-              "archive": "gat562_30s_mesh_kit_repeater-v1.18-pr2343.zip",
-              "notes": "Blacklist каналов и префиксов (#2343). Собрано из MeshCore 1.18.",
+            }
+          }
+        },
+        {
+          "class": "s3zero-433",
+          "role": "s3zero_433_repeater",
+          "version": {
+            "v1.18 · BL+PS+TS": {
+              "archive": "generic_esp32s3_zero_sx1268_repeater-v1.18-bl-ps-ts.zip",
+              "notes": "Blacklist каналов и префиксов (#2343), энергосбережение, синхронизация времени. Собрано из MeshCore 1.18.",
               "files": [
                 {
-                  "type": "flash",
-                  "match": "\\.zip$",
-                  "title": "OTA-пакет для DFU"
+                  "type": "flash-wipe",
+                  "match": "-merged\\.bin$",
+                  "title": "merged — с очисткой данных"
                 },
                 {
-                  "type": "download",
-                  "match": "\\.uf2$",
-                  "title": "UF2 для ручного DFU"
-                }
-              ]
-            },
-            "v1.17.1 · PR2343": {
-              "archive": "gat562_30s_mesh_kit_repeater-v1.17.1-pr2343.zip",
-              "notes": "Blacklist каналов и префиксов (#2343). Собрано из MeshCore 1.17.1.",
-              "files": [
-                {
-                  "type": "flash",
-                  "match": "\\.zip$",
-                  "title": "OTA-пакет для DFU"
-                },
-                {
-                  "type": "download",
-                  "match": "\\.uf2$",
-                  "title": "UF2 для ручного DFU"
-                }
-              ]
-            },
-            "v1.16 · PR2343": {
-              "archive": "gat562_30s_mesh_kit_repeater-v1.16-pr2343.zip",
-              "notes": "Blacklist каналов и префиксов (#2343). Собрано из MeshCore 1.16.",
-              "files": [
-                {
-                  "type": "flash",
-                  "match": "\\.zip$",
-                  "title": "OTA-пакет для DFU"
-                },
-                {
-                  "type": "download",
-                  "match": "\\.uf2$",
-                  "title": "UF2 для ручного DFU"
+                  "type": "flash-update",
+                  "match": "^(?!.*-merged\\.bin$).*\\.bin$",
+                  "title": "upgrade — обновление"
                 }
               ]
             }
@@ -1265,70 +793,6 @@
                   "title": "upgrade — обновление"
                 }
               ]
-            },
-            "v1.18 · BL+PS": {
-              "archive": "mtl_1_repeater-v1.18-bl-ps.zip",
-              "notes": "Blacklist каналов и префиксов (#2343), энергосбережение. Собрано из MeshCore 1.18.",
-              "files": [
-                {
-                  "type": "flash-wipe",
-                  "match": "-merged\\.bin$",
-                  "title": "merged — с очисткой данных"
-                },
-                {
-                  "type": "flash-update",
-                  "match": "^(?!.*-merged\\.bin$).*\\.bin$",
-                  "title": "upgrade — обновление"
-                }
-              ]
-            },
-            "v1.18 · PR2343": {
-              "archive": "mtl_1_repeater-v1.18-pr2343.zip",
-              "notes": "Blacklist каналов и префиксов (#2343). Собрано из MeshCore 1.18.",
-              "files": [
-                {
-                  "type": "flash-wipe",
-                  "match": "-merged\\.bin$",
-                  "title": "merged — с очисткой данных"
-                },
-                {
-                  "type": "flash-update",
-                  "match": "^(?!.*-merged\\.bin$).*\\.bin$",
-                  "title": "upgrade — обновление"
-                }
-              ]
-            },
-            "v1.17.1 · PR2343": {
-              "archive": "mtl_1_repeater-v1.17.1-pr2343.zip",
-              "notes": "Blacklist каналов и префиксов (#2343). Собрано из MeshCore 1.17.1.",
-              "files": [
-                {
-                  "type": "flash-wipe",
-                  "match": "-merged\\.bin$",
-                  "title": "merged — с очисткой данных"
-                },
-                {
-                  "type": "flash-update",
-                  "match": "^(?!.*-merged\\.bin$).*\\.bin$",
-                  "title": "upgrade — обновление"
-                }
-              ]
-            },
-            "v1.16 · PR2343": {
-              "archive": "mtl_1_repeater-v1.16-pr2343.zip",
-              "notes": "Blacklist каналов и префиксов (#2343). Собрано из MeshCore 1.16.",
-              "files": [
-                {
-                  "type": "flash-wipe",
-                  "match": "-merged\\.bin$",
-                  "title": "merged — с очисткой данных"
-                },
-                {
-                  "type": "flash-update",
-                  "match": "^(?!.*-merged\\.bin$).*\\.bin$",
-                  "title": "upgrade — обновление"
-                }
-              ]
             }
           }
         },
@@ -1339,38 +803,6 @@
             "v1.18": {
               "archive": "mtl_1_repeater_mqtt-v1.18.zip",
               "notes": "Репитер-наблюдатель с веб-панелью и сбором статистики в CoreScope СПб. Собрано из MeshCore 1.18 (форк MeshCoreTel).",
-              "files": [
-                {
-                  "type": "flash-wipe",
-                  "match": "-merged\\.bin$",
-                  "title": "merged — с очисткой данных"
-                },
-                {
-                  "type": "flash-update",
-                  "match": "^(?!.*-merged\\.bin$).*\\.bin$",
-                  "title": "upgrade — обновление"
-                }
-              ]
-            },
-            "v1.16": {
-              "archive": "mtl_1_repeater_mqtt-v1.16.zip",
-              "notes": "Репитер-наблюдатель с веб-панелью и сбором статистики в CoreScope СПб. Собрано из MeshCore 1.16 (форк MeshCoreTel).",
-              "files": [
-                {
-                  "type": "flash-wipe",
-                  "match": "-merged\\.bin$",
-                  "title": "merged — с очисткой данных"
-                },
-                {
-                  "type": "flash-update",
-                  "match": "^(?!.*-merged\\.bin$).*\\.bin$",
-                  "title": "upgrade — обновление"
-                }
-              ]
-            },
-            "v1.16 · CAD": {
-              "archive": "mtl_1_repeater_mqtt-v1.16_cad.zip",
-              "notes": "Репитер-наблюдатель с CAD. Собрано из MeshCore 1.16.",
               "files": [
                 {
                   "type": "flash-wipe",
@@ -1427,70 +859,6 @@
                   "title": "upgrade — обновление"
                 }
               ]
-            },
-            "v1.18 · BL+PS": {
-              "archive": "mtl_1_sx1268_repeater-v1.18-bl-ps.zip",
-              "notes": "Blacklist каналов и префиксов (#2343), энергосбережение. Собрано из MeshCore 1.18.",
-              "files": [
-                {
-                  "type": "flash-wipe",
-                  "match": "-merged\\.bin$",
-                  "title": "merged — с очисткой данных"
-                },
-                {
-                  "type": "flash-update",
-                  "match": "^(?!.*-merged\\.bin$).*\\.bin$",
-                  "title": "upgrade — обновление"
-                }
-              ]
-            },
-            "v1.18 · PR2343": {
-              "archive": "mtl_1_sx1268_repeater-v1.18-pr2343.zip",
-              "notes": "Blacklist каналов и префиксов (#2343). Собрано из MeshCore 1.18.",
-              "files": [
-                {
-                  "type": "flash-wipe",
-                  "match": "-merged\\.bin$",
-                  "title": "merged — с очисткой данных"
-                },
-                {
-                  "type": "flash-update",
-                  "match": "^(?!.*-merged\\.bin$).*\\.bin$",
-                  "title": "upgrade — обновление"
-                }
-              ]
-            },
-            "v1.17.1 · PR2343": {
-              "archive": "mtl_1_sx1268_repeater-v1.17.1-pr2343.zip",
-              "notes": "Blacklist каналов и префиксов (#2343). Собрано из MeshCore 1.17.1.",
-              "files": [
-                {
-                  "type": "flash-wipe",
-                  "match": "-merged\\.bin$",
-                  "title": "merged — с очисткой данных"
-                },
-                {
-                  "type": "flash-update",
-                  "match": "^(?!.*-merged\\.bin$).*\\.bin$",
-                  "title": "upgrade — обновление"
-                }
-              ]
-            },
-            "v1.16 · PR2343": {
-              "archive": "mtl_1_sx1268_repeater-v1.16-pr2343.zip",
-              "notes": "Blacklist каналов и префиксов (#2343). Собрано из MeshCore 1.16.",
-              "files": [
-                {
-                  "type": "flash-wipe",
-                  "match": "-merged\\.bin$",
-                  "title": "merged — с очисткой данных"
-                },
-                {
-                  "type": "flash-update",
-                  "match": "^(?!.*-merged\\.bin$).*\\.bin$",
-                  "title": "upgrade — обновление"
-                }
-              ]
             }
           }
         },
@@ -1501,38 +869,6 @@
             "v1.18": {
               "archive": "mtl_1_sx1268_repeater_mqtt-v1.18.zip",
               "notes": "Репитер-наблюдатель с веб-панелью и сбором статистики в CoreScope СПб. Собрано из MeshCore 1.18 (форк MeshCoreTel).",
-              "files": [
-                {
-                  "type": "flash-wipe",
-                  "match": "-merged\\.bin$",
-                  "title": "merged — с очисткой данных"
-                },
-                {
-                  "type": "flash-update",
-                  "match": "^(?!.*-merged\\.bin$).*\\.bin$",
-                  "title": "upgrade — обновление"
-                }
-              ]
-            },
-            "v1.16": {
-              "archive": "mtl_1_sx1268_repeater_mqtt-v1.16.zip",
-              "notes": "Репитер-наблюдатель с веб-панелью и сбором статистики в CoreScope СПб. Собрано из MeshCore 1.16 (форк MeshCoreTel).",
-              "files": [
-                {
-                  "type": "flash-wipe",
-                  "match": "-merged\\.bin$",
-                  "title": "merged — с очисткой данных"
-                },
-                {
-                  "type": "flash-update",
-                  "match": "^(?!.*-merged\\.bin$).*\\.bin$",
-                  "title": "upgrade — обновление"
-                }
-              ]
-            },
-            "v1.16 · CAD": {
-              "archive": "mtl_1_sx1268_repeater_mqtt-v1.16_cad.zip",
-              "notes": "Репитер-наблюдатель с CAD. Собрано из MeshCore 1.16.",
               "files": [
                 {
                   "type": "flash-wipe",
@@ -1567,54 +903,6 @@
                   "title": "upgrade — обновление"
                 }
               ]
-            },
-            "v1.18 · BL+PS": {
-              "archive": "mtl_1_repeater_bridge_espnow-v1.18-bl-ps.zip",
-              "notes": "Мост ESPNow. Blacklist каналов и префиксов (#2343), энергосбережение. Собрано из MeshCore 1.18.",
-              "files": [
-                {
-                  "type": "flash-wipe",
-                  "match": "-merged\\.bin$",
-                  "title": "merged — с очисткой данных"
-                },
-                {
-                  "type": "flash-update",
-                  "match": "^(?!.*-merged\\.bin$).*\\.bin$",
-                  "title": "upgrade — обновление"
-                }
-              ]
-            },
-            "v1.18 · PR2343": {
-              "archive": "mtl_1_repeater_bridge_espnow-v1.18-pr2343.zip",
-              "notes": "Мост ESPNow. Blacklist каналов и префиксов (#2343). Собрано из MeshCore 1.18.",
-              "files": [
-                {
-                  "type": "flash-wipe",
-                  "match": "-merged\\.bin$",
-                  "title": "merged — с очисткой данных"
-                },
-                {
-                  "type": "flash-update",
-                  "match": "^(?!.*-merged\\.bin$).*\\.bin$",
-                  "title": "upgrade — обновление"
-                }
-              ]
-            },
-            "v1.17.1 · PR2343": {
-              "archive": "mtl_1_repeater_bridge_espnow-v1.17.1-pr2343.zip",
-              "notes": "Мост ESPNow. Blacklist каналов и префиксов (#2343). Собрано из MeshCore 1.17.1.",
-              "files": [
-                {
-                  "type": "flash-wipe",
-                  "match": "-merged\\.bin$",
-                  "title": "merged — с очисткой данных"
-                },
-                {
-                  "type": "flash-update",
-                  "match": "^(?!.*-merged\\.bin$).*\\.bin$",
-                  "title": "upgrade — обновление"
-                }
-              ]
             }
           }
         },
@@ -1625,22 +913,6 @@
             "v1.18": {
               "archive": "mtl_1_repeater_bridge_espnow_mqtt-v1.18.zip",
               "notes": "Мост ESPNow, Репитер-наблюдатель с веб-панелью и сбором статистики в CoreScope СПб. Собрано из MeshCore 1.18 (форк MeshCoreTel).",
-              "files": [
-                {
-                  "type": "flash-wipe",
-                  "match": "-merged\\.bin$",
-                  "title": "merged — с очисткой данных"
-                },
-                {
-                  "type": "flash-update",
-                  "match": "^(?!.*-merged\\.bin$).*\\.bin$",
-                  "title": "upgrade — обновление"
-                }
-              ]
-            },
-            "v1.16 · CAD": {
-              "archive": "mtl_1_repeater_bridge_espnow_mqtt-v1.16_cad.zip",
-              "notes": "Мост ESPNow, Репитер-наблюдатель с CAD. Собрано из MeshCore 1.16.",
               "files": [
                 {
                   "type": "flash-wipe",
@@ -1675,54 +947,6 @@
                   "title": "upgrade — обновление"
                 }
               ]
-            },
-            "v1.18 · BL+PS": {
-              "archive": "mtl_1_sx1268_repeater_bridge_espnow-v1.18-bl-ps.zip",
-              "notes": "Мост ESPNow. Blacklist каналов и префиксов (#2343), энергосбережение. Собрано из MeshCore 1.18.",
-              "files": [
-                {
-                  "type": "flash-wipe",
-                  "match": "-merged\\.bin$",
-                  "title": "merged — с очисткой данных"
-                },
-                {
-                  "type": "flash-update",
-                  "match": "^(?!.*-merged\\.bin$).*\\.bin$",
-                  "title": "upgrade — обновление"
-                }
-              ]
-            },
-            "v1.18 · PR2343": {
-              "archive": "mtl_1_sx1268_repeater_bridge_espnow-v1.18-pr2343.zip",
-              "notes": "Мост ESPNow. Blacklist каналов и префиксов (#2343). Собрано из MeshCore 1.18.",
-              "files": [
-                {
-                  "type": "flash-wipe",
-                  "match": "-merged\\.bin$",
-                  "title": "merged — с очисткой данных"
-                },
-                {
-                  "type": "flash-update",
-                  "match": "^(?!.*-merged\\.bin$).*\\.bin$",
-                  "title": "upgrade — обновление"
-                }
-              ]
-            },
-            "v1.17.1 · PR2343": {
-              "archive": "mtl_1_sx1268_repeater_bridge_espnow-v1.17.1-pr2343.zip",
-              "notes": "Мост ESPNow. Blacklist каналов и префиксов (#2343). Собрано из MeshCore 1.17.1.",
-              "files": [
-                {
-                  "type": "flash-wipe",
-                  "match": "-merged\\.bin$",
-                  "title": "merged — с очисткой данных"
-                },
-                {
-                  "type": "flash-update",
-                  "match": "^(?!.*-merged\\.bin$).*\\.bin$",
-                  "title": "upgrade — обновление"
-                }
-              ]
             }
           }
         },
@@ -1733,38 +957,6 @@
             "v1.18": {
               "archive": "mtl_1_sx1268_repeater_bridge_espnow_mqtt-v1.18.zip",
               "notes": "Мост ESPNow, Репитер-наблюдатель с веб-панелью и сбором статистики в CoreScope СПб. Собрано из MeshCore 1.18 (форк MeshCoreTel).",
-              "files": [
-                {
-                  "type": "flash-wipe",
-                  "match": "-merged\\.bin$",
-                  "title": "merged — с очисткой данных"
-                },
-                {
-                  "type": "flash-update",
-                  "match": "^(?!.*-merged\\.bin$).*\\.bin$",
-                  "title": "upgrade — обновление"
-                }
-              ]
-            },
-            "v1.16": {
-              "archive": "mtl_1_sx1268_repeater_bridge_espnow_mqtt-v1.16.zip",
-              "notes": "Мост ESPNow, Репитер-наблюдатель с веб-панелью и сбором статистики в CoreScope СПб. Собрано из MeshCore 1.16 (форк MeshCoreTel).",
-              "files": [
-                {
-                  "type": "flash-wipe",
-                  "match": "-merged\\.bin$",
-                  "title": "merged — с очисткой данных"
-                },
-                {
-                  "type": "flash-update",
-                  "match": "^(?!.*-merged\\.bin$).*\\.bin$",
-                  "title": "upgrade — обновление"
-                }
-              ]
-            },
-            "v1.16 · CAD": {
-              "archive": "mtl_1_sx1268_repeater_bridge_espnow_mqtt-v1.16_cad.zip",
-              "notes": "Мост ESPNow, Репитер-наблюдатель с CAD. Собрано из MeshCore 1.16.",
               "files": [
                 {
                   "type": "flash-wipe",

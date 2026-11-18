@@ -15,10 +15,10 @@ class BuildConfigTest(unittest.TestCase):
         self.config = build_config(self.manifest)
 
     def test_catalog_has_expected_device_firmware_and_version_counts(self):
-        self.assertEqual(len(self.config["device"]), 23)
+        self.assertEqual(len(self.config["device"]), 24)
         self.assertEqual(
             sum(len(device["firmware"]) for device in self.config["device"]),
-            48,
+            50,
         )
         self.assertEqual(
             sum(
@@ -26,7 +26,7 @@ class BuildConfigTest(unittest.TestCase):
                 for device in self.config["device"]
                 for firmware in device["firmware"]
             ),
-            103,
+            50,
         )
 
     def test_device_names_are_unique(self):
@@ -42,24 +42,28 @@ class BuildConfigTest(unittest.TestCase):
         self.assertTrue(version["notes"])
         self.assertTrue(version["files"])
 
-    def test_heltec_v3_repeater_has_all_variants(self):
+    def test_heltec_v3_has_current_versions(self):
         device = next(d for d in self.config["device"] if d["name"] == "Heltec v3")
         repeater = next(f for f in device["firmware"] if f["role"] == "repeater")
+        observer = next(f for f in device["firmware"] if f["role"] == "observer")
+        self.assertEqual(list(repeater["version"]), ["v1.18 · BL+PS+TS"])
+        self.assertEqual(list(observer["version"]), ["v1.18"])
+
+    def test_generic_esp32s3_zero_has_two_band_repeaters(self):
+        device = next(d for d in self.config["device"] if d["name"] == "Generic ESP32-S3 Zero")
+        self.assertEqual([f["class"] for f in device["firmware"]], ["s3zero-868", "s3zero-433"])
         self.assertEqual(
-            list(repeater["version"]),
+            [f["role"] for f in device["firmware"]],
+            ["s3zero_868_repeater", "s3zero_433_repeater"],
+        )
+        archives = [f["version"]["v1.18 · BL+PS+TS"]["archive"] for f in device["firmware"]]
+        self.assertEqual(
+            archives,
             [
-                "v1.18 · BL+PS+TS",
-                "v1.18 · BL+PS",
-                "v1.18 · PR2343",
-                "v1.17.1 · PR2343",
-                "v1.16 · PR2343",
+                "generic_esp32s3_zero_sx1262_repeater-v1.18-bl-ps-ts.zip",
+                "generic_esp32s3_zero_sx1268_repeater-v1.18-bl-ps-ts.zip",
             ],
         )
-
-    def test_observer_has_cad_version(self):
-        device = next(d for d in self.config["device"] if d["name"] == "Heltec v3")
-        observer = next(f for f in device["firmware"] if f["role"] == "observer")
-        self.assertIn("v1.16 · CAD", observer["version"])
 
     def test_short_version_sets_are_preserved(self):
         by_name = {d["name"]: d for d in self.config["device"]}

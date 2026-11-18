@@ -140,7 +140,7 @@ def catalog_devices(manifest):
     for device in manifest["devices"]:
         for firmware in device["firmware"]:
             cls = firmware.get("class", "spb")
-            band_match = re.match(r"^(mtl\d)-(\d{3})(-bridge)?$", cls)
+            band_match = re.match(r"^([a-z0-9]+)-(\d{3})(-bridge)?$", cls)
             prefix = band_match.group(1) if band_match else "-"
             band = band_match.group(2) if band_match else "-"
             for version in firmware["versions"].values():
@@ -173,7 +173,7 @@ def catalog_devices(manifest):
         "#   maker         — производитель",
         "#   type          — esp32 или nrf52 (определяет способ прошивки)",
         '#   dfu           — auto или manual (manual = вход в DFU двойным RST)',
-        '#   class_prefix  — префикс класса прошивок: mtl1, mtl2; иначе "-"',
+        '#   class_prefix  — префикс класса прошивок: mtl1, mtl2, s3zero; иначе "-"',
         '#   band          — диапазон: 868, 433; иначе "-"',
         "#   icon          — иконка устройства",
         "#   tooltip       — HTML подсказки при наведении",

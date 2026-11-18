@@ -5,7 +5,7 @@
 #   maker         — производитель
 #   type          — esp32 или nrf52 (определяет способ прошивки)
 #   dfu           — auto или manual (manual = вход в DFU двойным RST)
-#   class_prefix  — префикс класса прошивок: mtl1, mtl2; иначе "-"
+#   class_prefix  — префикс класса прошивок: mtl1, mtl2, s3zero; иначе "-"
 #   band          — диапазон: 868, 433; иначе "-"
 #   icon          — иконка устройства
 #   tooltip       — HTML подсказки при наведении
@@ -17,6 +17,8 @@ tbeam_sx1276	LilyGo T-Beam SX1276	lilygo	esp32	auto	-	-	img/lilygo_tbeam.svg	<im
 heltec_t096	Heltec Mesh Node T096	heltec	nrf52	manual	-	-	img/heltec_t096.svg	<img class='device' src='img/heltec_t096.svg'>
 heltec_t114	Heltec Mesh Node T114	heltec	nrf52	manual	-	-	img/heltec_t114.svg	<img class='device' src='img/heltec_t114.svg'>
 gat562_30s_mesh_kit	GAT562 30s Kit	gat-iot	nrf52	auto	-	-	img/gatiot_gat562_30s.svg	<img class='device' src='img/gatiot_gat562_30s.svg'>
+generic_esp32s3_zero_sx1262	Generic ESP32-S3 Zero	generic	esp32	auto	s3zero	868	img/esp32.svg	<b>Generic ESP32-S3 Zero</b> — DIY-плата на ESP32-S3 Zero с модулем E22 (SX1262 для 868 МГц, SX1268 для 433 МГц).
+generic_esp32s3_zero_sx1268	Generic ESP32-S3 Zero	generic	esp32	auto	s3zero	433	img/esp32.svg	<b>Generic ESP32-S3 Zero</b> — DIY-плата на ESP32-S3 Zero с модулем E22 (SX1262 для 868 МГц, SX1268 для 433 МГц).
 promicro	ProMicro nRF52 (fakeTec)	promicro	nrf52	auto	-	-	img/faketec.svg	<img class='device' src='img/faketec.svg'>
 mtl_1	MTL-1	mtl	esp32	auto	mtl1	868	img/mtl_1.webp	<img class='device' src='img/mtl_1.webp'>
 mtl_1_sx1268	MTL-1	mtl	esp32	auto	mtl1	433	img/mtl_1.webp	<img class='device' src='img/mtl_1.webp'>

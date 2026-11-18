@@ -1,13 +1,13 @@
-import { reactive, ref, shallowRef, nextTick, watch, computed } from '../lib/vue.min.js?v=06b69fffcc';
-import { SerialConsole } from '../lib/console.js?v=06b69fffcc';
-import { commandReference } from './commands.js?v=06b69fffcc';
-import { hasVersions, roleValue, renderNotice, formatNotes } from './catalog.js?v=06b69fffcc';
-import { pickFirmwareFile, requiresObserverConfirmation, isMergedFilename, resolveArchiveUrl, esp32Address } from './firmware.js?v=06b69fffcc';
-import { Dfu, flashEsp32, flashNrf52, releaseFlasher } from './flash.js?v=06b69fffcc';
-import { CONSOLE_PATH, buildPath, parsePath, isSamePage, pathFromHash, hashForPath } from './router.js?v=06b69fffcc';
-import { serialAPI, serialSupported } from './serial.js?v=06b69fffcc';
-import { logoFile, siteTitle, siteSubtitle, wikiExperimentUrl, wikiCompanionFlashUrl, wikiRepeaterFlashUrl, wikiRepeaterSettingsUrl, wikiSettingsUrl, wikiObserverUrl, officialFlasherUrl, wikiNrf52Url, nrfEraseArchive, nrfEraseUf2, esp32CompanionWifiNote } from './site.js?v=06b69fffcc';
-import { loadArchiveEntry } from './zip-loader.js?v=06b69fffcc';
+import { reactive, ref, shallowRef, nextTick, watch, computed } from '../lib/vue.min.js?v=844bfa7eda';
+import { SerialConsole } from '../lib/console.js?v=844bfa7eda';
+import { commandReference } from './commands.js?v=844bfa7eda';
+import { hasVersions, roleValue, renderNotice, formatNotes } from './catalog.js?v=844bfa7eda';
+import { pickFirmwareFile, requiresObserverConfirmation, isMergedFilename, resolveArchiveUrl, esp32Address, bandOf } from './firmware.js?v=844bfa7eda';
+import { Dfu, flashEsp32, flashNrf52, releaseFlasher } from './flash.js?v=844bfa7eda';
+import { CONSOLE_PATH, buildPath, parsePath, isSamePage, pathFromHash, hashForPath } from './router.js?v=844bfa7eda';
+import { serialAPI, serialSupported } from './serial.js?v=844bfa7eda';
+import { logoFile, siteTitle, siteSubtitle, wikiExperimentUrl, wikiCompanionFlashUrl, wikiRepeaterFlashUrl, wikiRepeaterSettingsUrl, wikiSettingsUrl, wikiObserverUrl, officialFlasherUrl, wikiNrf52Url, nrfEraseArchive, nrfEraseUf2, esp32CompanionWifiNote } from './site.js?v=844bfa7eda';
+import { loadArchiveEntry } from './zip-loader.js?v=844bfa7eda';
 
 const WEB_SERIAL_UNSUPPORTED = 'Браузер не поддерживает Web Serial. Откройте сайт в Chrome или Edge на компьютере.';
 
@@ -126,6 +126,18 @@ export function createSetup(config) {
       if (!selected.firmware) return [];
       return Object.keys(selected.firmware.version)
         .filter((version) => selected.firmware.version[version].files.length > 0);
+    });
+
+    const firmwareBand = computed(() => {
+      if (!selected.firmware || selected.firmware.role === 'custom') return '';
+      return bandOf(selected.firmware);
+    });
+
+    const firmwareBandDefault = computed(() => {
+      if (!firmwareBand.value) return false;
+      const cls = String(selected.firmware?.class ?? '');
+      const role = String(selected.firmware?.role ?? '');
+      return !/-\d{3}(?:-bridge)?$/.test(cls) && !/_\d{3}_/.test(role);
     });
 
     const downloads = computed(() => {
@@ -558,7 +570,7 @@ export function createSetup(config) {
       config, asset, logoFile, siteTitle, siteSubtitle, wikiExperimentUrl, wikiCompanionFlashUrl, wikiRepeaterFlashUrl, wikiRepeaterSettingsUrl, wikiSettingsUrl, wikiObserverUrl, officialFlasherUrl,
       commandReference, firmwareClasses, WEB_SERIAL_UNSUPPORTED,
       snackbar, archiveBusy, archiveProgress,
-      selected, flashing, serialCon,
+      selected, flashing, serialCon, firmwareBand, firmwareBandDefault,
       deviceFilterText, hoveredDevice, devices, deviceFirmwareByClass,
       currentVersion, currentArchiveUrl, roleNotice, switchNotice, needsConfirmation, canFlash, isRepeaterRole, isCompanionRole, isObserver, isNrf52, wikiNrf52Url,
       versionOptions, downloads, fwValue, roleDescription, formatNotes,

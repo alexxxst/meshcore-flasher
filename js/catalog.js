@@ -1,6 +1,6 @@
 // Device/firmware catalog loaded from the static config.json.
 
-import { fetchJson, escapeHtml } from './util.js?v=06b69fffcc';
+import { fetchJson, escapeHtml } from './util.js?v=844bfa7eda';
 
 export const hasVersions = (firmware) => Object.values(firmware.version ?? {}).some((v) => v.files.length > 0);
 

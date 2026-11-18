@@ -284,6 +284,7 @@ button {
 .site-footer a,
 .wiki-link,
 .inline-note a,
+.notes-link,
 .site-footer .footer-action {
   text-decoration: none;
 }
@@ -291,6 +292,7 @@ button {
 .site-footer a:hover,
 .wiki-link:hover,
 .inline-note a:hover,
+.notes-link:hover,
 .site-footer .footer-action:hover:not(:disabled) {
   text-decoration: underline;
 }
@@ -684,6 +686,13 @@ button {
   color: var(--spb-navy);
 }
 
+.notes-link {
+  display: inline-block;
+  margin-block-start: 6px;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
 .options-list {
   border-radius: var(--spb-radius);
   margin: 10px 0 14px;
@@ -1040,6 +1049,19 @@ button {
     display: none;
   }
 
+  /* на телефоне подсказки не открываются (нет hover), но их скрытые
+     блоки вылезают за экран и растягивают страницу */
+  .tooltip,
+  .tooltip.max {
+    display: none;
+  }
+
+  /* длинное имя платы не влезает в крошки — убираем декоративную стрелку,
+     чтобы она не переносилась на отдельную строку */
+  .screen-header nav > .node-name + i {
+    display: none;
+  }
+
   .firmware-card,
   .flash-result {
     padding: 16px;
@@ -1120,4 +1142,19 @@ button,
 
 nav:is(.left, .right, .top, .bottom):not(.drawer) > a:not(.button, .chip) > i {
   border-radius: var(--spb-radius);
+}
+
+/* Диапазон прошивки в заголовке: 868 (по умолчанию) или 433 */
+.band-tag {
+  display: inline-block;
+  margin-inline-start: 8px;
+  padding: 2px 8px;
+  border-radius: var(--spb-radius);
+  background: var(--spb-blue-light, #e3edff);
+  color: var(--spb-blue, #0042aa);
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1.4;
+  vertical-align: middle;
+  white-space: nowrap;
 }

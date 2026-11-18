@@ -40,3 +40,18 @@ export function esp32Address(file) {
 export function resolveArchiveUrl(base, archive) {
   return new URL(archive, base).href;
 }
+
+// Band of a firmware entry: from the class suffix (mtl1-868, s3zero-433,
+// mtl1-433-bridge) or from the role (mtl1_433_repeater). No class/band
+// means the default 868 MHz.
+export function bandOf(firmware) {
+  const cls = String(firmware?.class ?? '');
+  const fromClass = /-(\d{3})(?:-bridge)?$/.exec(cls);
+  if (fromClass) return fromClass[1];
+
+  const role = String(firmware?.role ?? '');
+  const fromRole = /_(\d{3})_/.exec(role);
+  if (fromRole) return fromRole[1];
+
+  return '868';
+}

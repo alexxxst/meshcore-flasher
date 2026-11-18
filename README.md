@@ -18,10 +18,8 @@ https://meshcore.spb.ru/flasher/
 
 - каталог устройств: компаньоны, репитеры и наблюдатели;
 - сценарий «устройство → роль → версия → прошивка»;
-- все версии и варианты прошивок в одном селекторе:
-  `v1.18 · BL+PS+TS`, `v1.18 · BL+PS`, `v1.18 · PR2343`,
-  `v1.17.1 · PR2343`, `v1.16 · PR2343`, observer `v1.18` / `v1.16` /
-  `v1.16 · CAD`;
+- версии в одном селекторе: компаньоны `v1.18 · PS`, репитеры
+  `v1.18 · BL+PS+TS`, наблюдатели `v1.18`;
 - ссылки «Рекомендуемые настройки репитера», «Как прошить компаньон»
   (`/wiki/flash`) и «Как прошить репитер» (`/wiki/repeater`);
 - ссылки на актуальные настройки сети (`/wiki/settings`) в футере и на
@@ -147,7 +145,7 @@ tools/build-config.sh /var/www/meshcore.spb.ru/wiki/_media/wiki/files
 
 ```text
 <токен платы>[_bridge_espnow][_mqtt]-v<версия>[_суффикс].zip
-heltec_v4_repeater_bridge_espnow_mqtt-v1.16_cad.zip
+heltec_v4_repeater_bridge_espnow_mqtt-v1.18.zip
 mtl_1_sx1268_repeater-v1.18-bl-ps-ts.zip
 ```
 
@@ -282,11 +280,11 @@ cd tools && python3 -m unittest test_build_config -v
 python3 tools/check_config.py
 ```
 
-`tests/build-config.test.sh` собирает конфиг из 103 имён архивов (пустые
+`tests/build-config.test.sh` собирает конфиг из 50 имён архивов (пустые
 файлы) и сверяет с `config.json`, плюс проверяет предупреждения и
 `--strict`.
 
-`check_config.py` скачивает все 103 архива и проверяет, что внутри
+`check_config.py` скачивает все 50 архивов и проверяет, что внутри
 находятся файлы, подходящие под regex из конфига. Для быстрой проверки
 только доступности используйте `python3 tools/check_config.py --head`.
 
