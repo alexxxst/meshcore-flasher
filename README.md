@@ -110,7 +110,7 @@ firmware/                # FLASH_ERASE для nRF52 (zip для DFU и uf2 дл�
   pre-push               # проверка, что версия не устарела
 tools/
   build-config.sh        # папка с ZIP → config.json (основной путь, bash)
-  catalog.devices.tsv    # таблица плат: токен, название, тип, dfu, иконка
+  catalog.devices.tsv    # таблица плат: токен, название, тип, dfu, иконка, display
   catalog.versions.tsv   # таблица версий: суффикс, подпись, текст notes
   catalog.filesets.tsv   # какие файлы внутри ZIP как прошивать
   catalog.common.json    # блоки role / firmwareClass / notice
@@ -152,9 +152,11 @@ mtl_1_sx1268_repeater-v1.18-bl-ps-ts.zip
 Остальное лежит в таблицах, их и правят руками:
 
 - `tools/catalog.devices.tsv` — платы: токен, название, тип, dfu, иконка,
-  tooltip; для MTL — ещё `class_prefix` и диапазон;
+  tooltip, признак экрана `display` (yes/no); для MTL — ещё
+  `class_prefix` и диапазон;
 - `tools/catalog.versions.tsv` — версии: суффикс имени, подпись в
-  селекторе, текст «что внутри», версия MeshCore;
+  селекторе, текст «что внутри», версия MeshCore и добавка
+  `display_note` для компаньонов с экраном;
 - `tools/catalog.filesets.tsv` — какие файлы внутри ZIP как прошивать;
 - `tools/catalog.common.json` — блоки `role`, `firmwareClass`, `notice`.
 
@@ -280,11 +282,11 @@ cd tools && python3 -m unittest test_build_config -v
 python3 tools/check_config.py
 ```
 
-`tests/build-config.test.sh` собирает конфиг из 54 имён архивов (пустые
+`tests/build-config.test.sh` собирает конфиг из 56 имён архивов (пустые
 файлы) и сверяет с `config.json`, плюс проверяет предупреждения и
 `--strict`.
 
-`check_config.py` скачивает все 54 архива и проверяет, что внутри
+`check_config.py` скачивает все 56 архивов и проверяет, что внутри
 находятся файлы, подходящие под regex из конфига. Для быстрой проверки
 только доступности используйте `python3 tools/check_config.py --head`.
 
@@ -296,7 +298,7 @@ python3 tools/check_config.py
 - MTL-2: одно фото `08.jpg` (главная картинка из README) репозитория
   [kt314-sh/MTL-2](https://github.com/kt314-sh/MTL-2) — `img/mtl_2_868.webp`.
   Одна картинка на плату: блоки 868 и 433 — это одно устройство.
-- Иконки новых плат (13 SVG) взяты с
+- Иконки новых плат (15 SVG) взяты с
   [flasher.meshcore.io](https://flasher.meshcore.io) (MIT).
 
 ## TODO

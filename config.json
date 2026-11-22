@@ -212,7 +212,7 @@
           "version": {
             "v1.18 · PS": {
               "archive": "heltec_v3_companion_radio_ble-v1.18-ps.zip",
-              "notes": "Bluetooth-компаньон с энергосбережением (powersave). Собрано из MeshCore 1.18.",
+              "notes": "Bluetooth-компаньон с энергосбережением (powersave), поддержка кириллицы на экране. Собрано из MeshCore 1.18.",
               "files": [
                 {
                   "type": "flash-wipe",
@@ -288,7 +288,7 @@
           "version": {
             "v1.18 · PS": {
               "archive": "heltec_v4_companion_radio_ble-v1.18-ps.zip",
-              "notes": "Bluetooth-компаньон с энергосбережением (powersave). Собрано из MeshCore 1.18.",
+              "notes": "Bluetooth-компаньон с энергосбережением (powersave), поддержка кириллицы на экране. Собрано из MeshCore 1.18.",
               "files": [
                 {
                   "type": "flash-wipe",
@@ -395,6 +395,70 @@
       ]
     },
     {
+      "name": "Heltec Vision Master E213",
+      "maker": "heltec",
+      "type": "esp32",
+      "dfu": "auto",
+      "icon": "img/heltec_e213.svg",
+      "tooltip": "<img class='device' src='img/heltec_e213.svg'>",
+      "firmware": [
+        {
+          "class": "spb",
+          "role": "companionBle",
+          "version": {
+            "v1.18 · PS": {
+              "archive": "heltec_e213_companion_radio_ble-v1.18-ps.zip",
+              "notes": "Bluetooth-компаньон с энергосбережением (powersave), поддержка кириллицы на экране. Собрано из MeshCore 1.18.",
+              "files": [
+                {
+                  "type": "flash-wipe",
+                  "match": "-merged\\.bin$",
+                  "title": "merged — с очисткой данных"
+                },
+                {
+                  "type": "flash-update",
+                  "match": "^(?!.*-merged\\.bin$).*\\.bin$",
+                  "title": "upgrade — обновление"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Heltec Vision Master E290",
+      "maker": "heltec",
+      "type": "esp32",
+      "dfu": "auto",
+      "icon": "img/heltec_e290.svg",
+      "tooltip": "<img class='device' src='img/heltec_e290.svg'>",
+      "firmware": [
+        {
+          "class": "spb",
+          "role": "companionBle",
+          "version": {
+            "v1.18 · PS": {
+              "archive": "heltec_e290_companion_ble-v1.18-ps.zip",
+              "notes": "Bluetooth-компаньон с энергосбережением (powersave), поддержка кириллицы на экране. Собрано из MeshCore 1.18.",
+              "files": [
+                {
+                  "type": "flash-wipe",
+                  "match": "-merged\\.bin$",
+                  "title": "merged — с очисткой данных"
+                },
+                {
+                  "type": "flash-update",
+                  "match": "^(?!.*-merged\\.bin$).*\\.bin$",
+                  "title": "upgrade — обновление"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
       "name": "LilyGo T-Beam SX1262",
       "maker": "lilygo",
       "type": "esp32",
@@ -408,7 +472,7 @@
           "version": {
             "v1.18 · PS": {
               "archive": "tbeam_sx1262_companion_radio_ble-v1.18-ps.zip",
-              "notes": "Bluetooth-компаньон с энергосбережением (powersave). Собрано из MeshCore 1.18.",
+              "notes": "Bluetooth-компаньон с энергосбережением (powersave), поддержка кириллицы на экране. Собрано из MeshCore 1.18.",
               "files": [
                 {
                   "type": "flash-wipe",
@@ -462,7 +526,7 @@
           "version": {
             "v1.18 · PS": {
               "archive": "tbeam_sx1276_companion_radio_ble-v1.18-ps.zip",
-              "notes": "Bluetooth-компаньон с энергосбережением (powersave). Собрано из MeshCore 1.18.",
+              "notes": "Bluetooth-компаньон с энергосбережением (powersave), поддержка кириллицы на экране. Собрано из MeshCore 1.18.",
               "files": [
                 {
                   "type": "flash-wipe",
@@ -516,7 +580,7 @@
           "version": {
             "v1.18 · PS": {
               "archive": "heltec_t096_companion_radio_ble-v1.18-ps.zip",
-              "notes": "Bluetooth-компаньон с энергосбережением (powersave). Собрано из MeshCore 1.18.",
+              "notes": "Bluetooth-компаньон с энергосбережением (powersave), поддержка кириллицы на экране. Собрано из MeshCore 1.18.",
               "files": [
                 {
                   "type": "flash",
@@ -570,7 +634,7 @@
           "version": {
             "v1.18 · PS": {
               "archive": "heltec_t114_companion_radio_ble-v1.18-ps.zip",
-              "notes": "Bluetooth-компаньон с энергосбережением (powersave). Собрано из MeshCore 1.18.",
+              "notes": "Bluetooth-компаньон с энергосбережением (powersave), поддержка кириллицы на экране. Собрано из MeshCore 1.18.",
               "files": [
                 {
                   "type": "flash",
@@ -624,7 +688,7 @@
           "version": {
             "v1.18 · PS": {
               "archive": "gat562_30s_mesh_kit_companion_radio_ble-v1.18-ps.zip",
-              "notes": "Bluetooth-компаньон с энергосбережением (powersave). Собрано из MeshCore 1.18.",
+              "notes": "Bluetooth-компаньон с энергосбережением (powersave), поддержка кириллицы на экране. Собрано из MeshCore 1.18.",
               "files": [
                 {
                   "type": "flash",
@@ -732,7 +796,7 @@
           "version": {
             "v1.18 · PS": {
               "archive": "promicro_companion_radio_ble-v1.18-ps.zip",
-              "notes": "Bluetooth-компаньон с энергосбережением (powersave). Собрано из MeshCore 1.18.",
+              "notes": "Bluetooth-компаньон с энергосбережением (powersave), поддержка кириллицы на экране. Собрано из MeshCore 1.18.",
               "files": [
                 {
                   "type": "flash",
@@ -786,7 +850,7 @@
           "version": {
             "v1.18 · PS": {
               "archive": "mtl_1_companion_radio_ble-v1.18-ps.zip",
-              "notes": "Bluetooth-компаньон с энергосбережением (powersave). Собрано из MeshCore 1.18.",
+              "notes": "Bluetooth-компаньон с энергосбережением (powersave), поддержка кириллицы на экране. Собрано из MeshCore 1.18.",
               "files": [
                 {
                   "type": "flash-wipe",
@@ -852,7 +916,7 @@
           "version": {
             "v1.18 · PS": {
               "archive": "mtl_1_sx1268_companion_radio_ble-v1.18-ps.zip",
-              "notes": "Bluetooth-компаньон с энергосбережением (powersave). Собрано из MeshCore 1.18.",
+              "notes": "Bluetooth-компаньон с энергосбережением (powersave), поддержка кириллицы на экране. Собрано из MeshCore 1.18.",
               "files": [
                 {
                   "type": "flash-wipe",
@@ -1016,7 +1080,7 @@
           "version": {
             "v1.18 · PS": {
               "archive": "mtl_2_sx1262_sh1106_companion_radio_ble-v1.18-ps.zip",
-              "notes": "Bluetooth-компаньон с энергосбережением (powersave). Собрано из MeshCore 1.18.",
+              "notes": "Bluetooth-компаньон с энергосбережением (powersave), поддержка кириллицы на экране. Собрано из MeshCore 1.18.",
               "files": [
                 {
                   "type": "flash",
@@ -1038,7 +1102,7 @@
           "version": {
             "v1.18 · PS": {
               "archive": "mtl_2_sx1262_ssd1306_companion_radio_ble-v1.18-ps.zip",
-              "notes": "Bluetooth-компаньон с энергосбережением (powersave). Собрано из MeshCore 1.18.",
+              "notes": "Bluetooth-компаньон с энергосбережением (powersave), поддержка кириллицы на экране. Собрано из MeshCore 1.18.",
               "files": [
                 {
                   "type": "flash",
@@ -1104,7 +1168,7 @@
           "version": {
             "v1.18 · PS": {
               "archive": "mtl_2_sx1268_sh1106_companion_radio_ble-v1.18-ps.zip",
-              "notes": "Bluetooth-компаньон с энергосбережением (powersave). Собрано из MeshCore 1.18.",
+              "notes": "Bluetooth-компаньон с энергосбережением (powersave), поддержка кириллицы на экране. Собрано из MeshCore 1.18.",
               "files": [
                 {
                   "type": "flash",
@@ -1126,7 +1190,7 @@
           "version": {
             "v1.18 · PS": {
               "archive": "mtl_2_sx1268_ssd1306_companion_radio_ble-v1.18-ps.zip",
-              "notes": "Bluetooth-компаньон с энергосбережением (powersave). Собрано из MeshCore 1.18.",
+              "notes": "Bluetooth-компаньон с энергосбережением (powersave), поддержка кириллицы на экране. Собрано из MeshCore 1.18.",
               "files": [
                 {
                   "type": "flash",
@@ -1202,7 +1266,7 @@
           "version": {
             "v1.18 · PS": {
               "archive": "thinknode_m1_companion_radio_ble-v1.18-ps.zip",
-              "notes": "Bluetooth-компаньон с энергосбережением (powersave). Собрано из MeshCore 1.18.",
+              "notes": "Bluetooth-компаньон с энергосбережением (powersave), поддержка кириллицы на экране. Собрано из MeshCore 1.18.",
               "files": [
                 {
                   "type": "flash",
@@ -1234,7 +1298,7 @@
           "version": {
             "v1.18 · PS": {
               "archive": "thinknode_m5_companion_radio_ble-v1.18-ps.zip",
-              "notes": "Bluetooth-компаньон с энергосбережением (powersave). Собрано из MeshCore 1.18.",
+              "notes": "Bluetooth-компаньон с энергосбережением (powersave), поддержка кириллицы на экране. Собрано из MeshCore 1.18.",
               "files": [
                 {
                   "type": "flash-wipe",
@@ -1266,7 +1330,7 @@
           "version": {
             "v1.18 · PS": {
               "archive": "gat562_mesh_tracker_pro_companion_radio_ble-v1.18-ps.zip",
-              "notes": "Bluetooth-компаньон с энергосбережением (powersave). Собрано из MeshCore 1.18.",
+              "notes": "Bluetooth-компаньон с энергосбережением (powersave), поддержка кириллицы на экране. Собрано из MeshCore 1.18.",
               "files": [
                 {
                   "type": "flash",
@@ -1298,7 +1362,7 @@
           "version": {
             "v1.18 · PS": {
               "archive": "mesh_pocket_companion_radio_ble-v1.18-ps.zip",
-              "notes": "Bluetooth-компаньон с энергосбережением (powersave). Собрано из MeshCore 1.18.",
+              "notes": "Bluetooth-компаньон с энергосбережением (powersave), поддержка кириллицы на экране. Собрано из MeshCore 1.18.",
               "files": [
                 {
                   "type": "flash",
@@ -1330,7 +1394,7 @@
           "version": {
             "v1.18 · PS": {
               "archive": "heltec_wireless_paper_companion_radio_ble-v1.18-ps.zip",
-              "notes": "Bluetooth-компаньон с энергосбережением (powersave). Собрано из MeshCore 1.18.",
+              "notes": "Bluetooth-компаньон с энергосбережением (powersave), поддержка кириллицы на экране. Собрано из MeshCore 1.18.",
               "files": [
                 {
                   "type": "flash-wipe",
@@ -1362,7 +1426,7 @@
           "version": {
             "v1.18 · PS": {
               "archive": "lilygo_tbeam_1w_companion_radio_ble-v1.18-ps.zip",
-              "notes": "Bluetooth-компаньон с энергосбережением (powersave). Собрано из MeshCore 1.18.",
+              "notes": "Bluetooth-компаньон с энергосбережением (powersave), поддержка кириллицы на экране. Собрано из MeshCore 1.18.",
               "files": [
                 {
                   "type": "flash-wipe",
@@ -1416,7 +1480,7 @@
           "version": {
             "v1.18 · PS": {
               "archive": "lilygo_t-echo_companion_radio_ble-v1.18-ps.zip",
-              "notes": "Bluetooth-компаньон с энергосбережением (powersave). Собрано из MeshCore 1.18.",
+              "notes": "Bluetooth-компаньон с энергосбережением (powersave), поддержка кириллицы на экране. Собрано из MeshCore 1.18.",
               "files": [
                 {
                   "type": "flash",
@@ -1448,7 +1512,7 @@
           "version": {
             "v1.18 · PS": {
               "archive": "lilygo_t-echo-lite_companion_radio_ble-v1.18-ps.zip",
-              "notes": "Bluetooth-компаньон с энергосбережением (powersave). Собрано из MeshCore 1.18.",
+              "notes": "Bluetooth-компаньон с энергосбережением (powersave), поддержка кириллицы на экране. Собрано из MeshCore 1.18.",
               "files": [
                 {
                   "type": "flash",
@@ -1480,7 +1544,7 @@
           "version": {
             "v1.18 · PS": {
               "archive": "rak_4631_companion_radio_ble-v1.18-ps.zip",
-              "notes": "Bluetooth-компаньон с энергосбережением (powersave). Собрано из MeshCore 1.18.",
+              "notes": "Bluetooth-компаньон с энергосбережением (powersave), поддержка кириллицы на экране. Собрано из MeshCore 1.18.",
               "files": [
                 {
                   "type": "flash",
@@ -1576,7 +1640,7 @@
           "version": {
             "v1.18 · PS": {
               "archive": "wiotrackerl1_companion_radio_ble-v1.18-ps.zip",
-              "notes": "Bluetooth-компаньон с энергосбережением (powersave). Собрано из MeshCore 1.18.",
+              "notes": "Bluetooth-компаньон с энергосбережением (powersave), поддержка кириллицы на экране. Собрано из MeshCore 1.18.",
               "files": [
                 {
                   "type": "flash",

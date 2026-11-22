@@ -114,7 +114,7 @@ esc() {
 device_row() {
   awk -F'\t' -v t="$1" '
     /^[[:space:]]*#/ { next }
-    NF < 9 { next }
+    NF < 10 { next }
     $1 == t { print; exit }
   ' "$DEVICES_TSV"
 }
@@ -123,7 +123,7 @@ device_row() {
 device_order() {
   awk -F'\t' -v n="$1" '
     /^[[:space:]]*#/ { next }
-    NF < 9 { next }
+    NF < 10 { next }
     { if (!($2 in seen)) { seen[$2] = 1; idx++ } }
     $2 == n { print idx; exit }
   ' "$DEVICES_TSV"
@@ -181,9 +181,9 @@ parse_archive() {
       A_BRIDGE=1
       head=${head%_bridge_espnow}
       ;;
-    *_companion_radio_ble|*_companion_radio_usb)
+    *_companion_radio_ble|*_companion_radio_usb|*_companion_ble|*_companion_usb)
       A_COMPANION=1
-      head=${head%_companion_radio_*}
+      head=${head%_companion_*}
       ;;
     *_mqtt)
       A_OBS=1
@@ -233,6 +233,8 @@ for path in "$FW_DIR"/*.zip; do
   band=$(printf '%s\n' "$row" | cut -f7)
   icon=$(printf '%s\n' "$row" | cut -f8)
   tooltip=$(printf '%s\n' "$row" | cut -f9)
+  display=$(printf '%s\n' "$row" | cut -f10)
+  [ -n "$display" ] || display=yes
 
   [ "$cprefix" = '-' ] && cprefix=''
   [ "$band" = '-' ] && band=''
@@ -248,6 +250,8 @@ for path in "$FW_DIR"/*.zip; do
   vkind=$(printf '%s\n' "$vrow" | cut -f3)
   features=$(printf '%s\n' "$vrow" | cut -f4)
   source=$(printf '%s\n' "$vrow" | cut -f5)
+  display_note=$(printf '%s\n' "$vrow" | cut -f6)
+  [ -n "$display_note" ] || display_note='-'
 
   # вид роли по имени файла
   if [ "$A_COMPANION" = 1 ]; then
@@ -279,6 +283,11 @@ for path in "$FW_DIR"/*.zip; do
   # сверяем таблицу версий с именем файла
   if [ "$kind" != "$vkind" ]; then
     warn "в имени '$name' роль $kind, а версия '$A_SUFFIX' помечена как $vkind"
+  fi
+
+  # кириллица на экране — только компаньонам с дисплеем
+  if [ "$kind" = companion ] && [ "$display" != no ] && [ "$display_note" != '-' ]; then
+    features="${features}, ${display_note}"
   fi
 
   notes="${features}. Собрано из MeshCore ${source}."

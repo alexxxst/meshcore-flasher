@@ -238,6 +238,7 @@
         {
           "class": "spb",
           "role": "companionBle",
+          "displayNote": "поддержка кириллицы на экране",
           "versions": {
             "v1.18 · PS": {
               "archive": "heltec_v3_companion_radio_ble-v1.18-ps.zip",
@@ -279,6 +280,7 @@
         {
           "class": "spb",
           "role": "companionBle",
+          "displayNote": "поддержка кириллицы на экране",
           "versions": {
             "v1.18 · PS": {
               "archive": "heltec_v4_companion_radio_ble-v1.18-ps.zip",
@@ -333,6 +335,50 @@
       "dfu": "auto"
     },
     {
+      "name": "Heltec Vision Master E213",
+      "maker": "heltec",
+      "type": "esp32",
+      "icon": "img/heltec_e213.svg",
+      "tooltip": "<img class='device' src='img/heltec_e213.svg'>",
+      "firmware": [
+        {
+          "class": "spb",
+          "role": "companionBle",
+          "displayNote": "поддержка кириллицы на экране",
+          "versions": {
+            "v1.18 · PS": {
+              "archive": "heltec_e213_companion_radio_ble-v1.18-ps.zip",
+              "fileSet": "esp32",
+              "notes": "Bluetooth-компаньон с энергосбережением (powersave). Собрано из MeshCore 1.18."
+            }
+          }
+        }
+      ],
+      "dfu": "auto"
+    },
+    {
+      "name": "Heltec Vision Master E290",
+      "maker": "heltec",
+      "type": "esp32",
+      "icon": "img/heltec_e290.svg",
+      "tooltip": "<img class='device' src='img/heltec_e290.svg'>",
+      "firmware": [
+        {
+          "class": "spb",
+          "role": "companionBle",
+          "displayNote": "поддержка кириллицы на экране",
+          "versions": {
+            "v1.18 · PS": {
+              "archive": "heltec_e290_companion_ble-v1.18-ps.zip",
+              "fileSet": "esp32",
+              "notes": "Bluetooth-компаньон с энергосбережением (powersave). Собрано из MeshCore 1.18."
+            }
+          }
+        }
+      ],
+      "dfu": "auto"
+    },
+    {
       "name": "LilyGo T-Beam SX1262",
       "maker": "lilygo",
       "type": "esp32",
@@ -342,6 +388,7 @@
         {
           "class": "spb",
           "role": "companionBle",
+          "displayNote": "поддержка кириллицы на экране",
           "versions": {
             "v1.18 · PS": {
               "archive": "tbeam_sx1262_companion_radio_ble-v1.18-ps.zip",
@@ -373,6 +420,7 @@
         {
           "class": "spb",
           "role": "companionBle",
+          "displayNote": "поддержка кириллицы на экране",
           "versions": {
             "v1.18 · PS": {
               "archive": "tbeam_sx1276_companion_radio_ble-v1.18-ps.zip",
@@ -404,6 +452,7 @@
         {
           "class": "spb",
           "role": "companionBle",
+          "displayNote": "поддержка кириллицы на экране",
           "versions": {
             "v1.18 · PS": {
               "archive": "heltec_t096_companion_radio_ble-v1.18-ps.zip",
@@ -435,6 +484,7 @@
         {
           "class": "spb",
           "role": "companionBle",
+          "displayNote": "поддержка кириллицы на экране",
           "versions": {
             "v1.18 · PS": {
               "archive": "heltec_t114_companion_radio_ble-v1.18-ps.zip",
@@ -466,6 +516,7 @@
         {
           "class": "spb",
           "role": "companionBle",
+          "displayNote": "поддержка кириллицы на экране",
           "versions": {
             "v1.18 · PS": {
               "archive": "gat562_30s_mesh_kit_companion_radio_ble-v1.18-ps.zip",
@@ -529,6 +580,7 @@
         {
           "class": "spb",
           "role": "companionBle",
+          "displayNote": "поддержка кириллицы на экране",
           "versions": {
             "v1.18 · PS": {
               "archive": "promicro_companion_radio_ble-v1.18-ps.zip",
@@ -561,6 +613,7 @@
         {
           "class": "mtl1-868",
           "role": "mtl1_868_companion",
+          "displayNote": "поддержка кириллицы на экране",
           "versions": {
             "v1.18 · PS": {
               "archive": "mtl_1_companion_radio_ble-v1.18-ps.zip",
@@ -594,6 +647,7 @@
         {
           "class": "mtl1-433",
           "role": "mtl1_433_companion",
+          "displayNote": "поддержка кириллицы на экране",
           "versions": {
             "v1.18 · PS": {
               "archive": "mtl_1_sx1268_companion_radio_ble-v1.18-ps.zip",
@@ -681,6 +735,7 @@
         {
           "class": "mtl2sh1106-868",
           "role": "mtl2sh1106_868_companion",
+          "displayNote": "поддержка кириллицы на экране",
           "versions": {
             "v1.18 · PS": {
               "archive": "mtl_2_sx1262_sh1106_companion_radio_ble-v1.18-ps.zip",
@@ -703,6 +758,7 @@
         {
           "class": "mtl2ssd1306-868",
           "role": "mtl2ssd1306_868_companion",
+          "displayNote": "поддержка кириллицы на экране",
           "versions": {
             "v1.18 · PS": {
               "archive": "mtl_2_sx1262_ssd1306_companion_radio_ble-v1.18-ps.zip",
@@ -725,6 +781,7 @@
         {
           "class": "mtl2sh1106-433",
           "role": "mtl2sh1106_433_companion",
+          "displayNote": "поддержка кириллицы на экране",
           "versions": {
             "v1.18 · PS": {
               "archive": "mtl_2_sx1268_sh1106_companion_radio_ble-v1.18-ps.zip",
@@ -747,6 +804,7 @@
         {
           "class": "mtl2ssd1306-433",
           "role": "mtl2ssd1306_433_companion",
+          "displayNote": "поддержка кириллицы на экране",
           "versions": {
             "v1.18 · PS": {
               "archive": "mtl_2_sx1268_ssd1306_companion_radio_ble-v1.18-ps.zip",
@@ -779,6 +837,7 @@
         {
           "class": "spb",
           "role": "companionBle",
+          "displayNote": "поддержка кириллицы на экране",
           "versions": {
             "v1.18 · PS": {
               "archive": "thinknode_m1_companion_radio_ble-v1.18-ps.zip",
@@ -800,6 +859,7 @@
         {
           "class": "spb",
           "role": "companionBle",
+          "displayNote": "поддержка кириллицы на экране",
           "versions": {
             "v1.18 · PS": {
               "archive": "thinknode_m5_companion_radio_ble-v1.18-ps.zip",
@@ -821,6 +881,7 @@
         {
           "class": "spb",
           "role": "companionBle",
+          "displayNote": "поддержка кириллицы на экране",
           "versions": {
             "v1.18 · PS": {
               "archive": "gat562_mesh_tracker_pro_companion_radio_ble-v1.18-ps.zip",
@@ -842,6 +903,7 @@
         {
           "class": "spb",
           "role": "companionBle",
+          "displayNote": "поддержка кириллицы на экране",
           "versions": {
             "v1.18 · PS": {
               "archive": "mesh_pocket_companion_radio_ble-v1.18-ps.zip",
@@ -863,6 +925,7 @@
         {
           "class": "spb",
           "role": "companionBle",
+          "displayNote": "поддержка кириллицы на экране",
           "versions": {
             "v1.18 · PS": {
               "archive": "heltec_wireless_paper_companion_radio_ble-v1.18-ps.zip",
@@ -884,6 +947,7 @@
         {
           "class": "spb",
           "role": "companionBle",
+          "displayNote": "поддержка кириллицы на экране",
           "versions": {
             "v1.18 · PS": {
               "archive": "lilygo_tbeam_1w_companion_radio_ble-v1.18-ps.zip",
@@ -916,6 +980,7 @@
         {
           "class": "spb",
           "role": "companionBle",
+          "displayNote": "поддержка кириллицы на экране",
           "versions": {
             "v1.18 · PS": {
               "archive": "lilygo_t-echo_companion_radio_ble-v1.18-ps.zip",
@@ -937,6 +1002,7 @@
         {
           "class": "spb",
           "role": "companionBle",
+          "displayNote": "поддержка кириллицы на экране",
           "versions": {
             "v1.18 · PS": {
               "archive": "lilygo_t-echo-lite_companion_radio_ble-v1.18-ps.zip",
@@ -958,6 +1024,7 @@
         {
           "class": "spb",
           "role": "companionBle",
+          "displayNote": "поддержка кириллицы на экране",
           "versions": {
             "v1.18 · PS": {
               "archive": "rak_4631_companion_radio_ble-v1.18-ps.zip",
@@ -973,12 +1040,14 @@
       "maker": "rak",
       "type": "nrf52",
       "dfu": "auto",
+      "display": false,
       "icon": "img/rak_wismesh_tag.svg",
       "tooltip": "<img class='device' src='img/rak_wismesh_tag.svg'>",
       "firmware": [
         {
           "class": "spb",
           "role": "companionBle",
+          "displayNote": "поддержка кириллицы на экране",
           "versions": {
             "v1.18 · PS": {
               "archive": "rak_wismesh_tag_companion_radio_ble-v1.18-ps.zip",
@@ -994,12 +1063,14 @@
       "maker": "seeed",
       "type": "nrf52",
       "dfu": "auto",
+      "display": false,
       "icon": "img/sensecap_t1000e.svg",
       "tooltip": "<img class='device' src='img/sensecap_t1000e.svg'>",
       "firmware": [
         {
           "class": "spb",
           "role": "companionBle",
+          "displayNote": "поддержка кириллицы на экране",
           "versions": {
             "v1.18 · PS": {
               "archive": "t1000e_companion_radio_ble-v1.18-ps.zip",
@@ -1021,6 +1092,7 @@
         {
           "class": "spb",
           "role": "companionBle",
+          "displayNote": "поддержка кириллицы на экране",
           "versions": {
             "v1.18 · PS": {
               "archive": "wiotrackerl1_companion_radio_ble-v1.18-ps.zip",
@@ -1036,12 +1108,14 @@
       "maker": "seeed",
       "type": "nrf52",
       "dfu": "auto",
+      "display": false,
       "icon": "img/xiao_nrf52.svg",
       "tooltip": "<img class='device' src='img/xiao_nrf52.svg'>",
       "firmware": [
         {
           "class": "spb",
           "role": "companionBle",
+          "displayNote": "поддержка кириллицы на экране",
           "versions": {
             "v1.18 · PS": {
               "archive": "xiao_nrf52_companion_radio_ble-v1.18-ps.zip",

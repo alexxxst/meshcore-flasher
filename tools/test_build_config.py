@@ -3,7 +3,7 @@ import re
 import unittest
 from pathlib import Path
 
-from build_config import build_config
+from build_config import archive_token, build_config
 
 ROOT = Path(__file__).resolve().parent
 MANIFEST_PATH = ROOT / "firmware-manifest.json"
@@ -15,10 +15,10 @@ class BuildConfigTest(unittest.TestCase):
         self.config = build_config(self.manifest)
 
     def test_catalog_has_expected_device_firmware_and_version_counts(self):
-        self.assertEqual(len(self.config["device"]), 24)
+        self.assertEqual(len(self.config["device"]), 26)
         self.assertEqual(
             sum(len(device["firmware"]) for device in self.config["device"]),
-            54,
+            56,
         )
         self.assertEqual(
             sum(
@@ -26,7 +26,7 @@ class BuildConfigTest(unittest.TestCase):
                 for device in self.config["device"]
                 for firmware in device["firmware"]
             ),
-            54,
+            56,
         )
 
     def test_device_names_are_unique(self):
@@ -124,6 +124,43 @@ class BuildConfigTest(unittest.TestCase):
         self.assertEqual([f["role"] for f in echo["firmware"]], ["companionBle"])
         self.assertIn("companionBle", self.config["role"])
         self.assertIn("companionUsb", self.config["role"])
+
+    def test_vision_master_devices_are_companion_only(self):
+        by_name = {d["name"]: d for d in self.config["device"]}
+        expected = {
+            "Heltec Vision Master E213": "heltec_e213_companion_radio_ble-v1.18-ps.zip",
+            "Heltec Vision Master E290": "heltec_e290_companion_ble-v1.18-ps.zip",
+        }
+        for name, archive in expected.items():
+            device = by_name[name]
+            self.assertEqual(device["type"], "esp32")
+            self.assertEqual(device["maker"], "heltec")
+            self.assertEqual([f["role"] for f in device["firmware"]], ["companionBle"])
+            version = device["firmware"][0]["version"]["v1.18 · PS"]
+            self.assertEqual(version["archive"], archive)
+
+    def test_archive_token_handles_companion_ble_without_radio(self):
+        self.assertEqual(
+            archive_token("heltec_e213_companion_radio_ble-v1.18-ps.zip"),
+            "heltec_e213",
+        )
+        self.assertEqual(
+            archive_token("heltec_e290_companion_ble-v1.18-ps.zip"),
+            "heltec_e290",
+        )
+
+    def test_cyrillic_note_only_for_companions_with_display(self):
+        by_name = {d["name"]: d for d in self.config["device"]}
+
+        def companion_notes(name):
+            firmware = next(f for f in by_name[name]["firmware"] if "companion" in f["role"].lower())
+            return firmware["version"]["v1.18 · PS"]["notes"]
+
+        for name in ("Heltec v3", "Heltec Vision Master E213", "Heltec Vision Master E290"):
+            self.assertIn("кириллиц", companion_notes(name), name)
+
+        for name in ("RAK WisMesh Tag", "Seeed Studio SenseCAP T1000-E", "Seeed Studio Xiao nRF52 WIO"):
+            self.assertNotIn("кириллиц", companion_notes(name), name)
 
     def test_mtl_frequency_blocks(self):
         by_name = {device["name"]: device for device in self.config["device"]}

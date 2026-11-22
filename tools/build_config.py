@@ -52,9 +52,15 @@ def build_config(manifest):
                 if not archive.endswith(".zip"):
                     raise ValueError(f"{source['name']}: archive must be a zip file")
 
+                notes = version.get("notes", "")
+                display_note = entry.get("displayNote")
+                if display_note and source.get("display", True) and "companion" in entry["role"].lower():
+                    features, meshcore = split_notes(notes)
+                    notes = f"{features}, {display_note}. Собрано из MeshCore {meshcore}."
+
                 versions[version_name] = {
                     "archive": archive,
-                    "notes": version.get("notes", ""),
+                    "notes": notes,
                     "files": file_set["files"],
                 }
 
@@ -101,6 +107,8 @@ def archive_token(archive):
         "_bridge_espnow",
         "_companion_radio_ble",
         "_companion_radio_usb",
+        "_companion_ble",
+        "_companion_usb",
         "_mqtt",
         "_repeater",
     )
@@ -162,6 +170,7 @@ def catalog_devices(manifest):
                         band,
                         device["icon"],
                         device["tooltip"],
+                        "yes" if device.get("display", True) else "no",
                     )
                 )
 
@@ -177,6 +186,7 @@ def catalog_devices(manifest):
         '#   band          — диапазон: 868, 433; иначе "-"',
         "#   icon          — иконка устройства",
         "#   tooltip       — HTML подсказки при наведении",
+        '#   display       — yes или no (есть ли у платы экран)',
         "# Порядок строк = порядок устройств в config.json.",
     ]
     return "\n".join(head + ["\t".join(row) for row in rows]) + "\n"
@@ -197,7 +207,8 @@ def catalog_versions(manifest):
             for label, version in firmware["versions"].items():
                 suffix = archive_suffix(version["archive"])
                 features, source = split_notes(version.get("notes", ""))
-                record = (label, kind, features, source)
+                display_note = firmware.get("displayNote", "-")
+                record = (label, kind, features, source, display_note)
                 if suffix in variants and variants[suffix] != record:
                     raise ValueError(
                         f"{suffix}: conflicting metadata\n"
@@ -215,6 +226,7 @@ def catalog_versions(manifest):
         "#   kind     — repeater или observer",
         '#   features — что внутри; идёт в "notes" перед "Собрано из MeshCore …"',
         '#   source   — версия MeshCore для хвоста "Собрано из MeshCore <source>."',
+        '#   display_note — добавка к features для компаньонов с экраном; иначе "-"',
         "# Порядок строк = порядок версий в селекторе.",
     ]
     rows = ["\t".join((suffix, *variants[suffix])) for suffix in order]

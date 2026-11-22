@@ -235,6 +235,8 @@ tests/
 |---|---|---|---|---|
 | Heltec v3 | ESP32 | ✓ | ✓ | ✓ |
 | Heltec v4 | ESP32 | ✓ | ✓ | ✓ |
+| Heltec Vision Master E213 | ESP32 | ✓ | — | — |
+| Heltec Vision Master E290 | ESP32 | ✓ | — | — |
 | LilyGo T-Beam SX1262 | ESP32 | ✓ | ✓ | — |
 | LilyGo T-Beam SX1276 | ESP32 | ✓ | ✓ | — |
 | Heltec Mesh Node T096 | nRF52 | ✓ | ✓ | — |
@@ -258,7 +260,14 @@ tests/
 | Seeed Studio Wio Tracker L1 Pro | nRF52 | ✓ | — | — |
 | Seeed Studio Xiao nRF52 WIO | nRF52 | ✓ | — | — |
 
-Итого: 24 устройства, 54 записи прошивок, **54 версии** (компаньоны `v1.18 · PS`, репитеры `v1.18 · BL+PS+TS`, наблюдатели `v1.18`).
+Итого: 26 устройств, 56 записей прошивок, **56 версий** (компаньоны `v1.18 · PS`, репитеры `v1.18 · BL+PS+TS`, наблюдатели `v1.18`).
+
+У компаньонов с экраном в notes добавляется «поддержка кириллицы на
+экране». Признак экрана — колонка `display` в `catalog.devices.tsv`
+(`yes`/`no`, в манифесте — `"display": false`). Без экрана:
+RAK WisMesh Tag, SenseCAP T1000-E, Xiao nRF52 WIO — им фраза не
+добавляется. Текст добавки лежит в `catalog.versions.tsv`
+(`display_note`) и в `displayNote` у companion-записей манифеста.
 
 У MTL-1/MTL-2 внутри устройства отдельные блоки:
 `mtl1-868`, `mtl1-433`, `mtl1-868-bridge`, `mtl1-433-bridge`;
@@ -270,7 +279,7 @@ tests/
 
 ## ZIP-архивы
 
-Полный список — в `tools/firmware-manifest.json`: **54 архива**.
+Полный список — в `tools/firmware-manifest.json`: **56 архивов**.
 Ниже — примеры имён. Компаньоны используют суффикс
 `-companion_radio_ble-v1.18-ps`, наблюдатели — `_mqtt-v1.18`,
 репитеры — `-v1.18-bl-ps-ts`.
@@ -892,3 +901,16 @@ python3 -m unittest discover -s tools
   Итог: **24 устройства, 54 роли, 54 версии, 54 архива**; тесты и
   check_config обновлены. Проверено в браузере: 4 блока, все 8 ролей
   отдают правильные архивы, мобильный 390 px без переполнения.
+- 2026-11-23: добавлены компаньоны **Heltec Vision Master E213** и
+  **E290** (обе — ESP32-S3, 16 МБ). Архивы на wiki:
+  `heltec_e213_companion_radio_ble-v1.18-ps.zip` и
+  `heltec_e290_companion_ble-v1.18-ps.zip` — у E290 имя без `_radio`,
+  поэтому оба парсера (`build-config.sh`, `archive_token`) научились
+  суффиксу `_companion_ble`/`_companion_usb`. Иконки и превью —
+  SVG с flasher.meshcore.io (`img/heltec_e213.svg`,
+  `img/heltec_e290.svg`). В notes всех компаньонов добавлена
+  «поддержка кириллицы на экране»; платам без экрана (RAK WisMesh Tag,
+  SenseCAP T1000-E, Xiao nRF52 WIO) она не добавляется — появились
+  колонка `display` в `catalog.devices.tsv` и поле `displayNote` у
+  companion-записей манифеста. Итог: **26 устройств, 56 ролей,
+  56 версий, 56 архивов**; `check_config` — 56/56.
