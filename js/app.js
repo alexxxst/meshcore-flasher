@@ -1,13 +1,13 @@
-import { reactive, ref, shallowRef, nextTick, watch, computed } from '../lib/vue.min.js?v=d9667ec5ca';
-import { SerialConsole } from '../lib/console.js?v=d9667ec5ca';
-import { commandReference } from './commands.js?v=d9667ec5ca';
-import { hasVersions, roleValue, renderNotice, formatNotes } from './catalog.js?v=d9667ec5ca';
-import { pickFirmwareFile, requiresObserverConfirmation, isMergedFilename, resolveArchiveUrl, esp32Address, bandOf, screenOf } from './firmware.js?v=d9667ec5ca';
-import { Dfu, flashEsp32, flashNrf52, releaseFlasher } from './flash.js?v=d9667ec5ca';
-import { CONSOLE_PATH, buildPath, parsePath, isSamePage, pathFromHash, hashForPath } from './router.js?v=d9667ec5ca';
-import { serialAPI, serialSupported } from './serial.js?v=d9667ec5ca';
-import { logoFile, siteTitle, siteSubtitle, wikiExperimentUrl, wikiCompanionFlashUrl, wikiRepeaterFlashUrl, wikiRepeaterSettingsUrl, wikiSettingsUrl, wikiObserverUrl, officialFlasherUrl, wikiNrf52Url, nrfEraseArchive, nrfEraseUf2, esp32CompanionWifiNote } from './site.js?v=d9667ec5ca';
-import { loadArchiveEntry } from './zip-loader.js?v=d9667ec5ca';
+import { reactive, ref, shallowRef, nextTick, watch, computed } from '../lib/vue.min.js?v=b1029fa972';
+import { SerialConsole } from '../lib/console.js?v=b1029fa972';
+import { completeCommand, commandHint } from './console-input.js?v=b1029fa972';
+import { hasVersions, roleValue, renderNotice, formatNotes } from './catalog.js?v=b1029fa972';
+import { pickFirmwareFile, requiresObserverConfirmation, isMergedFilename, resolveArchiveUrl, esp32Address, bandOf, screenOf } from './firmware.js?v=b1029fa972';
+import { Dfu, flashEsp32, flashNrf52, releaseFlasher } from './flash.js?v=b1029fa972';
+import { CONSOLE_PATH, buildPath, parsePath, isSamePage, pathFromHash, hashForPath } from './router.js?v=b1029fa972';
+import { serialAPI, serialSupported } from './serial.js?v=b1029fa972';
+import { logoFile, siteTitle, siteSubtitle, wikiExperimentUrl, wikiCompanionFlashUrl, wikiRepeaterFlashUrl, wikiRepeaterSettingsUrl, wikiSettingsUrl, wikiObserverUrl, officialFlasherUrl, wikiNrf52Url, nrfEraseArchive, nrfEraseUf2, esp32CompanionWifiNote } from './site.js?v=b1029fa972';
+import { loadArchiveEntry } from './zip-loader.js?v=b1029fa972';
 
 const WEB_SERIAL_UNSUPPORTED = 'Браузер не поддерживает Web Serial. Откройте сайт в Chrome или Edge на компьютере.';
 
@@ -248,9 +248,55 @@ export function createSetup(config) {
 
     // --- serial console ---
 
+    // история команд: ↑/↓ листают её, как в обычном терминале
+    const commandHistory = [];
+    let historyIndex = -1;
+    let historyDraft = '';
+
+    const commandHintText = computed(() => (serialCon.connected ? commandHint(serialCon.edit) : ''));
+
     const openSerialGUI = () => {
       window.open('https://config.meshcore.io', 'meshcore_config', 'directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=1000,height=800');
     };
+
+    const consoleNearBottom = () => {
+      const el = consoleWindow.value;
+      if (!el) return true;
+      return el.scrollHeight - el.scrollTop - el.clientHeight < 40;
+    };
+
+    const scrollConsoleToBottom = (force = false) => {
+      nextTick(() => {
+        const el = consoleWindow.value;
+        if (!el) return;
+        if (force || el.scrollHeight - el.scrollTop - el.clientHeight < 40) {
+          el.scrollTop = el.scrollHeight;
+        }
+      });
+    };
+
+    // Проверяем, был ли пользователь внизу, ДО того как Vue добавит новый
+    // вывод: иначе прибавка в несколько строк сама выводит из «почти внизу»,
+    // и терминал перестаёт следовать за ответами ноды.
+    const followConsole = () => {
+      const follow = consoleNearBottom();
+      nextTick(() => {
+        const el = consoleWindow.value;
+        if (el && follow) el.scrollTop = el.scrollHeight;
+      });
+    };
+
+    const focusConsoleInput = () => {
+      const input = consoleEditBox.value;
+      if (!input) return;
+      input.focus({ preventScroll: true });
+      input.scrollIntoView({ block: 'nearest' });
+    };
+
+    // новый вывод прокручиваем вниз, но не мешаем, если пользователь ушёл вверх
+    watch(() => serialCon.content, () => followConsole());
+    // подсказка появляется под строкой ввода и не должна уезжать за край
+    watch(commandHintText, () => followConsole());
 
     const openSerialCon = async () => {
       if (!serialAPI) {
@@ -273,7 +319,7 @@ export function createSetup(config) {
       serialCon.content =
         rule +
         'Консоль MeshCore.\n' +
-        'Кликните в поле ввода, чтобы увидеть поддерживаемые команды.\n' +
+        'Введите команду и нажмите Enter. Tab дополняет, ↑/↓ — история.\n' +
         'Начните с команд ver или board.\n' +
         'Если нода молчит, выберите порт USB-UART (CH343/CP210x),\n' +
         'а не «USB JTAG/serial debug unit».\n' +
@@ -281,6 +327,9 @@ export function createSetup(config) {
       serialCon.opened = true;
       serialCon.connected = false;
       serialCon.connecting = true;
+      commandHistory.length = 0;
+      historyIndex = -1;
+      historyDraft = '';
 
       serialConsole.onOutput = (text) => { serialCon.content += text; };
       serialConsole.onStatus = (connected) => {
@@ -297,7 +346,8 @@ export function createSetup(config) {
       finally {
         serialCon.connecting = false;
         await nextTick();
-        if (serialCon.connected) consoleEditBox.value?.focus();
+        if (serialCon.connected) focusConsoleInput();
+        scrollConsoleToBottom(true);
       }
     };
 
@@ -314,16 +364,21 @@ export function createSetup(config) {
     };
 
     const sendCommand = async (text) => {
-      if (!serialCon.connected) {
+      if (!serialCon.connected || !serialCon.instance) {
         showMessage('Порт ещё не подключён', 'usb_off');
         return;
       }
 
-      const consoleEl = consoleWindow.value;
+      const command = String(text ?? '').trim();
       serialCon.edit = '';
+      if (!command) return;
+
+      if (commandHistory.at(-1) !== command) commandHistory.push(command);
+      historyIndex = -1;
+      historyDraft = '';
 
       try {
-        await serialCon.instance.sendCommand(text);
+        await serialCon.instance.sendCommand(command);
       }
       catch (e) {
         console.error(e);
@@ -331,9 +386,51 @@ export function createSetup(config) {
         return;
       }
 
-      setTimeout(() => {
-        if (consoleEl) consoleEl.scrollTop = consoleEl.scrollHeight;
-      }, 100);
+      scrollConsoleToBottom(true);
+    };
+
+    const consoleKeydown = (event) => {
+      if (event.isComposing) return;
+
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        sendCommand(serialCon.edit);
+        return;
+      }
+
+      if (event.key === 'Tab') {
+        event.preventDefault();
+        const completed = completeCommand(serialCon.edit);
+        if (completed !== serialCon.edit) serialCon.edit = completed;
+        return;
+      }
+
+      if (event.key === 'ArrowUp') {
+        event.preventDefault();
+        if (!commandHistory.length) return;
+        if (historyIndex === -1) {
+          historyDraft = serialCon.edit;
+          historyIndex = commandHistory.length - 1;
+        }
+        else {
+          historyIndex = Math.max(0, historyIndex - 1);
+        }
+        serialCon.edit = commandHistory[historyIndex];
+        return;
+      }
+
+      if (event.key === 'ArrowDown') {
+        event.preventDefault();
+        if (historyIndex === -1) return;
+        if (historyIndex < commandHistory.length - 1) {
+          historyIndex += 1;
+          serialCon.edit = commandHistory[historyIndex];
+        }
+        else {
+          historyIndex = -1;
+          serialCon.edit = historyDraft;
+        }
+      }
     };
 
     const showMessage = (text, icon = '', displayMs = 2000) => {
@@ -344,10 +441,10 @@ export function createSetup(config) {
     const consoleMouseUp = () => {
       const selection = window.getSelection().toString();
       if (selection.length) {
-        navigator.clipboard.writeText(selection);
+        navigator.clipboard.writeText(selection).catch(() => {});
         showMessage('Текст скопирован в буфер обмена');
       }
-      if (serialCon.connected) consoleEditBox.value?.focus();
+      if (serialCon.connected) focusConsoleInput();
     };
 
     // --- flashing ---
@@ -573,14 +670,15 @@ export function createSetup(config) {
 
     return {
       config, asset, logoFile, siteTitle, siteSubtitle, wikiExperimentUrl, wikiCompanionFlashUrl, wikiRepeaterFlashUrl, wikiRepeaterSettingsUrl, wikiSettingsUrl, wikiObserverUrl, officialFlasherUrl,
-      commandReference, firmwareClasses, WEB_SERIAL_UNSUPPORTED,
+      firmwareClasses, WEB_SERIAL_UNSUPPORTED,
       snackbar, archiveBusy, archiveProgress,
       selected, flashing, serialCon, firmwareBand, firmwareBandDefault, firmwareScreen,
       deviceFilterText, hoveredDevice, devices, deviceFirmwareByClass,
       currentVersion, currentArchiveUrl, roleNotice, switchNotice, needsConfirmation, canFlash, isRepeaterRole, isCompanionRole, isObserver, isNrf52, wikiNrf52Url,
       versionOptions, downloads, fwValue, roleDescription, formatNotes,
       selectDevice, selectFirmware, stepBack, retry, close, downloadFile,
-      consoleEditBox, consoleWindow, consoleMouseUp, openSerialCon, closeSerialCon, sendCommand, openSerialGUI,
+      consoleEditBox, consoleWindow, consoleMouseUp, consoleKeydown, openSerialCon, closeSerialCon, sendCommand, openSerialGUI,
+      commandHintText,
       dfuMode, eraseFlash, flashDevice, customFirmwareLoad,
     };
   };

@@ -1,7 +1,7 @@
 // Flashing backends: esptool.js for ESP32, adafruit-nrfutil style serial DFU for nRF52
-import { Dfu } from '../lib/dfu.js?v=d9667ec5ca';
-import { ESPLoader, Transport, HardReset } from '../lib/esp32.js?v=d9667ec5ca';
-import { blobToBinaryString, delay } from './util.js?v=d9667ec5ca';
+import { Dfu } from '../lib/dfu.js?v=b1029fa972';
+import { ESPLoader, Transport, HardReset } from '../lib/esp32.js?v=b1029fa972';
+import { blobToBinaryString, delay } from './util.js?v=b1029fa972';
 
 export async function downloadFirmware(url) {
   console.log(`downloading: ${url}`);

@@ -8,10 +8,10 @@
   <meta name="description" content="Прошивальщик нод MeshCore сообщества Санкт-Петербурга: репитер и наблюдатель.">
   <meta name="theme-color" content="#0042aa">
   <link rel="icon" href="./img/logo.png">
-  <link href="./css/beer.css?v=d9667ec5ca" rel="stylesheet">
-  <link href="./css/theme.css?v=d9667ec5ca" rel="stylesheet">
-  <link href="./css/flasher.css?v=d9667ec5ca" rel="stylesheet">
-  <script type="module" src="./flasher.js?v=d9667ec5ca"></script>
+  <link href="./css/beer.css?v=b1029fa972" rel="stylesheet">
+  <link href="./css/theme.css?v=b1029fa972" rel="stylesheet">
+  <link href="./css/flasher.css?v=b1029fa972" rel="stylesheet">
+  <script type="module" src="./flasher.js?v=b1029fa972"></script>
 </head>
 
 <body class="light">
@@ -333,9 +333,6 @@
 
     <!-- ======================= CONSOLE ======================= -->
     <div v-if="serialCon.opened" class="overlay active">
-      <datalist id="command-db">
-        <option v-for="(desc, command) in commandReference" :key="command" :value="command">{{ desc }}</option>
-      </datalist>
       <header>
         <nav>
           <button class="circle transparent" @click="closeSerialCon()"><i>arrow_back</i></button>
@@ -345,16 +342,18 @@
           </span>
         </nav>
       </header>
-      <div class="console-shell">
-        <pre class="console-output" ref="consoleWindow" tabindex="0" @mouseup="consoleMouseUp"><code>{{ serialCon.content }}</code></pre>
-        <div class="console-input-row">
+      <pre class="console" ref="consoleWindow" tabindex="0" @mouseup="consoleMouseUp">
+        <code>{{ serialCon.content }}</code>
+        <div class="holder">
           <span class="console-prompt">&gt;</span>
           <input ref="consoleEditBox" class="console-input" type="text" v-model="serialCon.edit"
                  :disabled="!serialCon.connected"
                  :placeholder="serialCon.connecting ? 'Подключение…' : (serialCon.connected ? 'Команда' : 'Порт не подключён')"
-                 @keydown.enter.prevent="sendCommand(serialCon.edit)" list="command-db">
+                 spellcheck="false" autocapitalize="off" autocomplete="off"
+                 @keydown="consoleKeydown">
         </div>
-      </div>
+        <div class="console-hint" v-if="commandHintText">{{ commandHintText }}</div>
+      </pre>
     </div>
   </div>
 

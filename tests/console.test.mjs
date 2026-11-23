@@ -78,6 +78,37 @@ test('чтение порта отдаёт строки в onOutput', async () =
   await console_.disconnect();
 });
 
+test('CR и LF приходят разными кусками — без лишней пустой строки', async () => {
+  const { port, push } = fakePort();
+  const console_ = new SerialConsole(port);
+  const lines = [];
+  console_.onOutput = (text) => lines.push(text);
+  await console_.connect();
+
+  // прошивка печатает эхо команды, затем '\r' и отдельно '\n'
+  push('ver\r');
+  await tick();
+  push('\n  -> Unknown command\r\n');
+  await tick();
+
+  assert.deepEqual(lines, ['ver\n', '  -> Unknown command\n']);
+  await console_.disconnect();
+});
+
+test('одиночные CR внутри вывода остаются переводами строк', async () => {
+  const { port, push } = fakePort();
+  const console_ = new SerialConsole(port);
+  const lines = [];
+  console_.onOutput = (text) => lines.push(text);
+  await console_.connect();
+
+  push('one\rtwo\rthree\n');
+  await tick();
+
+  assert.deepEqual(lines, ['one\n', 'two\n', 'three\n']);
+  await console_.disconnect();
+});
+
 test('sendCommand без подключения бросает понятную ошибку', async () => {
   const { port } = fakePort();
   const console_ = new SerialConsole(port);

@@ -863,33 +863,27 @@ button {
   min-block-size: 56px;
 }
 
-.console-shell {
-  flex: 1;
-  min-height: 0;
-  display: flex;
-  flex-direction: column;
-  background: #0f1b2d;
-  border-radius: var(--spb-radius);
-  overflow: hidden;
-}
-
-.console-output {
+/* Терминал: вывод и поле ввода живут в одном прокручиваемом блоке,
+   как в официальном прошивальщике. */
+.console {
   flex: 1;
   min-height: 0;
   overflow: auto;
+  display: flex;
+  flex-direction: column;
   margin: 0;
   padding: 16px;
-  background: transparent;
+  background: #0f1b2d;
   color: #d7e6ff;
   border: 0;
-  border-radius: 0;
+  border-radius: var(--spb-radius);
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   font-size: 0.84rem;
   line-height: 1.5;
   white-space: pre-wrap;
 }
 
-.console-output code {
+.console code {
   display: block;
   padding: 0;
   border: 0;
@@ -901,23 +895,17 @@ button {
   overflow-wrap: anywhere;
 }
 
-.console-input-row {
-  flex: none;
+.console .holder {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 10px 16px;
-  border-top: 1px solid #ffffff1a;
-  background: #0b1422;
-  color: #d7e6ff;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  font-size: 0.84rem;
+  min-height: 1.5em;
 }
 
 .console-prompt {
   color: #7fb0ff;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  font-size: 0.84rem;
+  font-family: inherit;
+  font-size: inherit;
 }
 
 .console-input {
@@ -929,7 +917,8 @@ button {
   color: #f2f7ff;
   caret-color: #7fb0ff;
   font-family: inherit;
-  font-size: 0.84rem;
+  font-size: inherit;
+  line-height: inherit;
   outline: none;
   white-space: normal;
 }
@@ -946,6 +935,16 @@ button {
 
 .console-input:focus {
   outline: none;
+}
+
+.console-hint {
+  color: #8b99b0;
+  font-family: inherit;
+  font-size: 0.78rem;
+  line-height: 1.4;
+  padding-top: 6px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
 }
 
 .console-status {
