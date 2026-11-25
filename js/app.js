@@ -1,13 +1,13 @@
-import { reactive, ref, shallowRef, nextTick, watch, computed } from '../lib/vue.min.js?v=b1029fa972';
-import { SerialConsole } from '../lib/console.js?v=b1029fa972';
-import { completeCommand, commandHint } from './console-input.js?v=b1029fa972';
-import { hasVersions, roleValue, renderNotice, formatNotes } from './catalog.js?v=b1029fa972';
-import { pickFirmwareFile, requiresObserverConfirmation, isMergedFilename, resolveArchiveUrl, esp32Address, bandOf, screenOf } from './firmware.js?v=b1029fa972';
-import { Dfu, flashEsp32, flashNrf52, releaseFlasher } from './flash.js?v=b1029fa972';
-import { CONSOLE_PATH, buildPath, parsePath, isSamePage, pathFromHash, hashForPath } from './router.js?v=b1029fa972';
-import { serialAPI, serialSupported } from './serial.js?v=b1029fa972';
-import { logoFile, siteTitle, siteSubtitle, wikiExperimentUrl, wikiCompanionFlashUrl, wikiRepeaterFlashUrl, wikiRepeaterSettingsUrl, wikiSettingsUrl, wikiObserverUrl, officialFlasherUrl, wikiNrf52Url, nrfEraseArchive, nrfEraseUf2, esp32CompanionWifiNote } from './site.js?v=b1029fa972';
-import { loadArchiveEntry } from './zip-loader.js?v=b1029fa972';
+import { reactive, ref, shallowRef, nextTick, watch, computed } from '../lib/vue.min.js?v=1e2493dc3c';
+import { SerialConsole } from '../lib/console.js?v=1e2493dc3c';
+import { completeCommand, commandHint } from './console-input.js?v=1e2493dc3c';
+import { hasVersions, roleValue, renderNotice, formatNotes } from './catalog.js?v=1e2493dc3c';
+import { pickFirmwareFile, requiresObserverConfirmation, isMergedFilename, resolveArchiveUrl, esp32Address, bandOf, screenOf } from './firmware.js?v=1e2493dc3c';
+import { Dfu, flashEsp32, flashNrf52, releaseFlasher } from './flash.js?v=1e2493dc3c';
+import { CONSOLE_PATH, buildPath, parsePath, isSamePage, pathFromHash, hashForPath } from './router.js?v=1e2493dc3c';
+import { serialAPI, serialSupported } from './serial.js?v=1e2493dc3c';
+import { logoFile, siteTitle, siteSubtitle, wikiExperimentUrl, wikiCompanionFlashUrl, wikiRepeaterFlashUrl, wikiRepeaterSettingsUrl, wikiSettingsUrl, wikiObserverUrl, officialFlasherUrl, wikiNrf52Url, nrfEraseArchive, nrfEraseUf2, esp32CompanionWifiNote } from './site.js?v=1e2493dc3c';
+import { loadArchiveEntry } from './zip-loader.js?v=1e2493dc3c';
 
 const WEB_SERIAL_UNSUPPORTED = 'Браузер не поддерживает Web Serial. Откройте сайт в Chrome или Edge на компьютере.';
 
@@ -483,7 +483,8 @@ export function createSetup(config) {
 
       let data;
       try {
-        const response = await fetch(asset(nrfEraseArchive));
+        // no-store: тот же кэш на 7 дней, а имя файла не меняется
+        const response = await fetch(asset(nrfEraseArchive), { cache: 'no-store' });
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
         data = await response.blob();
       }

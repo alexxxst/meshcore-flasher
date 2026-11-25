@@ -1,6 +1,6 @@
 // Подсказки и дополнение команд консоли.
 // Чистые функции без DOM — их проверяет tests/console-input.test.mjs.
-import { commandReference } from './commands.js?v=b1029fa972';
+import { commandReference } from './commands.js?v=1e2493dc3c';
 
 const commandNames = Object.keys(commandReference);
 

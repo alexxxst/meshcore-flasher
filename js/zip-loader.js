@@ -1,6 +1,6 @@
 // Downloads a firmware archive from the wiki and extracts one entry with zip.js.
-import { ZipReader, BlobReader, BlobWriter } from '../lib/zip.min.js?v=b1029fa972';
-import { pickArchiveEntry } from './firmware.js?v=b1029fa972';
+import { ZipReader, BlobReader, BlobWriter } from '../lib/zip.min.js?v=1e2493dc3c';
+import { pickArchiveEntry } from './firmware.js?v=1e2493dc3c';
 
 const archiveCache = new Map();
 const entryCache = new Map();
@@ -18,7 +18,9 @@ async function fetchArchive(url, onProgress) {
 
   let response;
   try {
-    response = await fetch(url);
+    // no-store: nginx отдаёт ZIP с max-age на 10 лет, а адрес архива не меняется,
+    // поэтому без этого браузер после пересборки прошивки отдаёт старый файл.
+    response = await fetch(url, { cache: 'no-store' });
   }
   catch (e) {
     throw new Error(`Не удалось скачать архив прошивки. Проверьте соединение и повторите попытку. (${e.message})`);
